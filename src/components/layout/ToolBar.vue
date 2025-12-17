@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseTabs from '@/components/base/tabs/BaseTabs.vue';
+import BaseTabs from '@/components/bases/tabs/BaseTabs.vue';
 
 const router = useRouter();
 
@@ -25,7 +25,7 @@ watchEffect(() => {
 
 <template>
   <BaseTabs
-    class="h-(--toolbarHeight)"
+    class="h-(--toolbarHeight) w-full"
     v-bind="{ tabs }"
     @change-active-tab="({ id }) => tabId = id"
   />

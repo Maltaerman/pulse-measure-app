@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@import './colors.css';
+@import './layouts.css';
+@import './transitions.css';
+@import './normalize.css';
