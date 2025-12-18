@@ -3,7 +3,6 @@ import { ref } from 'vue'
 
 import ToolBar from '@/components/layout/ToolBar.vue';
 import CookieBanner from '@/components/layout/CookieBanner.vue';
-// import PopupManagerWrapper from '@/components/popups/PopupManagerWrapper.vue';
 
 const isCookieBannerShown = ref(false);
 </script>
