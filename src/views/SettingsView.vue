@@ -12,6 +12,10 @@ import BaseButton from '@/components/bases/BaseButton.vue'
 function resetMeasureData() {
   console.log('resetMeasureData')
 }
+
+function getPWA() {
+  console.log('getPWA')
+}
 </script>
 
 <template>
@@ -34,6 +38,13 @@ function resetMeasureData() {
 
       <LastMeasureGraph class="aspect-square"  />
     </div>
+
+    <BaseButton
+      @click="getPWA"
+    >
+      Get PWA
+    </BaseButton>
+
 
     <!-- <BaseInput
       label="label"

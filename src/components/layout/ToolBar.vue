@@ -27,6 +27,7 @@ watchEffect(() => {
   <BaseTabs
     class="h-(--toolbarHeight) w-full"
     v-bind="{ tabs }"
+    size="lg"
     @change-active-tab="({ id }) => tabId = id"
   />
 </template>

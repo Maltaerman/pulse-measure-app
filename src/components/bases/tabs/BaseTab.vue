@@ -1,132 +1,97 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import BaseIcon from '@/components/bases/BaseIcon.vue';
+type TabTag = 'button';
+type TabTheme = 'primary' | 'secondary';
+type TabSize = 'md' | 'lg';
 
-const props = defineProps({
-  isActive: {
-    type: Boolean,
-    default: false,
-  },
+export interface IProps {
+  tag?: TabTag;
+  theme?: TabTheme;
+  size?: TabSize;
+  isDisabled?: boolean;
+  transitionClasses?: string;
+}
 
-  theme: {
-    type: String,
-    default: 'primary',
-    validator: (theme: string) => ['primary', 'secondary'].includes(theme),
-  },
-
-  size: {
-    type: String,
-    default: 'md',
-    validator: (size: string) => ['md'].includes(size),
-  },
-
-  tag: {
-    type: [Object, String],
-    default: () => 'button',
-  },
-
-  iconName: {
-    type: [String],
-    default: '',
-  },
-
-  iconPosition: {
-    type: String,
-    default: 'left',
-    validator: (position: string) => ['left', 'right'].includes(position),
-  },
-
-  iconRotate: {
-    type: String,
-    default: '',
-  },
-
-  iconFormat: {
-    type: String,
-    default: 'svg',
-    validator: (format: string) => ['svg', 'webp', 'png'].includes(format),
-  },
-});
+const props = withDefaults(
+  defineProps<IProps>(),
+  {
+    tag: 'button',
+    theme: 'primary',
+    size: 'md',
+    isDisabled: false,
+    transitionClasses: 'transition-colors duration-300',
+  }
+);
 
 const emit = defineEmits(['set-tab']);
 
-const TEXT_STYLE_MAP = {
-  primary: 'text-xs font-bold',
-  secondary: 'text-sm font-medium underline',
+const TEXT_MAP = {
+  primary: 'text-light font-normal text-sm',
+  secondary: 'text-light font-bold text-lg',
 };
-
-const textStyleMap = computed(() => TEXT_STYLE_MAP[props.theme]);
 
 const ROUNDED_MAP = {
   primary: 'rounded-20',
   secondary: 'rounded-24',
 };
 
-const roundedClass = computed(() => ROUNDED_MAP[props.theme]);
-
-const PADDINGS_MAP = {
-  primary: 'px-3 py-2',
-  secondary: 'px-3 py-2',
+const PADDING_MAP = {
+  md: 'py-1 px-4',
+  lg: 'py-2 px-8',
 };
 
-const paddingClass = computed(() => PADDINGS_MAP[props.theme]);
+const textClasses = computed(() => TEXT_MAP[props.theme]);
 
-const bgColorClass = computed(() => {
-  const themes = {
-    primary: 
-      props.isActive
-        ? 'bg-neutral-200'
-        : 'bg-transparent can-hover:hover:bg-neutral-200'
-    ,
-    light:
-      props.isActive
-        ? 'bg-neutral-400'
-        : 'bg-transparent can-hover:hover:bg-neutral-500'
-    ,
-  };
+const roundedClass = computed(() => ROUNDED_MAP[props.theme]);
 
-  return themes[props.theme] ?? '';
-});
+const paddingClass = computed(() => PADDING_MAP[props.size]);
 
-const textColorClass = computed(() => {
-  switch (props.theme) {
-    case 'primary':
-      return props.isActive ? 'text-light' : 'text-neutral-300 can-hover:hover:text-light';
+const textColorClass = computed(
+  () => {
+    switch (props.theme) {
+      case 'primary':
+        return props.isDisabled ? 'text-neutral-400' : 'text-light';
 
-    case 'secondary':
-      return props.isActive ? 'text-light' : 'text-neutral-300 can-hover:hover:text-light';
+      case 'secondary':
+        return props.isDisabled ? 'text-neutral-200' : 'text-light';
 
-    default:
-      return '';
+      default:
+        return '';
+    }
   }
-});
+);
+
+const backgroundClasses = computed(
+  () => {
+    switch (props.theme) {
+      case 'primary':
+        return props.isDisabled ? 'bg-neutral-100' : 'bg-primary-500 hover:bg-primary-600 active:bg-primary-400';
+
+      case 'secondary':
+        return props.isDisabled ? 'bg-neutral-100' : 'bg-neutral-500 hover:bg-neutral-600 active:bg-neutral-400';
+
+      default:
+        return '';
+    }
+  }
+);
 </script>
 
 <template>
   <component
     :is="tag"
-    class="flex items-center justify-center gap-2 transition-colors
-      duration-300 can-hover:cursor-pointer"
+    class="flex items-center justify-center gap-2 hover:cursor-pointer"
     :class="[
-      bgColorClass,
-      textColorClass,
-      textStyleMap,
-      roundedClass,
-      paddingClass,
-      { 'flex-row-reverse': props.iconPosition === 'right' },
+     textClasses,
+     roundedClass,
+     paddingClass,
+     textColorClass,
+     backgroundClasses,
+     props.transitionClasses,
     ]"
     @click="emit('set-tab')"
   >
-    <BaseIcon
-      v-if="props.iconName"
-      class="size-5 shrink-0"
-      :class="props.iconRotate"
-      :format="props.iconFormat"
-      :name="props.iconName"
-      transition-class="transition-transform"
-    />
-
     <span class="truncate translate-z-0">
       <slot />
     </span>

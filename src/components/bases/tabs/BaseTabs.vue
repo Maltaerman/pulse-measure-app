@@ -48,11 +48,6 @@ const props = defineProps({
     default: true,
   },
 
-  tabPosition: {
-    type: String,
-    default: 'center',
-    validator: (position: string) => ['left', 'center'].includes(position),
-  },
 
   iconPosition: {
     type: String,
@@ -168,16 +163,11 @@ onBeforeUnmount(() =>
   <nav
     ref="containerRef"
     class="relative -mb-3 overflow-scroll pb-3"
-    :class="[
-      {
-        noScrollbar: props.isScrollHidden,
-        'max-w-max': props.tabPosition === 'center',
-      },
-    ]"
+    :class="{ noScrollbar: props.isScrollHidden }"
   >
     <ul
       :id="props.listId"
-      class="relative flex w-max flex-row items-center rounded-24 border"
+      class="relative flex w-full flex-row items-center"
       :class="[
         borderColorClass,
         bgColorClass,
@@ -191,6 +181,7 @@ onBeforeUnmount(() =>
         :id="id"
         :key="id"
         ref="tabRefs"
+        class="w-full"
       >
         <BaseTab
           :icon-format="props.iconFormat"
@@ -201,6 +192,7 @@ onBeforeUnmount(() =>
           :label="label"
           :size="props.size"
           :theme="props.theme"
+          class="w-full rounded-sm"
           @set-tab="onChangeTab(id, index)"
         >
           {{ label }}
