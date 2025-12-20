@@ -20,6 +20,7 @@ getAchievementsList();
     <AchievementItem
       v-for="achievement in achievementsList"
       :key="achievement.id"
+      class="size-30 shrink-0"
       v-bind="achievement"
     />
   </div>

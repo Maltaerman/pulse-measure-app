@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
-import Achievements from '@/components/settings/Achievements.vue'
+import AchievementsList from '@/components/settings/AchievementsList.vue'
 import LastMeasure from '@/components/settings/LastMeasure.vue'
 import LastMeasureGraph from '@/components/settings/LastMeasureGraph.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
@@ -28,7 +28,7 @@ function getPWA() {
         v-text="'Achievements'"
       />
 
-      <Achievements class="min-h-40 col-span-2" />
+      <AchievementsList class="min-h-40 col-span-2" />
     </div>
 
     <div class="grid grid-cols-2 gap-4">
