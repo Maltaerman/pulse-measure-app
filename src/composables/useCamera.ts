@@ -25,7 +25,7 @@ const avgR = ref(0);
 const signal = [];
 const timestamps = [];
 
-const manualTorchOn = ref(false);
+const manualTorchOn = ref(true);
 
 export function useCamera(video, canvas, ctx) {
   const { calculateBPM } = useBPM();

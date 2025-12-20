@@ -1,34 +1,36 @@
 <template>
-  <div class="p-4 text-center">
+  <!-- <button
+    v-if="!isTorchAvailable && !manualTorchOn"
+    @click="enableManualTorch"
+    class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
+  >
+    💡Ligthning
+  </button>
+
+  <p v-if="manualTorchOn" class="mt-3 text-sm text-gray-600">
+    Enable Ligthning
+  </p> -->
+
+  <div class="flex flex-col gap-4 size-full --screenMinHeight items-center justify-center">
     <video
       ref="videoRef"
       autoplay
       playsinline
-      class="rounded-xl shadow-md mx-auto"
-    />
+      class="hidden rounded-xl shadow-md mx-auto"
+    /> 
 
-    <canvas ref="canvasRef" width="320" height="240" class="hidden"></canvas>
+    <canvas ref="canvasRef" width="320" height="240" class="hidden" />
 
-    <div class="mt-4 text-2xl font-bold">
-      <span class="text-red-600">{{ bpm ? +bpm.toFixed(0) : '--' }}</span> BPM <br>
-      {{ bpm }}
+
+    <div class="flex flex-col gap-2 font-semibold text-lg text-primary-600 text-center">
+      <p v-if="bpm">
+        BPM:{{ bpm }}
+      </p>
+
+      <p v-if="avgR">
+        R: {{ avgR.toFixed(2) }}
+      </p>
     </div>
-
-    <div class="text-sm text-gray-500 mt-1">
-      R: {{ avgR.toFixed(2) }}
-    </div>
-
-    <button
-      v-if="!isTorchAvailable && !manualTorchOn"
-      @click="enableManualTorch"
-      class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
-    >
-      💡Ligthning
-    </button>
-
-    <p v-if="manualTorchOn" class="mt-3 text-sm text-gray-600">
-      Enable Ligthning
-    </p>
   </div>
 </template>
 
