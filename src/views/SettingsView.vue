@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { ref } from 'vue';
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
+import Achievements from '@/components/settings/Achievements.vue'
 import LastMeasure from '@/components/settings/LastMeasure.vue'
 import LastMeasureGraph from '@/components/settings/LastMeasureGraph.vue'
 // import BaseInput from '@/components/bases/BaseInput.vue'
@@ -20,12 +21,25 @@ function getPWA() {
 
 <template>
   <div class="flex flex-col gap-4">
-    <BaseThemeToggle
-      class="w-full uppercase"
-      v-slot="{ theme }"
-    >
-      Mode / {{ theme }}
-    </BaseThemeToggle>
+    <div class="grid grid-cols-2 gap-4">
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Achievements'"
+      />
+
+      <Achievements class="min-h-40 col-span-2" />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Last measure'"
+      />
+
+      <LastMeasure class="aspect-square" />
+
+      <LastMeasureGraph class="aspect-square"  />
+    </div>
 
     <BaseButton
       @click="resetMeasureData"
@@ -33,17 +47,19 @@ function getPWA() {
       Reset measure data
     </BaseButton>
 
-    <div class="grid grid-cols-2 gap-4">
-      <LastMeasure class="aspect-square" />
-
-      <LastMeasureGraph class="aspect-square"  />
-    </div>
-
     <BaseButton
       @click="getPWA"
     >
       Get PWA
     </BaseButton>
+
+    <BaseThemeToggle
+      class="w-full uppercase"
+      v-slot="{ theme }"
+    >
+      Mode / {{ theme }}
+    </BaseThemeToggle>
+
 
 
     <!-- <BaseInput
