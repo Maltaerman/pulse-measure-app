@@ -3,12 +3,16 @@ import { PAGE_NAME_ENUM } from '@/router';
 
 import BaseButton from '@/components/bases/BaseButton.vue';
 
+import { useRandomTitle } from '@/composables/useRandomTitle';
+
 const ROUTES = [
   { label: 'Measure', to: PAGE_NAME_ENUM.MEASURE, },
   { label: 'History', to: PAGE_NAME_ENUM.HISTORY, },
   { label: 'Achievements', to: PAGE_NAME_ENUM.ACHIEVEMENTS, },
   { label: 'Settings', to: PAGE_NAME_ENUM.SETTINGS, },  
 ];
+
+const { randomTitle } = useRandomTitle();
 </script>
 
 <template>
@@ -16,7 +20,7 @@ const ROUTES = [
 
     <h1
       class="text-lg font-semibold col-span-2 text-neutral-800"
-      v-text="`Let's get started`"
+      v-text="randomTitle"
     />
 
     <div class="grid grid-cols-2 gap-4">
