@@ -42,6 +42,7 @@ function getPWA() {
     </div>
 
     <BaseButton
+      class="capitalize"
       @click="resetMeasureData"
     >
       Reset measure data
@@ -54,13 +55,8 @@ function getPWA() {
     </BaseButton>
 
     <BaseThemeToggle
-      class="w-full uppercase"
-      v-slot="{ theme }"
-    >
-      Mode / {{ theme }}
-    </BaseThemeToggle>
-
-
+      class="capitalize"
+    />
 
     <!-- <BaseInput
       label="label"
