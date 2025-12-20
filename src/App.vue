@@ -2,7 +2,7 @@
 import { useLayout } from '@/layout/useLayout';
 import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
 
-const layoutComponent = useLayout();
+const { layoutComponent } = useLayout();
 const { layoutRouteTransition } = useLayoutRouteTransition();
 </script>
 

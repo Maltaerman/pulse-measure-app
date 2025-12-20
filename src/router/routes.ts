@@ -1,6 +1,4 @@
-import { LAYOUT_ENUM } from '@/layout/useLayout';
-
-import { PAGE_NAME_ENUM } from './enums';
+import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums';
 
 export default [
   {
