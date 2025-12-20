@@ -14,8 +14,8 @@ getHistoryList();
 
 <template>
   <div>
-    <h4
-      class="text-xl text-neutral-950 font-bold"
+    <p
+      class="text-lg font-semibold col-span-2 text-neutral-800"
       v-text="'History'"
     />
 
@@ -25,6 +25,7 @@ getHistoryList();
     >
       <HistoryList
         v-if="historyList.length"
+        class="w-full"
       />
 
       <div
@@ -32,7 +33,7 @@ getHistoryList();
         class="flex min-h-40 p-2"
       >
         <p
-          class="m-auto text-center text-md text-neutral-950 font-medium"
+          class="text-lg font-semibold col-span-2 text-neutral-800"
           v-text="'No measure history'"
         />
       </div>      

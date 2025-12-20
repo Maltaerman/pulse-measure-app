@@ -6,10 +6,10 @@ export interface IHistoryListItem {
 }
 
 const MOCK_HISTORY_LIST: IHistoryListItem[] = [
-  { id: 'measure-1', value: 80  },
-  { id: 'measure-2', value: 79  },
-  { id: 'measure-3', value: 85  },
-  { id: 'measure-5', value: 76  },
+  { id: '1', value: 80  },
+  { id: '2', value: 79  },
+  { id: '3', value: 85  },
+  { id: '4', value: 76  },
 ];
 
 const historyList = ref<IHistoryListItem[]>([]);

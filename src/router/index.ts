@@ -6,6 +6,7 @@ export const PAGE_NAME_ENUM = {
   MAIN: 'Main',
   SETTINGS: 'Settings',
   HISTORY: 'History',
+  HISTORY_ITEM: 'HistoryItem',
   NOT_FOUND: 'NotFound',
 }
 
@@ -31,6 +32,17 @@ const router = createRouter({
       name: PAGE_NAME_ENUM.HISTORY,
       meta: { layout: LAYOUT_ENUM.DEFAULT },
       component: () => import('../views/HistoryView.vue'),
+    },
+
+    {
+      path: '/history/:id',
+      name: PAGE_NAME_ENUM.HISTORY_ITEM,
+      meta: { layout: LAYOUT_ENUM.DEFAULT },
+      component: () => import('../views/HistoryItemView.vue'),
+      // beforeEnter: async (to) => {
+      //   const id = to.params.id
+      //   if (!id) return { name: PAGE_NAME_ENUM.NOT_FOUND };
+      // },
     },
 
     {
