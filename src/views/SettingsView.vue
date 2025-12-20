@@ -1,24 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
+// import { ref } from 'vue';
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
-import BaseInput from '@/components/bases/BaseInput.vue'
+import LastMeasure from '@/components/settings/LastMeasure.vue'
+import LastMeasureGraph from '@/components/settings/LastMeasureGraph.vue'
+// import BaseInput from '@/components/bases/BaseInput.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
-import BaseLabel from '@/components/bases/BaseLabel.vue'
+// import BaseLabel from '@/components/bases/BaseLabel.vue'
 
-const inputModel = ref('');
+// const inputModel = ref('');
+
+function resetMeasureData() {
+  console.log('resetMeasureData')
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-10">
+  <div class="flex flex-col gap-4">
     <BaseThemeToggle
-      class="w-full"
+      class="w-full uppercase"
       v-slot="{ theme }"
     >
-      Theme: {{ theme }}
+      Mode / {{ theme }}
     </BaseThemeToggle>
 
-        <BaseInput
+    <BaseButton
+      @click="resetMeasureData"
+    >
+      Reset measure data
+    </BaseButton>
+
+    <div class="grid grid-cols-2 gap-4">
+      <LastMeasure class="aspect-square" />
+
+      <LastMeasureGraph class="aspect-square"  />
+    </div>
+
+    <!-- <BaseInput
       label="label"
       class="mx-10"
       v-model="inputModel"
@@ -65,6 +82,6 @@ const inputModel = ref('');
       >
         BaseLabel
       </BaseLabel>
-    </div>
+    </div> -->
   </div>
 </template>

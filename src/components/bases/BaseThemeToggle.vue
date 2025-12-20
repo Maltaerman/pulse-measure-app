@@ -32,7 +32,7 @@ function toggleTheme() {
   <button
     @click="toggleTheme"
     type="button"
-    class="uppercase px-4 py-2 rounded bg-primary-600 text-neutral-100 transition-colors duration-300 cursor-pointer font-regular"
+    class="px-4 py-2 rounded bg-primary-600 text-neutral-100 transition-colors duration-300 cursor-pointer font-regular"
   >
     <slot v-bind="{ theme }">
       {{ theme }}

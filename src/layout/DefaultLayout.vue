@@ -9,7 +9,7 @@ const isCookieBannerShown = ref(false);
 
 <template>
   <div>
-    <main class="relative flex size-full flex-1 flex-col --screenMinHeight bg-neutral-100 transition-colors duration-300">
+    <main class="relative flex size-full flex-1 flex-col --screenMinHeight bg-neutral-100 transition-colors duration-300 p-2">
       <slot />
     </main>
 
