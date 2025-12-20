@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+import BaseButton from '@/components/bases/BaseButton.vue';
+
 const THEME_ENUM = {
   DARK: 'dark',
   LIGHT: 'light',
@@ -29,13 +31,9 @@ function toggleTheme() {
 </script>
 
 <template>
-  <button
-    @click="toggleTheme"
-    type="button"
-    class="uppercase px-4 py-2 rounded bg-primary-600 text-neutral-100 transition-colors duration-300 cursor-pointer font-regular"
-  >
+  <BaseButton @click="toggleTheme">
     <slot v-bind="{ theme }">
-      {{ theme }}
+      Mode / {{ theme }}
     </slot>
-  </button>
+  </BaseButton>
 </template>

@@ -1,24 +1,64 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
+// import { ref } from 'vue';
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
-import BaseInput from '@/components/bases/BaseInput.vue'
+import Achievements from '@/components/settings/Achievements.vue'
+import LastMeasure from '@/components/settings/LastMeasure.vue'
+import LastMeasureGraph from '@/components/settings/LastMeasureGraph.vue'
+// import BaseInput from '@/components/bases/BaseInput.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
-import BaseLabel from '@/components/bases/BaseLabel.vue'
+// import BaseLabel from '@/components/bases/BaseLabel.vue'
 
-const inputModel = ref('');
+// const inputModel = ref('');
+
+function resetMeasureData() {
+  console.log('resetMeasureData')
+}
+
+function getPWA() {
+  console.log('getPWA')
+}
 </script>
 
 <template>
-  <div class="flex flex-col gap-10">
-    <BaseThemeToggle
-      class="w-full"
-      v-slot="{ theme }"
-    >
-      Theme: {{ theme }}
-    </BaseThemeToggle>
+  <div class="flex flex-col gap-4">
+    <div class="grid grid-cols-2 gap-4">
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Achievements'"
+      />
 
-        <BaseInput
+      <Achievements class="min-h-40 col-span-2" />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Last measure'"
+      />
+
+      <LastMeasure class="aspect-square" />
+
+      <LastMeasureGraph class="aspect-square"  />
+    </div>
+
+    <BaseButton
+      class="capitalize"
+      @click="resetMeasureData"
+    >
+      Reset measure data
+    </BaseButton>
+
+    <BaseButton
+      @click="getPWA"
+    >
+      Get PWA
+    </BaseButton>
+
+    <BaseThemeToggle
+      class="capitalize"
+    />
+
+    <!-- <BaseInput
       label="label"
       class="mx-10"
       v-model="inputModel"
@@ -65,6 +105,6 @@ const inputModel = ref('');
       >
         BaseLabel
       </BaseLabel>
-    </div>
+    </div> -->
   </div>
 </template>
