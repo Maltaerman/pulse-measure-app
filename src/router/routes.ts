@@ -48,6 +48,13 @@ export default [
   },
 
   {
+    path: '/message',
+    name: PAGE_NAME_ENUM.WARNING,
+    meta: { layout: LAYOUT_ENUM.DEFAULT },
+    component: () => import('@/views/WarningView.vue'),
+  },
+
+  {
     path: '/:catchAll(.*)',
     name: PAGE_NAME_ENUM.NOT_FOUND,
     redirect: { name: PAGE_NAME_ENUM.MAIN },
