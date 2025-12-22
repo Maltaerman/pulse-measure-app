@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { useLayout } from '@/layout/useLayout';
 import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
+import { useRouteGuard } from '@/composables/useRouteGuard';
 
 const { layoutComponent } = useLayout();
 const { layoutRouteTransition } = useLayoutRouteTransition();
+
+useRouteGuard();
 </script>
 
-<template>
+<template>  
   <component :is="layoutComponent">
     <Transition
       :name="layoutRouteTransition"

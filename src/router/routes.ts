@@ -2,7 +2,7 @@ import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums';
 
 export default [
   {
-    path: '/achievementsView',
+    path: '/achievements',
     name: PAGE_NAME_ENUM.ACHIEVEMENTS,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/AchievementsView.vue'),
@@ -45,6 +45,13 @@ export default [
     //   const id = to.params.id
     //   if (!id) return { name: PAGE_NAME_ENUM.NOT_FOUND };
     // },
+  },
+
+  {
+    path: '/message',
+    name: PAGE_NAME_ENUM.WARNING,
+    meta: { layout: LAYOUT_ENUM.DEFAULT },
+    component: () => import('@/views/WarningView.vue'),
   },
 
   {

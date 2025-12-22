@@ -29,9 +29,21 @@ export function useHistoryList() {
     }
   }
 
+  function resetHistoryList() {
+    try {
+      isLoadingHistoryList.value = true;
+
+      historyList.value = [];
+
+    } finally {
+      isLoadingHistoryList.value = false;
+    }
+  }
+
   return {
     historyList,
     isLoadingHistoryList,
     getHistoryList,
+    resetHistoryList,
   };
 }
