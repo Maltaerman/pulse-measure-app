@@ -5,8 +5,8 @@ import BaseTabs from '@/components/bases/tabs/BaseTabs.vue';
 
 const tabs = [
   { id: PAGE_NAME_ENUM.MAIN, label: PAGE_NAME_ENUM.MAIN  },
+  { id: PAGE_NAME_ENUM.MEASURE, label: PAGE_NAME_ENUM.MEASURE  },
   { id: PAGE_NAME_ENUM.HISTORY, label: PAGE_NAME_ENUM.HISTORY  },
-  { id: PAGE_NAME_ENUM.SETTINGS, label: PAGE_NAME_ENUM.SETTINGS  },
 ];
 </script>
 
