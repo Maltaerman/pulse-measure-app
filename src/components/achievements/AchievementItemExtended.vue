@@ -16,9 +16,9 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
       v-text="props.title"
     />
 
-    <img
+    <p
       class="size-4 mx-auto my-4"
-      src="/src/assets//icons/colored-google.svg"
+      v-text="`🫀`"
     />
 
     <p

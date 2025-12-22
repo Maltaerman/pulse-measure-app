@@ -1,37 +1,62 @@
 <script setup lang="ts">
-import { PAGE_NAME_ENUM } from '@/router';
+import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
+import AchievementsList from '@/components/main/AchievementsList.vue'
+import LastMeasure from '@/components/main/LastMeasure.vue'
+import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
+import BaseButton from '@/components/bases/BaseButton.vue'
 
-import BaseButton from '@/components/bases/BaseButton.vue';
+import { useHistoryList } from '@/components/history/useHistoryList';
 
-import { useRandomTitle } from '@/composables/useRandomTitle';
+const { resetHistoryList } = useHistoryList();
 
-const ROUTES = [
-  { label: 'Measure', to: PAGE_NAME_ENUM.MEASURE, },
-  { label: 'History', to: PAGE_NAME_ENUM.HISTORY, },
-  { label: 'Achievements', to: PAGE_NAME_ENUM.ACHIEVEMENTS, },
-  { label: 'Settings', to: PAGE_NAME_ENUM.SETTINGS, },  
-];
+function resetMeasureData() {
+  resetHistoryList();
 
-const { randomTitle } = useRandomTitle();
+  console.log('empty')
+}
+
+function getPWA() {
+  console.log('getPWA')
+}
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
+    <div class="grid grid-cols-2 gap-4">
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Achievements'"
+      />
 
-    <h1
-      class="text-lg font-semibold col-span-2 text-neutral-800"
-      v-text="randomTitle"
-    />
+      <AchievementsList class="min-h-40 col-span-2" />
+    </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <BaseButton
-        v-for="{ label, to } in ROUTES"
-        :key="label"
-        class="aspect-square size-full"
-        @click="$router.push({ name: to })"
-      >
-        {{ label }}
-      </BaseButton>
+      <p
+        class="text-lg font-semibold col-span-2 text-neutral-800"
+        v-text="'Last measure'"
+      />
+
+      <LastMeasure class="aspect-square" />
+
+      <LastMeasureGraph class="aspect-square"  />
     </div>
+
+    <BaseButton
+      class="capitalize"
+      @click="resetMeasureData"
+    >
+      Reset measure data
+    </BaseButton>
+
+    <BaseButton
+      @click="getPWA"
+    >
+      Get PWA
+    </BaseButton>
+
+    <BaseThemeToggle
+      class="capitalize"
+    />
   </div>
 </template>

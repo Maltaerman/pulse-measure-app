@@ -23,13 +23,6 @@ export default [
   },
 
   {
-    path: '/settings',
-    name: PAGE_NAME_ENUM.SETTINGS,
-    meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/SettingsView.vue'),
-  },
-
-  {
     path: '/history',
     name: PAGE_NAME_ENUM.HISTORY,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
