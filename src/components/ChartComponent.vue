@@ -1,8 +1,4 @@
-<template>
-  <canvas ref="chartRef"></canvas>
-</template>
-
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { Chart, registerables } from 'chart.js'
 
@@ -47,3 +43,7 @@ watch(
   { deep: true }
 )
 </script>
+
+<template>
+  <canvas ref="chartRef"></canvas>
+</template>
