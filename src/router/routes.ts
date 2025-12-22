@@ -2,7 +2,7 @@ import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums';
 
 export default [
   {
-    path: '/achievementsView',
+    path: '/achievements',
     name: PAGE_NAME_ENUM.ACHIEVEMENTS,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/AchievementsView.vue'),

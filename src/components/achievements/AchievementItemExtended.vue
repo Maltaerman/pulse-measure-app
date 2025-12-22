@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
 
 <template>
   <div
-    class="relative flex flex-col rounded-sm bg-neutral-950 p-2"
+    class="relative flex flex-col gap-2 rounded-sm bg-neutral-950 p-2"
     :class="{ 'opacity-10': props.status === 'locked' }"
   >
     <p
@@ -17,8 +17,13 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
     />
 
     <img
-      class="size-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      class="size-4 mx-auto my-4"
       src="/src/assets//icons/colored-google.svg"
+    />
+
+    <p
+      class="text-neutral-100 text-md font-semibold line-clamp-2"
+      v-text="props.description"
     />
 
     <div class="mt-auto flex flex-col gap-1">
