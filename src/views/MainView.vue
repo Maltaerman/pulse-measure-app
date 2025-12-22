@@ -28,7 +28,7 @@ function getPWA() {
         v-text="'Achievements'"
       />
 
-      <AchievementsList class="min-h-40 col-span-2" />
+      <AchievementsList class="col-span-2" />
     </div>
 
     <div class="grid grid-cols-2 gap-4">

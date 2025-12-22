@@ -30,7 +30,7 @@ getHistoryList();
 
       <div
         v-else
-        class="flex min-h-40 p-2"
+        class="flex p-2"
       >
         <p
           class="text-lg font-semibold col-span-2 text-neutral-800"
