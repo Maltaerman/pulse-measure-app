@@ -25,7 +25,7 @@ function getPWA() {
     <div class="grid grid-cols-2 gap-4">
       <p
         class="text-lg font-semibold col-span-2 text-neutral-800"
-        v-text="'Achievements'"
+        v-text="$t('global_achievements')"
       />
 
       <AchievementsList class="col-span-2" />
