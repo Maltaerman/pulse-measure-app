@@ -4,8 +4,8 @@ import { useRoute } from 'vue-router';
 
 import { useMeasure } from '@/composables/useMeasure';
 
-const HistoryListItemDetail = defineAsyncComponent(
-  () => import('@/components/history/HistoryListItemDetail.vue')
+const MeasureListItemDetail = defineAsyncComponent(
+  () => import('@/components/measure-list/MeasureListItemDetail.vue')
 );
 
 const route = useRoute();
@@ -24,7 +24,7 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
       v-text="measureData?.id ? 'Measure data:' : 'Measure don not exist'"
     />
 
-    <HistoryListItemDetail
+    <MeasureListItemDetail
       v-if="measureData"
       v-bind="measureData"
     />

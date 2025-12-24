@@ -23,17 +23,17 @@ export default [
   },
 
   {
-    path: '/history',
-    name: PAGE_NAME_ENUM.HISTORY,
+    path: '/measure-list',
+    name: PAGE_NAME_ENUM.MEASURE_LIST,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/HistoryView.vue'),
+    component: () => import('@/views/MeasureListView.vue'),
   },
 
   {
-    path: '/history/:id',
-    name: PAGE_NAME_ENUM.HISTORY_ITEM,
+    path: '/measure-detail/:id',
+    name: PAGE_NAME_ENUM.MEASURE_ITEM,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/HistoryItemView.vue'),
+    component: () => import('@/views/MeasureDetailView.vue'),
     // beforeEnter: async (to) => {
     //   const id = to.params.id
     //   if (!id) return { name: PAGE_NAME_ENUM.NOT_FOUND };

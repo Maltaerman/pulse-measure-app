@@ -3,8 +3,8 @@ import { defineAsyncComponent } from 'vue';
 
 import { useMeasure } from '@/composables/useMeasure';
 
-const HistoryList = defineAsyncComponent(
-  () => import('@/components/history/HistoryList.vue')
+const MeasureList = defineAsyncComponent(
+  () => import('@/components/measure-list/MeasureList.vue')
 );
 
 const { measureList, getMeasureList } = useMeasure();
@@ -23,7 +23,7 @@ getMeasureList();
       mode="out-in"
       name="transition-fade"
     >
-      <HistoryList
+      <MeasureList
         v-if="measureList.length"
         class="w-full"
       />
