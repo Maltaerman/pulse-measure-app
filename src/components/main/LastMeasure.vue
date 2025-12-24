@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useHistoryList } from '@/components/history/useHistoryList';
+import { useMeasure } from '@/composables/useMeasure';
 
-const { historyList, getHistoryList } = useHistoryList();
+const { measureList, getMeasureList } = useMeasure();
 
-getHistoryList();
+getMeasureList();
 </script>
 
 <template>
   <div class="flex flex-col gap-4 bg-neutral-600 rounded-sm p-2">
-    Last measure / {{ historyList[historyList.length -1]?.value || '--' }}
+    Last measure / {{ measureList[measureList.length -1]?.value || '--' }}
   </div>
 </template>

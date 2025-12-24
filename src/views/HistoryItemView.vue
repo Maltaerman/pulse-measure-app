@@ -2,7 +2,7 @@
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useHistoryList } from '@/components/history/useHistoryList';
+import { useMeasure } from '@/composables/useMeasure';
 
 const HistoryListItemDetail = defineAsyncComponent(
   () => import('@/components/history/HistoryListItemDetail.vue')
@@ -10,11 +10,11 @@ const HistoryListItemDetail = defineAsyncComponent(
 
 const route = useRoute();
 
-const { historyList, getHistoryList } = useHistoryList();
+const { measureList, getMeasureList } = useMeasure();
 
-if (!historyList.value.length) getHistoryList();
+if (!measureList.value.length) getMeasureList();
 
-const measureData = computed(() => historyList.value.find(({ id }) => id === route.params.id));
+const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id));
 </script>
 
 <template>

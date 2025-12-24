@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-import { useHistoryList } from '@/components/history/useHistoryList';
+import { useMeasure } from '@/composables/useMeasure';
 
 const HistoryList = defineAsyncComponent(
   () => import('@/components/history/HistoryList.vue')
 );
 
-const { historyList, getHistoryList } = useHistoryList();
+const { measureList, getMeasureList } = useMeasure();
 
-getHistoryList();
+getMeasureList();
 </script>
 
 <template>
@@ -24,7 +24,7 @@ getHistoryList();
       name="transition-fade"
     >
       <HistoryList
-        v-if="historyList.length"
+        v-if="measureList.length"
         class="w-full"
       />
 

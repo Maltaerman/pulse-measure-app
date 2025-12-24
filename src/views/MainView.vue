@@ -5,12 +5,12 @@ import LastMeasure from '@/components/main/LastMeasure.vue'
 import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 
-import { useHistoryList } from '@/components/history/useHistoryList';
+import { useMeasure } from '@/composables/useMeasure';
 
-const { resetHistoryList } = useHistoryList();
+const { resetMeasureList } = useMeasure();
 
 function resetMeasureData() {
-  resetHistoryList();
+  resetMeasureList();
 
   console.log('empty')
 }
