@@ -2,8 +2,8 @@ export const PAGE_NAME_ENUM = {
   ACHIEVEMENTS: 'Achievements',
   MAIN: 'Main',
   MEASURE: 'Measure',
-  HISTORY: 'History',
-  HISTORY_ITEM: 'HistoryItem',
+  MEASURE_ITEM: 'MeasureItem',
+  MEASURE_LIST: 'MeasureListItem',
   WARNING: 'Warning',
   NOT_FOUND: 'NotFound',
 }

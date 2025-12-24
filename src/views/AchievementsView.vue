@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
+import BaseTitle from '@/components/bases/BaseTitle.vue';
+
 import { useAchievements } from '@/composables/useAchievements';
 
 const AchievementItemExtended = defineAsyncComponent(
@@ -14,10 +16,9 @@ getAchievementsList();
 
 <template>
   <div class="flex flex-col gap-5">
-    <p
-      class="text-lg font-semibold col-span-2 text-neutral-800"
-      v-text="'Achievements'"
-    />
+    <BaseTitle class="col-span-2 ">
+      {{ $t('global_achievements') }}
+    </BaseTitle>
 
     <div class="col-span-2">
       <p

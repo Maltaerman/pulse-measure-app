@@ -1,16 +1,17 @@
 <script setup lang="ts">
+import BaseTitle from '@/components/bases/BaseTitle.vue';
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
 import AchievementsList from '@/components/main/AchievementsList.vue'
 import LastMeasure from '@/components/main/LastMeasure.vue'
 import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 
-import { useHistoryList } from '@/components/history/useHistoryList';
+import { useMeasure } from '@/composables/useMeasure';
 
-const { resetHistoryList } = useHistoryList();
+const { resetMeasureList } = useMeasure();
 
 function resetMeasureData() {
-  resetHistoryList();
+  resetMeasureList();
 
   console.log('empty')
 }
@@ -23,19 +24,15 @@ function getPWA() {
 <template>
   <div class="flex flex-col gap-4">
     <div class="grid grid-cols-2 gap-4">
-      <p
-        class="text-lg font-semibold col-span-2 text-neutral-800"
-        v-text="$t('global_achievements')"
-      />
+      <BaseTitle>{{ $t('global_achievements') }}</BaseTitle>
 
       <AchievementsList class="col-span-2" />
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <p
-        class="text-lg font-semibold col-span-2 text-neutral-800"
-        v-text="'Last measure'"
-      />
+      <BaseTitle class="col-span-2 ">
+        Last measure
+      </BaseTitle>
 
       <LastMeasure class="aspect-square" />
 
