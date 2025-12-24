@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
-import BaseTitle from '@/components/bases/BaseTitle.vue';
+import MeasureListHeader from '@/components/measure-list/MeasureListHeader.vue';
 
 import { useMeasure } from '@/composables/useMeasure';
+
+const route = useRoute();
 
 const MeasureListItemDetail = defineAsyncComponent(
   () => import('@/components/measure-list/MeasureListItemDetail.vue')
 );
 
-const route = useRoute();
-
 const { measureList, getMeasureList } = useMeasure();
 
-if (!measureList.value.length) getMeasureList();
+getMeasureList();
 
 const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id));
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <BaseTitle>{{ measureData?.id ? 'Measure data:' : 'Measure don not exist' }}</BaseTitle>
+  <section class="flex flex-col gap-4">
+    <MeasureListHeader>Measure info</MeasureListHeader>
 
     <MeasureListItemDetail
       v-if="measureData"
       v-bind="measureData"
     />
-  </div>
+  </section>
 </template>

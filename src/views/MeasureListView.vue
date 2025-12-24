@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import BaseTitle from '@/components/bases/BaseTitle.vue';
 import { defineAsyncComponent } from 'vue';
+
+import MeasureListHeader from '@/components/measure-list/MeasureListHeader.vue';
+import MeasureListEmptyState from '@/components/measure-list/MeasureListEmptyState.vue';
 
 import { useMeasure } from '@/composables/useMeasure';
 
@@ -14,8 +16,8 @@ getMeasureList();
 </script>
 
 <template>
-  <div>
-    <BaseTitle>History</BaseTitle>
+  <section class="flex flex-col gap-4">
+    <MeasureListHeader>Your measurements</MeasureListHeader>
 
     <Transition
       mode="out-in"
@@ -26,15 +28,7 @@ getMeasureList();
         class="w-full"
       />
 
-      <div
-        v-else
-        class="flex p-2"
-      >
-        <p
-          class="text-lg font-semibold col-span-2 text-neutral-800"
-          v-text="'No measure history'"
-        />
-      </div>      
+      <MeasureListEmptyState v-else />
     </Transition>
-  </div>
+  </section>
 </template>
