@@ -2,6 +2,8 @@
 import { computed, defineAsyncComponent } from 'vue';
 import { useRoute } from 'vue-router';
 
+import BaseTitle from '@/components/bases/BaseTitle.vue';
+
 import { useMeasure } from '@/composables/useMeasure';
 
 const MeasureListItemDetail = defineAsyncComponent(
@@ -19,10 +21,7 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
 
 <template>
   <div class="flex flex-col gap-4">
-    <p
-      class="text-lg font-semibold col-span-2 text-neutral-800"
-      v-text="measureData?.id ? 'Measure data:' : 'Measure don not exist'"
-    />
+    <BaseTitle>{{ measureData?.id ? 'Measure data:' : 'Measure don not exist' }}</BaseTitle>
 
     <MeasureListItemDetail
       v-if="measureData"

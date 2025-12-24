@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseTitle from '@/components/bases/BaseTitle.vue';
 import { defineAsyncComponent } from 'vue';
 
 import { useMeasure } from '@/composables/useMeasure';
@@ -14,10 +15,7 @@ getMeasureList();
 
 <template>
   <div>
-    <p
-      class="text-lg font-semibold col-span-2 text-neutral-800"
-      v-text="'History'"
-    />
+    <BaseTitle>History</BaseTitle>
 
     <Transition
       mode="out-in"
