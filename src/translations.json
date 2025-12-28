@@ -1,8 +1,12 @@
 {
   "en": {
-    "global_achievements": "Achievements"
+    "global_achievements": "Achievements",
+    "global_hiw": "How it works",
+    "achievements_hiw_description": "Your achievements are based on how often you measure your pulse and review your data. The more consistent you are, the more milestones you unlock—helping you build better heart-care habits."
   },
   "ru": {
-    "global_achievements": "Достижения"
+    "global_achievements": "Достижения",
+    "global_hiw": "Как это работает",
+    "achievements_hiw_description": "Ваши достижения зависят от того, как часто вы измеряете пульс и просматриваете данные. Чем регулярнее вы это делаете, тем больше этапов вы открываете — это помогает формировать более полезные привычки заботы о здоровье сердца."
   }
 }
