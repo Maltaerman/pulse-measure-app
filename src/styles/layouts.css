@@ -1,6 +1,7 @@
 :root {
   --toolbarHeight: 40px;
   --zIndexCookieBannerLink: 200;
+  --zIndexDrawer: 500;
 }
 
 .--screenHeight {
