@@ -2,6 +2,8 @@
 import { defineAsyncComponent } from 'vue';
 
 import BaseTitle from '@/components/bases/BaseTitle.vue';
+import BaseDrawer from '@/components/bases/drawer/BaseDrawer.vue';
+import { useDrawer } from '@/components/bases/drawer/useDrawer';
 
 import { useAchievements } from '@/composables/useAchievements';
 
@@ -10,26 +12,37 @@ const AchievementItemExtended = defineAsyncComponent(
 );
 
 const { getAchievementsList, achievementsList } = useAchievements();
+const { openDrawer } = useDrawer();
 
 getAchievementsList();
 </script>
 
 <template>
   <div class="flex flex-col gap-5">
-    <BaseTitle class="col-span-2 ">
-      {{ $t('global_achievements') }}
-    </BaseTitle>
+    <BaseDrawer>
+      <div class="p-4">
+        <p
+          class="text-sm font-normal text-neutral-800"
+          v-text="$t('achievements_hiw_description')"
+        />
+      </div>
+    </BaseDrawer>
 
-    <div class="col-span-2">
-      <p
-        class="text-sm font-semibold text-neutral-600"
-        v-text="'How it works'"
-      />
+    <div class="flex flex-row gap-4 justify-between">
+      <BaseTitle class="col-span-2 ">
+        {{ $t('global_achievements') }}
+      </BaseTitle>
 
-      <p
-        class="text-sm font-normal text-neutral-400"
-        v-text="'Your achievements are based on how often you measure your pulse and review your data. The more consistent you are, the more milestones you unlock—helping you build better heart-care habits.'"
-      />
+      <button
+        class="w-fit"
+        type="button"
+        @click="openDrawer"
+      >
+        <p
+          class="text-sm font-semibold text-neutral-600"
+          v-text="$t('global_hiw')"
+        />
+      </button>
     </div>
 
     <div
