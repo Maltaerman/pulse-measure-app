@@ -1,13 +1,13 @@
 <template>
   <!-- <button
-    v-if="!isTorchAvailable && !manualTorchOn"
+    v-if="!isTorchAvailable && !isManualTorchOn"
     @click="enableManualTorch"
     class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
   >
     💡Ligthning
   </button>
 
-  <p v-if="manualTorchOn" class="mt-3 text-sm text-gray-600">
+  <p v-if="isManualTorchOn" class="mt-3 text-sm text-gray-600">
     Enable Ligthning
   </p> -->
 
@@ -51,6 +51,6 @@ function getContext() {
 
 onMounted(getContext)
 
-const { isTorchAvailable, avgR, manualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
+const { isTorchAvailable, avgR, isManualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
 const { bpm } = useBPM();
 </script>
