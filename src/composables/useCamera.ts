@@ -2,18 +2,13 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 import { useBPM } from './useBPM';
 
-export const LAYOUT_ENUM = {
-  DEFAULT: 'Default',
-  EMPTY: 'Empty',
-};
-
 const VIDEO_PRESET = {
   facingMode: { ideal: "environment" },
   width: { ideal: 640 },
   height: { ideal: 480 },
 }
 
-const PRESET = { video: VIDEO_PRESET };
+const MEDIA_PRESET = { video: VIDEO_PRESET };
 
 let stream;
 let intervalId: number;
@@ -25,13 +20,13 @@ const avgR = ref(0);
 const signal = [];
 const timestamps = [];
 
-const manualTorchOn = ref(true);
+const isManualTorchOn = ref(true);
 
 export function useCamera(video, canvas, ctx) {
   const { calculateBPM } = useBPM();
 
   function enableManualTorch() {
-    manualTorchOn.value = true;
+    isManualTorchOn.value = true;
     document.body.style.backgroundColor = "#fff";
     document.body.style.transition = "background-color 0.3s";
   };
@@ -68,7 +63,7 @@ export function useCamera(video, canvas, ctx) {
 
 async function init() {
  try {
-    stream = await navigator.mediaDevices.getUserMedia(PRESET);
+    stream = await navigator.mediaDevices.getUserMedia(MEDIA_PRESET);
 
     video.value.srcObject = stream;
     await new Promise((r) => (video.value.onloadedmetadata = r));
@@ -99,7 +94,7 @@ onUnmounted(deinit);
 
 return {
   avgR,
-  manualTorchOn,
+  isManualTorchOn,
   enableManualTorch,
   isTorchAvailable,
 };
