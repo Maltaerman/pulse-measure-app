@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import { useTemplateRef, ref, onMounted } from "vue";
+
+import { useCamera } from '@/composables/useCamera';
+import { useBPM } from '@/composables/useBPM';
+
+const videoRef = useTemplateRef('videoRef');
+const canvasRef = useTemplateRef('canvasRef');
+
+const ctx = ref(null);
+
+function getContext() {
+  ctx.value = canvasRef.value.getContext('2d');
+}
+
+onMounted(getContext)
+
+const { isTorchAvailable, avgR, isManualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
+const { bpm } = useBPM();
+</script>
+
 <template>
   <!-- <button
     v-if="!isTorchAvailable && !isManualTorchOn"
@@ -5,11 +26,7 @@
     class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
   >
     💡Ligthning
-  </button>
-
-  <p v-if="isManualTorchOn" class="mt-3 text-sm text-gray-600">
-    Enable Ligthning
-  </p> -->
+  </button> -->
 
   <div class="flex flex-col gap-4 size-full --screenMinHeight items-center justify-center">
     <video
@@ -33,24 +50,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useTemplateRef, ref, onMounted } from "vue";
-
-import { useCamera } from '@/composables/useCamera';
-import { useBPM } from '@/composables/useBPM';
-
-const videoRef = useTemplateRef('videoRef');
-const canvasRef = useTemplateRef('canvasRef');
-
-const ctx = ref(null);
-
-function getContext() {
-  ctx.value = canvasRef.value.getContext('2d');
-}
-
-onMounted(getContext)
-
-const { isTorchAvailable, avgR, isManualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
-const { bpm } = useBPM();
-</script>
