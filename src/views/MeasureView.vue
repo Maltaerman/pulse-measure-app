@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { useTemplateRef, ref, onMounted } from "vue";
+import { useTemplateRef, ref, onMounted, onBeforeUnmount } from "vue";
 
 import { useCamera } from '@/composables/useCamera';
 import { useBPM } from '@/composables/useBPM';
+
+import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue';
+
 
 const videoRef = useTemplateRef('videoRef');
 const canvasRef = useTemplateRef('canvasRef');
@@ -17,6 +20,17 @@ onMounted(getContext)
 
 const { isTorchAvailable, avgR, isManualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
 const { bpm } = useBPM();
+
+
+const baseCircleProgress = ref(0);
+
+const intervalId = setInterval(() => {
+  baseCircleProgress.value += 10;
+
+  if ( baseCircleProgress.value === 100) baseCircleProgress.value = 0;
+}, 1000);
+
+onBeforeUnmount(() => clearInterval(intervalId))
 </script>
 
 <template>
@@ -37,16 +51,21 @@ const { bpm } = useBPM();
     /> 
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
+    
 
+    <BaseCircleProgressBar
+      class="size-50"
+      :progress="baseCircleProgress"
+    >
+      <div class="flex flex-col gap-2 font-semibold text-lg text-primary-600 text-center">
+        <p v-if="bpm">
+          BPM:{{ bpm }}
+        </p>
 
-    <div class="flex flex-col gap-2 font-semibold text-lg text-primary-600 text-center">
-      <p v-if="bpm">
-        BPM:{{ bpm }}
-      </p>
-
-      <p v-if="avgR">
-        R: {{ avgR.toFixed(2) }}
-      </p>
-    </div>
+        <p v-if="avgR">
+          R: {{ avgR.toFixed(2) }}
+        </p>
+      </div>
+    </BaseCircleProgressBar>
   </div>
 </template>
