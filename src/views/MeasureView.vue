@@ -6,7 +6,6 @@ import { useBPM } from '@/composables/useBPM';
 
 import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue';
 
-
 const videoRef = useTemplateRef('videoRef');
 const canvasRef = useTemplateRef('canvasRef');
 
@@ -21,16 +20,37 @@ onMounted(getContext)
 const { avgR } = useCamera(videoRef, canvasRef, ctx);
 const { bpm } = useBPM();
 
+const measureProgress = ref(0);
+const isStarted = ref(false);
 
-const baseCircleProgress = ref(0);
+const intervalId = ref(0);
 
-const intervalId = setInterval(() => {
-  baseCircleProgress.value += 10;
 
-  if ( baseCircleProgress.value === 100) baseCircleProgress.value = 0;
-}, 1000);
+function intervalHandler() {
+  if (bpm.value > 0) {
+    measureProgress.value = 100;
 
-onBeforeUnmount(() => clearInterval(intervalId))
+    return;
+  }
+
+   measureProgress.value += 10;
+
+  if (measureProgress.value === 100 && bpm.value === 0) {
+    measureProgress.value = 0;
+  }
+}
+
+async function start() {
+  isStarted.value = true;
+
+  intervalId.value = await setInterval(intervalHandler, 1000);
+
+  if (bpm.value > 0) isStarted.value = false;
+}
+
+onBeforeUnmount(() => {
+  if (intervalId.value) clearInterval(intervalId.value)
+});
 </script>
 
 <template>
@@ -55,16 +75,28 @@ onBeforeUnmount(() => clearInterval(intervalId))
 
     <BaseCircleProgressBar
       class="size-50"
-      :progress="baseCircleProgress"
+      theme="blue"
+      :progress="measureProgress"
     >
-      <div class="flex flex-col gap-2 font-semibold text-lg text-primary-600 text-center">
-        <p v-if="bpm">
-          BPM:{{ bpm }}
+      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300">
+        <button
+          v-if="!isStarted"
+          class="rounded-full size-40 text-light bg-primary-500 hover:bg-primary-600 active:bg-primary-400 capitalize"
+          type="button"
+          @click="start"
+        >
+          Start
+        </button>
+
+        <p v-else-if="isStarted && bpm === 0">
+          Measuring...
         </p>
 
-        <p v-if="avgR">
+
+        <div v-else-if="bpm">
+          BPM:{{ bpm }} <br>
           R: {{ avgR.toFixed(2) }}
-        </p>
+        </div>
       </div>
     </BaseCircleProgressBar>
   </div>
