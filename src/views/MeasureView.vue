@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
     💡Ligthning
   </button> -->
 
-  <div class="flex flex-col gap-4 size-full --screenMinHeight items-center justify-center">
+  <div class="m-auto">
     <video
       ref="videoRef"
       autoplay
