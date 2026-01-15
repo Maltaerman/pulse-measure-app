@@ -78,24 +78,32 @@ onBeforeUnmount(() => {
       theme="blue"
       :progress="measureProgress"
     >
-      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300">
+      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300
+        text-light bg-primary-500 uppercase rounded-full
+      ">
         <button
           v-if="!isStarted"
-          class="rounded-full size-40 text-light bg-primary-500 hover:bg-primary-600 active:bg-primary-400 capitalize"
+          class="size-40 uppercase"
           type="button"
           @click="start"
         >
           Start
         </button>
 
-        <p v-else-if="isStarted && bpm === 0">
-          Measuring...
-        </p>
+        <div
+          v-else
+          class="size-40 flex items-center justify-center"
+         
+        >
+          <p
+            v-if="isStarted && bpm === 0"
+            v-text="'Measuring...'"
+          />
 
-
-        <div v-else-if="bpm">
-          BPM:{{ bpm }} <br>
-          R: {{ avgR.toFixed(2) }}
+          <template v-else-if="bpm">
+            BPM:{{ bpm }} <br>
+            R: {{ avgR.toFixed(2) }}
+          </template>
         </div>
       </div>
     </BaseCircleProgressBar>
