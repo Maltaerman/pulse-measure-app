@@ -1,18 +1,39 @@
 import { ref } from 'vue';
 
+const MIN_HEART_BEAT_INTERVAL = 0.3;
+
+const MIN_BPM_VALUE = 40;
+const MAX_BPM_VALUE = 180;
+
+const THRESHOLD = 0.6;
+
 const bpm = ref(0);
 
 export function useBPM() {
-  function calculateBPM(data, time) {
+  function setBPM(data: number[], time: number[]) {
+    if (data.length < 10) return 0;
+
     const mean = data.reduce((a, b) => a + b, 0) / data.length;
-    const norm = data.map((x) => x - mean);
 
-    const threshold = 0.5 * Math.max(...norm);
-    let peaks = [];
+    const signal = data.map(x => x - mean);
 
-    for (let i = 1; i < norm.length - 1; i++) {
-      if (norm[i] > threshold && norm[i] > norm[i - 1] && norm[i] > norm[i + 1]) {
-        peaks.push(time[i]);
+    const rms = Math.sqrt(
+      signal.reduce((a, b) => a + b * b, 0) / signal.length
+    );
+
+    const threshold = THRESHOLD * rms;
+
+    const peaks = [];
+
+    for (let i = 1; i < signal.length - 1; i++) {
+      if (
+        signal[i] > threshold &&
+        signal[i] > signal[i - 1] &&
+        signal[i] > signal[i + 1]
+      ) {
+        const isValid = peaks.length === 0 || time[i] - peaks[peaks.length - 1] > MIN_HEART_BEAT_INTERVAL;
+
+        if (isValid) peaks.push(time[i]);
       }
     }
 
@@ -26,7 +47,11 @@ export function useBPM() {
     const avgInterval = intervals.reduce((a, b) => a + b, 0) / intervals.length;
 
     bpm.value = 60 / avgInterval;
+
+    if (bpm.value < MIN_BPM_VALUE || bpm.value > MAX_BPM_VALUE) bpm.value = 0;
+
+    bpm.value = Math.round(bpm.value);
   }
 
-  return { bpm, calculateBPM };
+  return { bpm, setBPM };
 }

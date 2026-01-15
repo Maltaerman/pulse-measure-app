@@ -18,7 +18,7 @@ function getContext() {
 
 onMounted(getContext)
 
-const { isTorchAvailable, avgR, isManualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
+const { avgR } = useCamera(videoRef, canvasRef, ctx);
 const { bpm } = useBPM();
 
 

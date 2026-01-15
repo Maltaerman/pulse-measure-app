@@ -23,7 +23,7 @@ const timestamps = [];
 const isManualTorchOn = ref(true);
 
 export function useCamera(video, canvas, ctx) {
-  const { calculateBPM } = useBPM();
+  const { setBPM } = useBPM();
 
   function enableManualTorch() {
     isManualTorchOn.value = true;
@@ -57,7 +57,7 @@ export function useCamera(video, canvas, ctx) {
   }
 
   if (signal.length > 20) {
-    calculateBPM(signal, timestamps);
+    setBPM(signal, timestamps);
   }
 }
 
