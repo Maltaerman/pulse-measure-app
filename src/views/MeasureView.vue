@@ -6,6 +6,10 @@ import { useBPM } from '@/composables/useBPM';
 
 import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue';
 
+import { useMeasure } from '@/composables/useMeasure';
+
+const { addMeasure, measureList } = useMeasure();
+
 const videoRef = useTemplateRef('videoRef');
 const canvasRef = useTemplateRef('canvasRef');
 
@@ -26,17 +30,17 @@ const isStarted = ref(false);
 const intervalId = ref(0);
 
 
+const localMeasureData = ref([]);
+
 function intervalHandler() {
-  if (bpm.value > 0) {
-    measureProgress.value = 100;
-
-    return;
-  }
-
    measureProgress.value += 10;
 
   if (measureProgress.value === 100 && bpm.value === 0) {
     measureProgress.value = 0;
+  }
+
+  if (bpm.value !== 0) {
+    localMeasureData.value.push(bpm.value);
   }
 }
 
@@ -50,6 +54,17 @@ async function start() {
 
 onBeforeUnmount(() => {
   if (intervalId.value) clearInterval(intervalId.value)
+
+  console.log('localMeasureData', localMeasureData.value)
+
+  addMeasure({
+    id: `${Date.now()}`,
+    createdAt: Date.now(),
+    bpm: 0,
+    measure: localMeasureData.value,
+  })
+
+  console.log('measureList', measureList.value)
 });
 </script>
 
@@ -78,9 +93,7 @@ onBeforeUnmount(() => {
       theme="blue"
       :progress="measureProgress"
     >
-      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300
-        text-light bg-primary-500 uppercase rounded-full
-      ">
+      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary-500 uppercase rounded-full">
         <button
           v-if="!isStarted"
           class="size-40 uppercase"
