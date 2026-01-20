@@ -36,7 +36,7 @@ function getPWA() {
 
       <LastMeasure class="aspect-square" />
 
-      <LastMeasureGraph class="aspect-square"  />
+      <!-- <LastMeasureGraph class="aspect-square"  /> -->
     </div>
 
     <BaseButton

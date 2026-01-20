@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 
+const BASE_URL = 'http://localhost:3001';
 export interface IMeasure {
   // id: string;
   // userId?: string;
@@ -19,37 +20,12 @@ export interface IMeasure {
   measure: number[];
 }
 
-const MOCK_HISTORY_LIST: IMeasure[] = [
-  //   {
-  //   id: '2',
-  //   userId: '2',
-  //   bpm: 30,
-  //   timestamp: 1000,
-  //   durationMs: 1000,
-  //   isValid: true,
-  //   confidence: 1,
-  //   signalQuality: 'medium',
-  //   rrIntervalsMs: [],
-  //   rawSignal: [],
-  //   tag: 'active',
-  //   createdAt: 1766582890608,
-  // },
-  {
-    id: '1',
-    createdAt: 1766582890608,
-    bpm: 0,
-    measure: [],
-  },
-    {
-    id: '2',
-    createdAt: 1766589890608,
-    bpm: 0,
-    measure: [],
-  }
-];
-
-function addMeasure(data) {
-  measureList.value = [...measureList.value, data];
+async function addMeasure(data: IMeasure) {
+  await fetch(`${BASE_URL}/measures`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
 }
 
 const measureList = ref<IMeasure[]>([]);
@@ -58,12 +34,11 @@ export function useMeasure() {
 
   const isLoadingMeasureList = ref(false);
 
-  function getMeasureList() {
+  async function getMeasureList() {
     try {
       isLoadingMeasureList.value = true;
 
-      if (!measureList.value.length) measureList.value = [ ...MOCK_HISTORY_LIST ];
-
+      await fetch(`${BASE_URL}/measures`).then(res => res.json()).then(data => measureList.value = data)
     } finally {
       isLoadingMeasureList.value = false;
     }

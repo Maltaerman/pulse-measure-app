@@ -8,7 +8,7 @@ import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 
 import { useMeasure } from '@/composables/useMeasure';
 
-const { addMeasure, measureList } = useMeasure();
+const { addMeasure, measureList, getMeasureList } = useMeasure();
 
 const videoRef = useTemplateRef('videoRef');
 const canvasRef = useTemplateRef('canvasRef');
@@ -44,27 +44,25 @@ function intervalHandler() {
   }
 }
 
-async function start() {
+function start() {
   isStarted.value = true;
 
-  intervalId.value = await setInterval(intervalHandler, 1000);
+  intervalId.value = setInterval(intervalHandler, 1000);
 
   if (bpm.value > 0) isStarted.value = false;
 }
 
-onBeforeUnmount(() => {
+onBeforeUnmount(async () => {
   if (intervalId.value) clearInterval(intervalId.value)
 
-  console.log('localMeasureData', localMeasureData.value)
-
-  addMeasure({
+  await addMeasure({
     id: `${Date.now()}`,
     createdAt: Date.now(),
     bpm: 0,
     measure: localMeasureData.value,
   })
 
-  console.log('measureList', measureList.value)
+  await getMeasureList();
 });
 </script>
 

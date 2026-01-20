@@ -33,8 +33,6 @@ onMounted(() => {
 watch(
   () => props.chartData,
   (newData) => {
-    console.log('props.chartData', props.chartData)
-
     if (chartInstance) {
       chartInstance.data = newData
       chartInstance.update()
