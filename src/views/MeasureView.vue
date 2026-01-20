@@ -1,44 +1,14 @@
-<template>
-  <!-- <button
-    v-if="!isTorchAvailable && !manualTorchOn"
-    @click="enableManualTorch"
-    class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
-  >
-    💡Ligthning
-  </button>
-
-  <p v-if="manualTorchOn" class="mt-3 text-sm text-gray-600">
-    Enable Ligthning
-  </p> -->
-
-  <div class="flex flex-col gap-4 size-full --screenMinHeight items-center justify-center">
-    <video
-      ref="videoRef"
-      autoplay
-      playsinline
-      class="hidden rounded-xl shadow-md mx-auto"
-    /> 
-
-    <canvas ref="canvasRef" width="320" height="240" class="hidden" />
-
-
-    <div class="flex flex-col gap-2 font-semibold text-lg text-primary-600 text-center">
-      <p v-if="bpm">
-        BPM:{{ bpm }}
-      </p>
-
-      <p v-if="avgR">
-        R: {{ avgR.toFixed(2) }}
-      </p>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { useTemplateRef, ref, onMounted } from "vue";
+import { useTemplateRef, ref, onMounted, onBeforeUnmount } from "vue";
 
 import { useCamera } from '@/composables/useCamera';
 import { useBPM } from '@/composables/useBPM';
+
+import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue';
+
+import { useMeasure } from '@/composables/useMeasure';
+
+const { addMeasure, measureList, getMeasureList } = useMeasure();
 
 const videoRef = useTemplateRef('videoRef');
 const canvasRef = useTemplateRef('canvasRef');
@@ -51,6 +21,102 @@ function getContext() {
 
 onMounted(getContext)
 
-const { isTorchAvailable, avgR, manualTorchOn, enableManualTorch } = useCamera(videoRef, canvasRef, ctx);
+const { avgR } = useCamera(videoRef, canvasRef, ctx);
 const { bpm } = useBPM();
+
+const measureProgress = ref(0);
+const isStarted = ref(false);
+
+const intervalId = ref(0);
+
+
+const localMeasureData = ref([]);
+
+function intervalHandler() {
+   measureProgress.value += 10;
+
+  if (measureProgress.value === 100 && bpm.value === 0) {
+    measureProgress.value = 0;
+  }
+
+  if (bpm.value !== 0) {
+    localMeasureData.value.push(bpm.value);
+  }
+}
+
+function start() {
+  isStarted.value = true;
+
+  intervalId.value = setInterval(intervalHandler, 1000);
+
+  if (bpm.value > 0) isStarted.value = false;
+}
+
+onBeforeUnmount(async () => {
+  if (intervalId.value) clearInterval(intervalId.value)
+
+  await addMeasure({
+    id: `${Date.now()}`,
+    createdAt: Date.now(),
+    bpm: 0,
+    measure: localMeasureData.value,
+  })
+
+  await getMeasureList();
+});
 </script>
+
+<template>
+  <!-- <button
+    v-if="!isTorchAvailable && !isManualTorchOn"
+    @click="enableManualTorch"
+    class="bg-yellow-500 text-white px-4 py-2 rounded-xl mt-4"
+  >
+    💡Ligthning
+  </button> -->
+
+  <div class="m-auto">
+    <video
+      ref="videoRef"
+      autoplay
+      playsinline
+      class="hidden rounded-xl shadow-md mx-auto"
+    /> 
+
+    <canvas ref="canvasRef" width="320" height="240" class="hidden" />
+    
+
+    <BaseCircleProgressBar
+      class="size-50"
+      theme="blue"
+      :progress="measureProgress"
+    >
+      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary-500 uppercase rounded-full">
+        <button
+          v-if="!isStarted"
+          class="size-40 uppercase"
+          type="button"
+          @click="start"
+        >
+          Start
+        </button>
+
+        <div
+          v-else
+          class="size-40 flex items-center justify-center"
+         
+        >
+          <p
+            v-if="isStarted && bpm === 0"
+            v-text="'Measuring...'"
+          />
+
+          <template v-else-if="bpm">
+            BPM:{{ bpm }} <br>
+            R: {{ avgR.toFixed(2) }}
+          </template>
+        </div>
+      </div>
+    </BaseCircleProgressBar>
+  </div>
+</template>

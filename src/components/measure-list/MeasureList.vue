@@ -2,7 +2,9 @@
 import MeasureListItem from './MeasureListItem.vue';
 import { useMeasure } from '@/composables/useMeasure';
 
-const { measureList } = useMeasure();
+const { measureList, getMeasureList } = useMeasure();
+
+// getMeasureList();
 </script>
 
 <template>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { PAGE_NAME_ENUM } from '@/router';
+
+import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
 </script>
 
 <template>
@@ -11,7 +13,13 @@ import { PAGE_NAME_ENUM } from '@/router';
     })"
   >
     <pre>
-      {{ $attrs }}
-    </pre>
+      {{ $attrs.id }} /  {{ $attrs.createdAt }} 
+    </pre><br>
+
+    <LastMeasureGraph
+      v-if="$attrs.measure.length"
+      class="w-full h-50 col-span-2"
+      :chartData="$attrs.measure"
+    />
   </div>
 </template>

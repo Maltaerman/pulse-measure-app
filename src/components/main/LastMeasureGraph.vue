@@ -26,21 +26,20 @@ onMounted(() => {
       // data: props.chartData,
       data: {
         datasets: [{
-          data: [20, 10,2, 22, 1, 14,60],
+          // data: [20, 10,2, 22, 1, 14,60],
+          data: props.chartData,
         }],
-        labels: ['1', '2', '3', '4', '5'],
+        // labels: ['1', '2', '3', '4', '5'],
+        labels:  props.chartData.map((_, key) => '')
       },
       options: props.chartOptions
     })
   }
 })
 
-// Watch for chartData updates
 watch(
   () => props.chartData,
   (newData) => {
-    console.log('props.chartData', props.chartData)
-
     if (chartInstance) {
       chartInstance.data = newData
       chartInstance.update()
@@ -51,9 +50,7 @@ watch(
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 bg-neutral-200 rounded-sm p-2">
-    Last measure graph
-
-    <canvas ref="chartRef" />
-  </div>
+  <!-- <div class="flex flex-col gap-4 bg-neutral-200 rounded-sm p-2"> -->
+  <canvas ref="chartRef" />
+  <!-- </div> -->
 </template>
