@@ -31,7 +31,10 @@ function toggleTheme() {
 </script>
 
 <template>
-  <BaseButton @click="toggleTheme">
+  <BaseButton
+    theme="secondary"
+    @click="toggleTheme"
+  >
     <slot v-bind="{ theme }">
       Mode / {{ theme }}
     </slot>

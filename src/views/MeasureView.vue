@@ -19,6 +19,11 @@ function getContext() {
   ctx.value = canvasRef.value.getContext('2d');
 }
 
+function resetContext() {
+  ctx.value = null;
+}
+
+
 onMounted(getContext)
 
 const { avgR } = useCamera(videoRef, canvasRef, ctx);
@@ -53,6 +58,8 @@ function start() {
 }
 
 onBeforeUnmount(async () => {
+  if (!isStarted.value) return;
+
   if (intervalId.value) clearInterval(intervalId.value)
 
   await addMeasure({
@@ -63,6 +70,10 @@ onBeforeUnmount(async () => {
   })
 
   await getMeasureList();
+
+  isStarted.value = false;
+  measureProgress.value = 0;
+  resetContext();
 });
 </script>
 
@@ -88,10 +99,9 @@ onBeforeUnmount(async () => {
 
     <BaseCircleProgressBar
       class="size-50"
-      theme="blue"
       :progress="measureProgress"
     >
-      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary-500 uppercase rounded-full">
+      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary uppercase rounded-full">
         <button
           v-if="!isStarted"
           class="size-40 uppercase"

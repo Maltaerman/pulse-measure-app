@@ -22,7 +22,7 @@ const props = withDefaults(
     <li
       v-for="error in props.errors"
       :key="error.message"
-      class="pt-1 text-sm font-normal text-accent-red"
+      class="pt-1 text-sm font-normal text-danger"
     >
       <p v-text="error.message" />
     </li>

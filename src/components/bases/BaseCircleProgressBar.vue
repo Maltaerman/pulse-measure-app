@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-type ProgressBarTheme = 'orange' | 'yellow' | 'green' | 'blue' | 'pink' | 'violet' | 'grey';
+type ProgressBarTheme = 'primary' | 'secondary';
 
 export interface IProps {
   progress: number;
@@ -14,20 +14,14 @@ const props = withDefaults(
   defineProps<IProps>(),
   {
     progress: 0,
-    theme: 'orange',
+    theme: 'primary',
     transitionClasses: 'transition-colors duration-300',
   }
 );
 
-
 const BACKGROUND_MAP = {
-  orange: '--color-accent-orange',
-  yellow: '--color-accent-yellow',
-  green: '--color-accent-green',
-  blue: '--color-accent-blue',
-  pink: '--color-accent-pink',
-  violet: '--color-accent-violet',
-  grey: '--color-accent-grey',
+  primary: '--color-primary',
+  secondary: '--color-secondary',
 };
 
 const progressStyles = computed(() => {
@@ -54,7 +48,7 @@ const progressStyles = computed(() => {
       :style="progressStyles"
     />
 
-    <div class="absolute inset-3 bg-white rounded-full flex flex-col items-center justify-center">
+    <div class="absolute inset-3 bg-light rounded-full flex flex-col items-center justify-center">
       <slot />
     </div>
   </div>

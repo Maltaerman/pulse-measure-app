@@ -44,8 +44,8 @@ const ROUNDED_MAP = {
 };
 
 const TEXT_MAP = {
-  md: 'text-light font-normal text-sm',
-  lg: 'text-light font-bold text-lg',
+  md: 'font-normal text-sm',
+  lg: 'font-bold text-lg',
 };
 
 const isPointerEventsNone = computed(() => props.isDisabled || props.isLoading);
@@ -62,10 +62,10 @@ const textColorClass = computed(
   () => {
     switch (props.theme) {
       case 'primary':
-        return props.isDisabled ? 'text-neutral-400' : 'text-light';
+        return props.isDisabled ? 'text-text-disabled' : 'text-light';
 
       case 'secondary':
-        return props.isDisabled ? 'text-neutral-200' : 'text-light';
+        return props.isDisabled ? 'text-text-disabled' : 'text-text-primary';
 
       default:
         return '';
@@ -77,10 +77,10 @@ const backgroundClasses = computed(
   () => {
     switch (props.theme) {
       case 'primary':
-        return props.isDisabled ? 'bg-neutral-100' : 'bg-primary-500 hover:bg-primary-600 active:bg-primary-400';
+        return props.isDisabled ? 'bg-bg-disabled' : 'bg-primary hover:bg-primary-hover';
 
       case 'secondary':
-        return props.isDisabled ? 'bg-neutral-100' : 'bg-neutral-500 hover:bg-neutral-600 active:bg-neutral-400';
+        return props.isDisabled ? 'bg-bg-disabled' : 'bg-secondary hover:bg-secondary-hover';
 
       default:
         return '';

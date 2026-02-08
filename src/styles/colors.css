@@ -1,15 +1,25 @@
 @theme {
+  --color-light: oklch(1 0 0);
+  --color-dark: oklch(0 0 0);   
+
   --color-bg: oklch(0.98 0.005 95);
   --color-bg-muted: oklch(0.95 0.01 95);
   --color-bg-card: oklch(1 0 0);
+  --color-bg-disabled: oklch(0.93 0.005 260);
 
   --color-text-primary: oklch(0.25 0.01 260);
   --color-text-secondary: oklch(0.45 0.01 260);
   --color-text-muted: oklch(0.65 0.01 260);
+  --color-text-disabled: oklch(0.75 0.01 260);
 
-  --color-accent: oklch(0.65 0.23 25);
-  --color-accent-hover: oklch(0.6 0.23 25);
-  --color-accent-soft: oklch(0.9 0.05 25);
+  --color-primary: oklch(0.65 0.23 25);
+  --color-primary-hover: oklch(0.6 0.23 25);
+  --color-primary-active: oklch(0.9 0.05 25);
+
+  --color-secondary: oklch(0.55 0.02 260);
+  --color-secondary-hover: oklch(0.5 0.025 260);
+  --color-secondary-active: oklch(0.92 0.01 260);
+
   --color-success: oklch(0.7 0.15 145);
   --color-warning: oklch(0.8 0.16 85);
   --color-danger: oklch(0.62 0.22 25);
@@ -22,14 +32,19 @@
   --color-bg: oklch(0.18 0.01 260);
   --color-bg-muted: oklch(0.22 0.015 260);
   --color-bg-card: oklch(0.23 0.015 260);
+  --color-bg-disabled: oklch(0.28 0.01 260);
 
   --color-text-primary: oklch(0.95 0.01 260);
   --color-text-secondary: oklch(0.75 0.01 260);
   --color-text-muted: oklch(0.6 0.01 260);
 
-  --color-accent: oklch(0.65 0.23 25);
-  --color-accent-hover: oklch(0.7 0.23 25);
-  --color-accent-soft: oklch(0.35 0.1 25);
+  --color-primary: oklch(0.65 0.23 25);
+  --color-primary-hover: oklch(0.7 0.23 25);
+  --color-primary-active: oklch(0.35 0.1 25);
+
+  --color-secondary: oklch(0.7 0.02 260);
+  --color-secondary-hover: oklch(0.78 0.025 260);
+  --color-secondary-active: oklch(0.3 0.015 260);
 
   --color-success: oklch(0.72 0.16 145);
   --color-warning: oklch(0.78 0.16 85);

@@ -7,7 +7,7 @@ getMeasureList();
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 bg-neutral-600 rounded-sm p-2">
+  <div class="flex flex-col gap-4 bg-bg-card shadow-shadow rounded-sm p-2">
     Last measure / {{ measureList[measureList.length -1]?.value || '--' }}
   </div>
 </template>

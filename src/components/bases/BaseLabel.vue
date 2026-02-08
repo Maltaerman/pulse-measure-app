@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-type LabelTheme = 'orange' | 'yellow' | 'green' | 'blue' | 'pink' | 'violet' | 'grey';
+type LabelTheme = 'primary' | 'secondary';
 type LabelSize = 'md' | 'lg';
 
 export interface IProps {
@@ -14,7 +14,7 @@ export interface IProps {
 const props = withDefaults(
   defineProps<IProps>(),
   {
-    theme: 'orange',
+    theme: 'primary',
     size: 'md',
     tag: 'span',
     transitionClasses: 'transition-colors duration-300',
@@ -22,13 +22,8 @@ const props = withDefaults(
 );
 
 const BACKGROUND_MAP = {
-  orange: 'bg-accent-orange',
-  yellow: 'bg-accent-yellow',
-  green: 'bg-accent-green',
-  blue: 'bg-accent-blue',
-  pink: 'bg-accent-pink',
-  violet: 'bg-accent-violet',
-  grey: 'bg-accent-grey',
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
 };
 
 const SIZE_MAP = {

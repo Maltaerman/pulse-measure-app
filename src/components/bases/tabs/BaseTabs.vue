@@ -90,21 +90,21 @@ function scrollToActiveTab() {
   const activeTab = tabRefs.value.find(({ id }) => id === String(tabId.value));
 }
 
-const BORDER_COLOR_MAP = {
-  primary: 'border-neutral-500',
-  light: 'border-neutral-300',
-  transparent: 'border-0',
-};
+// const BORDER_COLOR_MAP = {
+//   primary: 'border-neutral-500',
+//   light: 'border-neutral-300',
+//   transparent: 'border-0',
+// };
 
-const borderColorClass = computed(() => BORDER_COLOR_MAP[props.theme]);
+// const borderColorClass = computed(() => BORDER_COLOR_MAP[props.theme]);
 
-const BG_COLOR_MAP = {
-  primary: 'bg-neutral-600',
-  light: 'bg-light',
-  transparent: 'bg-transparent',
-};
+// const BG_COLOR_MAP = {
+//   primary: 'bg-primary',
+//   light: 'bg-light',
+//   transparent: 'bg-transparent',
+// };
 
-const bgColorClass = computed(() => BG_COLOR_MAP[props.theme]);
+// const bgColorClass = computed(() => BG_COLOR_MAP[props.theme]);
 
 const HEIGHT_MAP = {
   primary: 'h-10',
@@ -169,8 +169,8 @@ onBeforeUnmount(() =>
       :id="props.listId"
       class="relative flex w-full flex-row items-center"
       :class="[
-        borderColorClass,
-        bgColorClass,
+        // borderColorClass,
+        // bgColorClass,
         heightClass,
         gapClass,
         paddingsClass,

@@ -48,6 +48,7 @@ function getPWA() {
 
     <BaseButton
       @click="getPWA"
+      theme="secondary"
     >
       Get PWA
     </BaseButton>

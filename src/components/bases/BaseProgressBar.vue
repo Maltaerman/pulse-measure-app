@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-type ProgressBarTheme = 'orange' | 'yellow' | 'green' | 'blue' | 'pink' | 'violet' | 'grey';
+type ProgressBarTheme = 'primary' | 'secondary';
 
 export interface IProps {
   progress: number;
@@ -14,7 +14,7 @@ const props = withDefaults(
   defineProps<IProps>(),
   {
     progress: 0,
-    theme: 'orange',
+    theme: 'primary',
     sizeClasses: 'w-full h-2',
     transitionClasses: 'transition-colors duration-300',
   }
@@ -22,13 +22,8 @@ const props = withDefaults(
 
 
 const BACKGROUND_MAP = {
-  orange: 'bg-accent-orange',
-  yellow: 'bg-accent-yellow',
-  green: 'bg-accent-green',
-  blue: 'bg-accent-blue',
-  pink: 'bg-accent-pink',
-  violet: 'bg-accent-violet',
-  grey: 'bg-accent-grey',
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
 };
 
 

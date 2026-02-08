@@ -28,11 +28,11 @@ getAchievementsList();
     />
 
     <div
-      class="size-30 shrink-0 flex items-center justify-center relative rounded-sm bg-neutral-950 p-2 cursor-pointer"
+      class="size-30 shrink-0 flex items-center justify-center relative rounded-sm bg-bg-card p-2 cursor-pointer shadow-shadow"
       @click="$router.push({ name: PAGE_NAME_ENUM.ACHIEVEMENTS })"
     >
       <p
-        class="text-center text-neutral-100 text-md font-semibold line-clamp-2"
+        class="text-center text-text-primary text-md font-semibold line-clamp-2"
         v-text="'See All'"
       />
     </div>
