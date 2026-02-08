@@ -1,67 +1,40 @@
 @theme {
-  /* BASE COLORS */
-  --color-light: oklch(0.98 0.02 0); /* light background */
-  --color-dark: oklch(0.02 0.02 0); /* dark background / text contrast */
-  --color-transparent: transparent; /* fully transparent */
-  --color-current: currentColor; /* inherits current text color */
+  --color-bg: oklch(0.98 0.005 95);
+  --color-bg-muted: oklch(0.95 0.01 95);
+  --color-bg-card: oklch(1 0 0);
 
-  /* PRIMARY - main interface color */
-  --color-primary-400: oklch(0.65 0.12 220); /* light blue */
-  --color-primary-500: oklch(0.60 0.15 220); /* main blue */
-  --color-primary-600: oklch(0.55 0.18 220); /* dark blue */
+  --color-text-primary: oklch(0.25 0.01 260);
+  --color-text-secondary: oklch(0.45 0.01 260);
+  --color-text-muted: oklch(0.65 0.01 260);
 
-  /* NEUTRAL - text, backgrounds, cards */
-  --color-neutral-100: oklch(0.98 0.02 0); /* lightest neutral */
-  --color-neutral-200: oklch(0.88 0.02 0);
-  --color-neutral-300: oklch(0.75 0.03 240);
-  --color-neutral-400: oklch(0.60 0.05 240);
-  --color-neutral-500: oklch(0.50 0.06 240);
-  --color-neutral-600: oklch(0.40 0.06 240);
-  --color-neutral-700: oklch(0.30 0.06 240);
-  --color-neutral-800: oklch(0.20 0.06 240);
-  --color-neutral-900: oklch(0.12 0.04 240);
-  --color-neutral-950: oklch(0.08 0.03 240); /* darkest neutral */
+  --color-accent: oklch(0.65 0.23 25);
+  --color-accent-hover: oklch(0.6 0.23 25);
+  --color-accent-soft: oklch(0.9 0.05 25);
+  --color-success: oklch(0.7 0.15 145);
+  --color-warning: oklch(0.8 0.16 85);
+  --color-danger: oklch(0.62 0.22 25);
 
-  /* ACCENT - states, warnings, success */
-  --color-accent-red: oklch(0.75 0.20 29); /* high pulse / warning */
-  --color-accent-orange: oklch(0.80 0.18 40); /* activity / medium pulse */
-  --color-accent-yellow: oklch(0.90 0.12 80); /* attention / tips */
-  --color-accent-green: oklch(0.65 0.15 140); /* normal pulse / success */
-  --color-accent-blue: oklch(0.50 0.18 260); /* interactive elements */
-  --color-accent-pink: oklch(0.70 0.12 340); /* highlights / buttons */
-  --color-accent-violet: oklch(0.60 0.15 300); /* secondary interactive elements */
-  --color-accent-grey: oklch(0.45 0.05 260); /* neutral states */
+  --color-border: oklch(0.9 0.01 260);
+  --color-shadow: 0 10px 30px oklch(0.3 0.02 260 / 0.08);
 }
 
 [data-theme="dark"] {
-  /* BASE COLORS */
-  --color-light: oklch(0.02 0.02 0); /* dark background */
-  --color-dark: oklch(0.98 0.02 0); /* light text / contrast */
+  --color-bg: oklch(0.18 0.01 260);
+  --color-bg-muted: oklch(0.22 0.015 260);
+  --color-bg-card: oklch(0.23 0.015 260);
 
-  /* PRIMARY - main interface color */
-  --color-primary-400: oklch(0.60 0.15 220);
-  --color-primary-500: oklch(0.55 0.18 220);
-  --color-primary-600: oklch(0.50 0.20 220);
+  --color-text-primary: oklch(0.95 0.01 260);
+  --color-text-secondary: oklch(0.75 0.01 260);
+  --color-text-muted: oklch(0.6 0.01 260);
 
-  /* NEUTRAL - text, backgrounds, cards */
-  --color-neutral-100: oklch(0.08 0.03 240);
-  --color-neutral-200: oklch(0.12 0.04 240);
-  --color-neutral-300: oklch(0.20 0.06 240);
-  --color-neutral-400: oklch(0.30 0.06 240);
-  --color-neutral-500: oklch(0.40 0.06 240);
-  --color-neutral-600: oklch(0.50 0.06 240);
-  --color-neutral-700: oklch(0.60 0.05 240);
-  --color-neutral-800: oklch(0.75 0.03 240);
-  --color-neutral-900: oklch(0.88 0.02 0);
-  --color-neutral-950: oklch(0.98 0.02 0);
+  --color-accent: oklch(0.65 0.23 25);
+  --color-accent-hover: oklch(0.7 0.23 25);
+  --color-accent-soft: oklch(0.35 0.1 25);
 
-  /* ACCENT - states, warnings, success */
-  --color-accent-red: oklch(0.75 0.20 29);
-  --color-accent-orange: oklch(0.80 0.18 40);
-  --color-accent-yellow: oklch(0.90 0.12 80);
-  --color-accent-green: oklch(0.65 0.15 140);
-  --color-accent-blue: oklch(0.50 0.18 260);
-  --color-accent-pink: oklch(0.70 0.12 340);
-  --color-accent-violet: oklch(0.60 0.15 300);
-  --color-accent-grey: oklch(0.45 0.05 260);
+  --color-success: oklch(0.72 0.16 145);
+  --color-warning: oklch(0.78 0.16 85);
+  --color-danger: oklch(0.68 0.22 25);
+
+  --color-border: oklch(0.32 0.015 260);
+  --color-shadow: 0 12px 40px oklch(0 0 0 / 0.6);
 }
