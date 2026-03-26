@@ -1,13 +1,49 @@
 <script setup lang="ts">
-import { useMeasure } from '@/composables/useMeasure';
+import { format } from "date-fns";
+import { PAGE_NAME_ENUM } from '@/router'
 
-const { measureList, getMeasureList } = useMeasure();
+export interface IProps {
+  id: string;
+  bpm: number;
+  createdAt: number;
+}
 
-getMeasureList();
+const props = withDefaults(defineProps<IProps>(), {
+  id: '',
+  bpm: 0,
+  createdAt: 0,
+});
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 bg-bg-card shadow-shadow rounded-sm p-2">
-    Last measure / {{ measureList[measureList.length -1]?.value || '--' }}
+  <div
+    class="bg-bg-card rounded-lg p-3 border border-border flex flex-col gap-2"
+    @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
+  >
+    <div class="flex justify-between gap-1">
+      <span
+        class="text-text-primary text-md font-medium"
+        v-text="'Last Measure'"
+      />
+
+      <button
+        class="text-text-secondary"
+        @click.prevent
+      >
+        View all →
+      </button>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <span
+        class="text-text-secondary text-sm font-bold transition-colors duration-300"
+        v-text="format(props.createdAt, 'HH:MM')"
+      />
+      
+      <span
+        class="text-text-muted text-xs transition-colors duration-300"
+        v-text="props.bpm"
+      />
+    </div>
   </div>
 </template>
