@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 import mkcert from'vite-plugin-mkcert'
+import svgLoader from 'vite-svg-loader';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     mkcert(),
+    svgLoader({ svgo: false }),
   ],
 
   server: {

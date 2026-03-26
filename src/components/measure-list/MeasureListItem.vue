@@ -3,6 +3,8 @@ import { format } from "date-fns";
 
 import { PAGE_NAME_ENUM } from '@/router';
 
+import BaseIcon from '@/components/bases/BaseIcon.vue';
+
 export interface IProps {
   id: string;
   bpm: number;
@@ -25,9 +27,9 @@ const props = withDefaults(defineProps<IProps>(), {
     })"
   >
     <div class="flex items-center gap-3">
-      <div
-        class="text-accent text-lg"
-        v-text="'❤️'"
+      <BaseIcon
+        class="size-6 text-primary"
+        name="heart"
       />
 
       <div class="flex flex-col">
@@ -50,14 +52,10 @@ const props = withDefaults(defineProps<IProps>(), {
         v-text="$attrs.bpm"
       />
 
-      <svg
-        class="w-4 h-4 text-text-muted"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path d="M9 5l5 5-5 5" />
-      </svg>
+      <BaseIcon
+        class="size-4 -rotate-90"
+        name="arrow"
+      />
     </div>
   </div>
 </template>

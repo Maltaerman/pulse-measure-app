@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { format } from "date-fns";
+
 import { PAGE_NAME_ENUM } from '@/router'
+
+import BaseIcon from '@/components/bases/BaseIcon.vue';
 
 export interface IProps {
   id: string;
@@ -27,10 +30,15 @@ const props = withDefaults(defineProps<IProps>(), {
       />
 
       <button
-        class="text-text-secondary"
+        class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary"
         @click.prevent
       >
-        View all →
+        View all
+
+        <BaseIcon
+          class="size-4 -rotate-90"
+          name="arrow"
+        />
       </button>
     </div>
 

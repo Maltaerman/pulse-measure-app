@@ -2,6 +2,7 @@
 import { reactive } from "vue"
 
 import BaseToggle from '@/components/bases/BaseToggle.vue'
+import BaseIcon from '@/components/bases/BaseIcon.vue';
 
 import { useTheme, THEME_ENUM } from '@/composables/useTheme';
 
@@ -64,7 +65,7 @@ const state = reactive({
 
             <div class="flex justify-between p-3 rounded-lg bg-[var(--color-success)/10]">
               <span class="text-sm">Normal</span>
-              <span class="text-sm">60 – 100 bpm</span>
+              <span class="text-sm">60 - 100 bpm</span>
             </div>
 
             <div class="flex justify-between p-3 rounded-lg bg-[var(--color-danger)/10]">
@@ -86,7 +87,11 @@ const state = reactive({
 
         <div class="flex items-center justify-between py-3 border-t border-border">
           <span class="text-sm">Data Export</span>
-          <span class="text-text-muted)">›</span>
+
+          <BaseIcon
+            class="size-4 -rotate-90"
+            name="arrow"
+          />
         </div>
 
         <div class="flex items-center justify-between py-2" @click="toggleTheme">
