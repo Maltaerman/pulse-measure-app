@@ -48,6 +48,13 @@ export default [
   },
 
   {
+    path: '/settings',
+    name: PAGE_NAME_ENUM.SETTINGS,
+    meta: { layout: LAYOUT_ENUM.DEFAULT },
+    component: () => import('@/views/SettingsView.vue'),
+  },
+
+  {
     path: '/:catchAll(.*)',
     name: PAGE_NAME_ENUM.NOT_FOUND,
     redirect: { name: PAGE_NAME_ENUM.MAIN },

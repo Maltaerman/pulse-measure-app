@@ -6,6 +6,7 @@ export const PAGE_NAME_ENUM = {
   MEASURE_LIST: 'MeasureListItem',
   WARNING: 'Warning',
   NOT_FOUND: 'NotFound',
+  SETTINGS: 'Settings',
 }
 
 export const LAYOUT_ENUM = {
