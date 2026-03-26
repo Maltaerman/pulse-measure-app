@@ -27,8 +27,8 @@ const props = withDefaults(
 const emit = defineEmits(['set-tab']);
 
 const TEXT_MAP = {
-  primary: 'text-light font-normal text-sm',
-  secondary: 'text-light font-bold text-lg',
+  primary: 'font-normal text-sm',
+  secondary: 'font-bold text-lg',
 };
 
 const ROUNDED_MAP = {
@@ -51,10 +51,10 @@ const textColorClass = computed(
   () => {
     switch (props.theme) {
       case 'primary':
-        return props.isDisabled ? 'text-neutral-400' : 'text-light';
+        return props.isDisabled ? 'text-text-disabled' : 'text-light';
 
       case 'secondary':
-        return props.isDisabled ? 'text-neutral-200' : 'text-light';
+        return props.isDisabled ? 'text-text-disabled' : 'text-text-primary';
 
       default:
         return '';
@@ -66,10 +66,10 @@ const backgroundClasses = computed(
   () => {
     switch (props.theme) {
       case 'primary':
-        return props.isDisabled ? 'bg-neutral-100' : 'bg-primary-500 hover:bg-primary-600 active:bg-primary-400';
+        return props.isDisabled ? 'bg-bg-disabled' : 'bg-primary hover:bg-primary-hover active:bg-primary-active';
 
       case 'secondary':
-        return props.isDisabled ? 'bg-neutral-100' : 'bg-neutral-500 hover:bg-neutral-600 active:bg-neutral-400';
+        return props.isDisabled ? 'bg-bg-disabled' : 'bg-secondary hover:bg-secondary-hover active:bg-secondary-active';
 
       default:
         return '';

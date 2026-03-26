@@ -8,11 +8,13 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
 
 <template>
   <div
-    class="relative flex flex-col gap-2 rounded-sm bg-neutral-950 p-2"
-    :class="{ 'opacity-10': props.status === 'locked' }"
+    class="relative flex flex-col gap-2 rounded-sm p-2 shadow-shadow"
+    :class="props.status === 'locked' ? 'bg-bg-muted opacity-40' : 'bg-bg-card opac'"
+
+    :c
   >
     <p
-      class="text-center text-neutral-100 text-md font-semibold line-clamp-2"
+      class="text-center text-text-primary text-md font-semibold line-clamp-2"
       v-text="props.title"
     />
 
@@ -22,13 +24,13 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
     />
 
     <p
-      class="text-neutral-100 text-md font-semibold line-clamp-2"
+      class="text-text-secondary text-md font-semibold line-clamp-2"
       v-text="props.description"
     />
 
     <div class="mt-auto flex flex-col gap-1">
       <p
-        class="text-neutral-100 text-xs font-light"
+        class="text-text-secondary text-xs font-light"
         v-text="props.achievedAt"
       />
     

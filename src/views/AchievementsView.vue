@@ -22,7 +22,7 @@ getAchievementsList();
     <BaseDrawer>
       <div class="p-4">
         <p
-          class="text-sm font-normal text-neutral-800"
+          class="text-sm font-normal text-text-secondary"
           v-text="$t('achievements_hiw_description')"
         />
       </div>
@@ -39,7 +39,7 @@ getAchievementsList();
         @click="openDrawer"
       >
         <p
-          class="text-sm font-semibold text-neutral-600"
+          class="text-sm font-semibold text-text-secondary"
           v-text="$t('global_hiw')"
         />
       </button>

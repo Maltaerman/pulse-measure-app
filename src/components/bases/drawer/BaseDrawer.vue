@@ -29,8 +29,8 @@ const props = withDefaults(
   {
     position: 'bottom',
     widthClass: 'w-100',
-    overlayBgColorClass: 'bg-neutral-950/50',
-    drawerBgColorClass: 'bg-neutral-200',
+    overlayBgColorClass: 'bg-bg-card/50',
+    drawerBgColorClass: 'bg-bg-card',
     minHeight: 500,
     maxHeight: 0,
     isOverlay: true,
@@ -163,7 +163,7 @@ watch(drawerHeight, () => {
     <Transition :name="`slide-${props.position}`">
       <div
         v-if="isDrawerOpen"
-        class="fixed z-(--zIndexDrawer) flex max-h-[calc(var(--100vh)-12px)]
+        class="fixed z-(--zIndexDrawer) flex max-h-[calc(var(--100vh)-12px)] border border-border
           flex-col overflow-hidden transition-[height] duration-300 ease-in-out
           will-change-[scroll-position,height,transform]"
         :class="[
@@ -193,7 +193,7 @@ watch(drawerHeight, () => {
 
         <button
           aria-label="Close drawer"
-          class="absolute right-4 top-4 z-1 text-neutral-800"
+          class="absolute right-1 top-1 z-1 text-text-primary"
           type="button"
           @click="closeDrawer"
         >

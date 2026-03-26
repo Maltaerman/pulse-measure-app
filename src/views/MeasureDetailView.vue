@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { format } from "date-fns";
 import { defineAsyncComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -21,7 +22,11 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
 
 <template>
   <section class="flex flex-col gap-4">
-    <MeasureListHeader>Measure info</MeasureListHeader>
+    <h3
+      v-if="measureData?.createdAt"
+      class="text-lg font-bold text-text-secondary"
+      v-text="format(measureData.createdAt, 'MMMM d, yyyy')"
+    />
 
     <MeasureListItemDetail
       v-if="measureData"

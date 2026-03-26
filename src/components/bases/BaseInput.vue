@@ -50,8 +50,8 @@ const isFocused = ref(false);
 const inputRef = useTemplateRef('inputRef');
 
 const inputInnerBorderColor = computed(() => {
-  if (props.isInvalid) return 'border-accent-red';
-  if (props.isValid) return 'border-accent-green';
+  if (props.isInvalid) return 'border-primary-red';
+  if (props.isValid) return 'border-primary-green';
   if (props.isDisabled) return 'border-neutral-500';
   if (isFocused.value) return 'border-neutral-200';
 
@@ -65,8 +65,8 @@ const inputBackgroundColor = computed(() => {
 });
 
 const textColor = computed(() => {
-  if (props.isInvalid) return 'text-accent-red';
-  if (props.isValid) return 'text-accent-green';
+  if (props.isInvalid) return 'text-primary-red';
+  if (props.isValid) return 'text-primary-green';
   if (isFocused.value) return 'text-neutral-200';
 
   return 'text-neutral-500';

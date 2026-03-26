@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 
-import MeasureListHeader from '@/components/measure-list/MeasureListHeader.vue';
 import MeasureListEmptyState from '@/components/measure-list/MeasureListEmptyState.vue';
 
 import { useMeasure } from '@/composables/useMeasure';
@@ -10,15 +9,13 @@ const MeasureList = defineAsyncComponent(
   () => import('@/components/measure-list/MeasureList.vue')
 );
 
-const { measureList, getMeasureList } = useMeasure();
+const { measureList, getMeasureList, isLoadingMeasureList } = useMeasure();
 
 getMeasureList();
 </script>
 
 <template>
-  <section class="flex flex-col gap-4">
-    <MeasureListHeader>Your measurements</MeasureListHeader>
-
+  <section class="flex flex-col gap-4 mt-4">
     <Transition
       mode="out-in"
       name="transition-fade"
@@ -28,7 +25,7 @@ getMeasureList();
         class="w-full"
       />
 
-      <MeasureListEmptyState v-else />
+      <MeasureListEmptyState v-else-if="!isLoadingMeasureList && measureList.length === 0" />
     </Transition>
   </section>
 </template>

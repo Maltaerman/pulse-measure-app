@@ -9,7 +9,7 @@ const props = withDefaults(
   defineProps<IProps>(),
   {
     tag: 'h1',
-    textClasses: 'text-lg font-semibold text-neutral-800',
+    textClasses: 'text-lg font-semibold text-text-primary',
     transitionClasses: 'transition-colors duration-300',
   }
 );
