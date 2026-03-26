@@ -3,7 +3,7 @@ import BaseTitle from '@/components/bases/BaseTitle.vue';
 import BaseThemeToggle from '@/components/bases/BaseThemeToggle.vue'
 import AchievementsList from '@/components/main/AchievementsList.vue'
 import LastMeasure from '@/components/main/LastMeasure.vue'
-import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
+// import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 
 import { useMeasure } from '@/composables/useMeasure';

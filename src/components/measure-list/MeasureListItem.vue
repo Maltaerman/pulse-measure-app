@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <template>
   <div
-    class="bg-card border border-border rounded-lg px-4 py-3 flex items-center justify-between hover:bg-bg-muted transition-colors duration-300"
+    class="bg-card border border-border bg-bg-card rounded-lg px-4 py-3 flex items-center justify-between hover:bg-bg-muted transition-colors duration-300"
     @click="$router.push({
       name: PAGE_NAME_ENUM.MEASURE_ITEM,
       params: { id: props.id },
