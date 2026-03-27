@@ -12,4 +12,4 @@ export const PAGE_NAME_ENUM = {
 export const LAYOUT_ENUM = {
   DEFAULT: 'Default',
   EMPTY: 'Empty',
-};
+}

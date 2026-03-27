@@ -1,64 +1,62 @@
 <script setup lang="ts">
-import { useTemplateRef, ref, onMounted, onBeforeUnmount } from "vue";
+import { useTemplateRef, ref, onMounted, onBeforeUnmount } from 'vue'
 
-import { useCamera } from '@/composables/useCamera';
-import { useBPM } from '@/composables/useBPM';
+import { useCamera } from '@/composables/useCamera'
+import { useBPM } from '@/composables/useBPM'
 
-import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue';
+import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 
-import { useMeasure } from '@/composables/useMeasure';
+import { useMeasure } from '@/composables/useMeasure'
 
-const { addMeasure, measureList, getMeasureList } = useMeasure();
+const { addMeasure, getMeasureList } = useMeasure()
 
-const videoRef = useTemplateRef('videoRef');
-const canvasRef = useTemplateRef('canvasRef');
+const videoRef = useTemplateRef('videoRef')
+const canvasRef = useTemplateRef('canvasRef')
 
-const ctx = ref(null);
+const ctx = ref<CanvasRenderingContext2D | null>(null)
 
 function getContext() {
-  ctx.value = canvasRef.value.getContext('2d');
+  if (canvasRef.value) ctx.value = canvasRef.value.getContext('2d')
 }
 
 function resetContext() {
-  ctx.value = null;
+  ctx.value = null
 }
-
 
 onMounted(getContext)
 
-const { avgR } = useCamera(videoRef, canvasRef, ctx);
-const { bpm } = useBPM();
+const { avgR } = useCamera(videoRef, canvasRef, ctx)
+const { bpm } = useBPM()
 
-const measureProgress = ref(0);
-const isStarted = ref(false);
+const measureProgress = ref(0)
+const isStarted = ref(false)
 
-const intervalId = ref(0);
+const intervalId = ref(0)
 
-
-const localMeasureData = ref([]);
+const localMeasureData = ref([])
 
 function intervalHandler() {
-   measureProgress.value += 10;
+  measureProgress.value += 10
 
   if (measureProgress.value === 100 && bpm.value === 0) {
-    measureProgress.value = 0;
+    measureProgress.value = 0
   }
 
   if (bpm.value !== 0) {
-    localMeasureData.value.push(bpm.value);
+    localMeasureData.value.push(bpm.value as never)
   }
 }
 
 function start() {
-  isStarted.value = true;
+  isStarted.value = true
 
-  intervalId.value = setInterval(intervalHandler, 1000);
+  intervalId.value = setInterval(intervalHandler, 1000)
 
-  if (bpm.value > 0) isStarted.value = false;
+  if (bpm.value > 0) isStarted.value = false
 }
 
 onBeforeUnmount(async () => {
-  if (!isStarted.value) return;
+  if (!isStarted.value) return
 
   if (intervalId.value) clearInterval(intervalId.value)
 
@@ -69,12 +67,12 @@ onBeforeUnmount(async () => {
     measure: localMeasureData.value,
   })
 
-  await getMeasureList();
+  await getMeasureList()
 
-  isStarted.value = false;
-  measureProgress.value = 0;
-  resetContext();
-});
+  isStarted.value = false
+  measureProgress.value = 0
+  resetContext()
+})
 </script>
 
 <template>
@@ -87,42 +85,23 @@ onBeforeUnmount(async () => {
   </button> -->
 
   <div class="m-auto">
-    <video
-      ref="videoRef"
-      autoplay
-      playsinline
-      class="hidden rounded-xl shadow-md mx-auto"
-    /> 
+    <video ref="videoRef" autoplay playsinline class="hidden rounded-xl shadow-md mx-auto" />
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
-    
 
-    <BaseCircleProgressBar
-      class="size-50"
-      :progress="measureProgress"
-    >
-      <div class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary uppercase rounded-full">
-        <button
-          v-if="!isStarted"
-          class="size-40 uppercase"
-          type="button"
-          @click="start"
-        >
+    <BaseCircleProgressBar class="size-50" :progress="measureProgress">
+      <div
+        class="flex flex-col gap-2 font-semibold text-lg text-center transition-colors duration-300 text-light bg-primary uppercase rounded-full"
+      >
+        <button v-if="!isStarted" class="size-40 uppercase" type="button" @click="start">
           Start
         </button>
 
-        <div
-          v-else
-          class="size-40 flex items-center justify-center"
-         
-        >
-          <p
-            v-if="isStarted && bpm === 0"
-            v-text="'Measuring...'"
-          />
+        <div v-else class="size-40 flex items-center justify-center">
+          <p v-if="isStarted && bpm === 0" v-text="'Measuring...'" />
 
           <template v-else-if="bpm">
-            BPM:{{ bpm }} <br>
+            BPM:{{ bpm }} <br />
             R: {{ avgR.toFixed(2) }}
           </template>
         </div>

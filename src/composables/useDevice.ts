@@ -8,20 +8,18 @@ export function useDevice() {
   const detectDevice = () => {
     const ua = navigator.userAgent.toLowerCase()
 
-    const tabletReg = /ipad/.test(ua) || (/android/.test(ua) && !/mobile/.test(ua));
-    const mobileReg = /iphone|ipod|android|blackberry|windows phone|opera mini|mobile/.test(ua);
+    const tabletReg = /ipad/.test(ua) || (/android/.test(ua) && !/mobile/.test(ua))
+    const mobileReg = /iphone|ipod|android|blackberry|windows phone|opera mini|mobile/.test(ua)
 
     if (tabletReg) {
       isTablet.value = true
       isMobile.value = false
       isDesktop.value = false
-    }
-    else if (mobileReg) {
+    } else if (mobileReg) {
       isMobile.value = true
       isTablet.value = false
       isDesktop.value = false
-    }
-    else {
+    } else {
       isDesktop.value = true
       isMobile.value = false
       isTablet.value = false
@@ -33,6 +31,6 @@ export function useDevice() {
   return {
     isMobile,
     isTablet,
-    isDesktop
+    isDesktop,
   }
 }

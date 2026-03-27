@@ -1,101 +1,101 @@
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-import { useBPM } from './useBPM';
+import { useBPM } from './useBPM'
 
 const VIDEO_PRESET = {
-  facingMode: { ideal: "environment" },
+  facingMode: { ideal: 'environment' },
   width: { ideal: 640 },
   height: { ideal: 480 },
 }
 
-const MEDIA_PRESET = { video: VIDEO_PRESET };
+const MEDIA_PRESET = { video: VIDEO_PRESET }
 
-let stream;
-let intervalId: number;
+let stream
+let intervalId: number
 
-const isTorchAvailable = ref(false);
+const isTorchAvailable = ref(false)
 
-const avgR = ref(0);
+const avgR = ref(0)
 
-const signal = [];
-const timestamps = [];
+const signal = []
+const timestamps = []
 
-const isManualTorchOn = ref(true);
+const isManualTorchOn = ref(true)
 
 export function useCamera(video, canvas, ctx) {
-  const { setBPM } = useBPM();
+  const { setBPM } = useBPM()
 
   function enableManualTorch() {
-    isManualTorchOn.value = true;
-    document.body.style.backgroundColor = "#fff";
-    document.body.style.transition = "background-color 0.3s";
-  };
+    isManualTorchOn.value = true
+    document.body.style.backgroundColor = '#fff'
+    document.body.style.transition = 'background-color 0.3s'
+  }
 
   function processFrame() {
-    if (!video.value || !ctx.value) return;
+    if (!video.value || !ctx.value) return
 
-    ctx.value.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height);
-    const frame = ctx.value.getImageData(0, 0, canvas.value.width, canvas.value.height);
+    ctx.value.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height)
+    const frame = ctx.value.getImageData(0, 0, canvas.value.width, canvas.value.height)
 
-    let sum = 0;
+    let sum = 0
     for (let i = 0; i < frame.data.length; i += 4) {
-      sum += frame.data[i];
+      sum += frame.data[i]
     }
 
-    const avg = sum / (frame.data.length / 4);
-    avgR.value = avg;
+    const avg = sum / (frame.data.length / 4)
+    avgR.value = avg
 
-    const now = performance.now() / 1000;
+    const now = performance.now() / 1000
 
-    signal.push(avg);
-    timestamps.push(now);
+    signal.push(avg)
+    timestamps.push(now)
 
-    const cutoff = now - 10;
+    const cutoff = now - 10
     while (timestamps.length && timestamps[0] < cutoff) {
-    timestamps.shift();
-    signal.shift();
-  }
-
-  if (signal.length > 20) {
-    setBPM(signal, timestamps);
-  }
-}
-
-async function init() {
- try {
-    stream = await navigator.mediaDevices.getUserMedia(MEDIA_PRESET);
-
-    video.value.srcObject = stream;
-    await new Promise((r) => (video.value.onloadedmetadata = r));
-
-    const track = stream.getVideoTracks()[0];
-    const capabilities = track.getCapabilities();
-
-    if ('torch' in capabilities) {
-      isTorchAvailable.value = true;
-  
-      await track.applyConstraints({ advanced: [{ torch: true }] });
+      timestamps.shift()
+      signal.shift()
     }
 
-    intervalId = setInterval(processFrame, 50);
-  } catch (err) {
-    console.error(err);
+    if (signal.length > 20) {
+      setBPM(signal, timestamps)
+    }
   }
-}
 
-function deinit() {
-  clearInterval(intervalId);
+  async function init() {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(MEDIA_PRESET)
 
-  stream?.getTracks().forEach((t) => t.stop());
-}
+      video.value.srcObject = stream
+      await new Promise((r) => (video.value.onloadedmetadata = r))
 
-onMounted(init);
-onUnmounted(deinit);
+      const track = stream.getVideoTracks()[0]
+      const capabilities = track.getCapabilities()
 
-return {
-  avgR,
-  isManualTorchOn,
-  enableManualTorch,
-  isTorchAvailable,
-};
+      if ('torch' in capabilities) {
+        isTorchAvailable.value = true
+
+        await track.applyConstraints({ advanced: [{ torch: true }] })
+      }
+
+      intervalId = setInterval(processFrame, 50)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  function deinit() {
+    clearInterval(intervalId)
+
+    stream?.getTracks().forEach((t) => t.stop())
+  }
+
+  onMounted(init)
+  onUnmounted(deinit)
+
+  return {
+    avgR,
+    isManualTorchOn,
+    enableManualTorch,
+    isTorchAvailable,
+  }
 }

@@ -1,5 +1,5 @@
-import { describe, it } from 'vitest';
+import { describe, it } from 'vitest'
 
 describe('useBPM', () => {
-  it.todo('add tests');
-});
+  it.todo('add tests')
+})

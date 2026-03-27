@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { type IAchievementItem } from '@/composables/useAchievements';
+import { type IAchievementItem } from '@/composables/useAchievements'
 
-import BaseProgressBar from '@/components/bases/BaseProgressBar.vue';
+import BaseProgressBar from '@/components/bases/BaseProgressBar.vue'
 
-const props = withDefaults(defineProps<IAchievementItem>(),{});
+const props = withDefaults(defineProps<IAchievementItem>(), {})
 </script>
 
 <template>
@@ -16,23 +16,17 @@ const props = withDefaults(defineProps<IAchievementItem>(),{});
       v-text="props.title"
     />
 
-    <p
-      class="size-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-      v-text="`🫀`"
-    />
+    <p class="size-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" v-text="`🫀`" />
 
     <div class="mt-auto flex flex-col gap-1">
-      <p
-        class="text-text-secondary text-xs font-light"
-        v-text="props.achievedAt"
-      />
-    
+      <p class="text-text-secondary text-xs font-light" v-text="props.achievedAt" />
+
       <BaseProgressBar
         v-if="props.status !== 'locked'"
         :theme="props.progress === 100 ? 'green' : 'violet'"
         :progress="props.progress || 0"
         class="mt-auto"
-      /> 
+      />
     </div>
   </div>
 </template>

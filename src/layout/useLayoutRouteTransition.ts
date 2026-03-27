@@ -1,18 +1,18 @@
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 export function useLayoutRouteTransition() {
-  const route = useRoute();
+  const route = useRoute()
 
-  const layoutRouteTransition = ref('slide-left');
+  const layoutRouteTransition = ref('slide-left')
 
-  let lastPath = route.fullPath;
+  let lastPath = route.fullPath
 
   watch(route, ({ fullPath }) => {
-    layoutRouteTransition.value = fullPath.length > lastPath.length ? 'slide-left' : 'slide-right';
+    layoutRouteTransition.value = fullPath.length > lastPath.length ? 'slide-left' : 'slide-right'
 
-    lastPath = fullPath;
-  });
+    lastPath = fullPath
+  })
 
-  return { layoutRouteTransition };
+  return { layoutRouteTransition }
 }

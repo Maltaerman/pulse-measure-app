@@ -1,24 +1,17 @@
 <script setup lang="ts">
 export interface IError {
-  message: string;
+  message: string
 }
 
 export interface IProps {
-  errors: IError[];
+  errors: IError[]
 }
 
-const props = withDefaults(
-  defineProps<IProps>(),
-  { errors: () => [] }
-);
+const props = withDefaults(defineProps<IProps>(), { errors: () => [] })
 </script>
 
 <template>
-  <TransitionGroup
-    class="relative pl-1"
-    name="list-from-left"
-    tag="ul"
-  >
+  <TransitionGroup class="relative pl-1" name="list-from-left" tag="ul">
     <li
       v-for="error in props.errors"
       :key="error.message"

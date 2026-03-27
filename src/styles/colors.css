@@ -1,6 +1,6 @@
 @theme {
   --color-light: oklch(1 0 0);
-  --color-dark: oklch(0 0 0);   
+  --color-dark: oklch(0 0 0);
 
   --color-bg: oklch(0.98 0.005 95);
   --color-bg-muted: oklch(0.95 0.01 95);
@@ -28,7 +28,7 @@
   --color-shadow: 0 10px 30px oklch(0.3 0.02 260 / 0.08);
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-bg: oklch(0.18 0.01 260);
   --color-bg-muted: oklch(0.22 0.015 260);
   --color-bg-card: oklch(0.23 0.015 260);
