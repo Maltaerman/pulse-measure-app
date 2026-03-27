@@ -8,12 +8,12 @@ Chart.register(...registerables)
 const props = defineProps({
   chartData: {
     type: Object,
-    required: true
+    required: true,
   },
   chartOptions: {
     type: Object,
-    default: () => ({})
-  }
+    default: () => ({}),
+  },
 })
 
 const chartRef = ref(null)
@@ -24,7 +24,7 @@ onMounted(() => {
     chartInstance = new Chart(chartRef.value, {
       type: 'line',
       data: props.chartData,
-      options: props.chartOptions
+      options: props.chartOptions,
     })
   }
 })
@@ -38,7 +38,7 @@ watch(
       chartInstance.update()
     }
   },
-  { deep: true }
+  { deep: true },
 )
 </script>
 

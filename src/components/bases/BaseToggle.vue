@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -36,7 +36,7 @@ const props = defineProps({
     type: String,
     default: 'transition-all duration-300',
   },
-});
+})
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -46,26 +46,26 @@ const model = computed({
 })
 
 const containerBackgroundColorClasses = computed(() => {
-  if (props.isDisabled) return 'bg-bg-disabled';
+  if (props.isDisabled) return 'bg-bg-disabled'
 
-  return model.value ? 'bg-primary' : 'bg-card';
-});
+  return model.value ? 'bg-primary' : 'bg-card'
+})
 
 const containerBorderClasses = computed(() => {
-  if (props.isDisabled) return 'border-border';
+  if (props.isDisabled) return 'border-border'
 
-  return model.value ? 'border-border' : 'border-border';
-});
+  return model.value ? 'border-border' : 'border-border'
+})
 
 const toggleColorClasses = computed(() => {
-  if (props.isDisabled) return 'bg-light';
+  if (props.isDisabled) return 'bg-light'
 
-  return 'bg-light';
-});
+  return 'bg-light'
+})
 
 const cursorClasses = computed(() =>
-  props.isDisabled ? 'can-hover:cursor-default' : 'can-hover:cursor-pointer'
-);
+  props.isDisabled ? 'can-hover:cursor-default' : 'can-hover:cursor-pointer',
+)
 
 const containerClasses = computed(() => [
   'relative rounded-full border',
@@ -73,7 +73,7 @@ const containerClasses = computed(() => [
   containerBorderClasses.value,
   props.containerSizeClasses,
   props.transitionClasses,
-]);
+])
 
 const toggleClasses = computed(() => [
   'absolute top-1/2 -translate-y-1/2 rounded-full  mx-px',
@@ -81,14 +81,11 @@ const toggleClasses = computed(() => [
   toggleColorClasses.value,
   props.toggleSizeClasses,
   props.transitionClasses,
-]);
+])
 </script>
 
 <template>
-  <label
-    :class="cursorClasses"
-    :for="props.id"
-  >
+  <label :class="cursorClasses" :for="props.id">
     <input
       :id="props.id"
       v-model="model"

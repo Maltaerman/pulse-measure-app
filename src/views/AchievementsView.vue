@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue'
 
-import BaseTitle from '@/components/bases/BaseTitle.vue';
-import BaseDrawer from '@/components/bases/drawer/BaseDrawer.vue';
-import { useDrawer } from '@/components/bases/drawer/useDrawer';
+import BaseTitle from '@/components/bases/BaseTitle.vue'
+import BaseDrawer from '@/components/bases/drawer/BaseDrawer.vue'
+import { useDrawer } from '@/components/bases/drawer/useDrawer'
 
-import { useAchievements } from '@/composables/useAchievements';
+import { useAchievements } from '@/composables/useAchievements'
 
 const AchievementItemExtended = defineAsyncComponent(
-  () => import('@/components/achievements/AchievementItemExtended.vue')
-);
+  () => import('@/components/achievements/AchievementItemExtended.vue'),
+)
 
-const { getAchievementsList, achievementsList } = useAchievements();
-const { openDrawer } = useDrawer();
+const { getAchievementsList, achievementsList } = useAchievements()
+const { openDrawer } = useDrawer()
 
-getAchievementsList();
+getAchievementsList()
 </script>
 
 <template>
@@ -29,19 +29,12 @@ getAchievementsList();
     </BaseDrawer>
 
     <div class="flex flex-row gap-4 justify-between">
-      <BaseTitle class="col-span-2 ">
+      <BaseTitle class="col-span-2">
         {{ $t('global_achievements') }}
       </BaseTitle>
 
-      <button
-        class="w-fit"
-        type="button"
-        @click="openDrawer"
-      >
-        <p
-          class="text-sm font-semibold text-text-secondary"
-          v-text="$t('global_hiw')"
-        />
+      <button class="w-fit" type="button" @click="openDrawer">
+        <p class="text-sm font-semibold text-text-secondary" v-text="$t('global_hiw')" />
       </button>
     </div>
 

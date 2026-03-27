@@ -1,18 +1,18 @@
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const isDrawerOpen = ref(false);
+const isDrawerOpen = ref(false)
 
 export function useDrawer() {
   function openDrawer() {
-    isDrawerOpen.value = true;
+    isDrawerOpen.value = true
   }
 
   function closeDrawer() {
-    isDrawerOpen.value = false;
+    isDrawerOpen.value = false
   }
 
   function toggleDrawer() {
-    isDrawerOpen.value = !isDrawerOpen.value;
+    isDrawerOpen.value = !isDrawerOpen.value
   }
 
   return {
@@ -20,5 +20,5 @@ export function useDrawer() {
     openDrawer,
     closeDrawer,
     toggleDrawer,
-  };
+  }
 }

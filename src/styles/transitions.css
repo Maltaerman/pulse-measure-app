@@ -49,10 +49,19 @@
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.08); }
-  40% { transform: scale(0.95); }
-  60% { transform: scale(1.12); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1.12);
+  }
 }
 
 .animate-heartbeat {

@@ -1,4 +1,4 @@
-import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums';
+import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums'
 
 export default [
   {
@@ -14,7 +14,7 @@ export default [
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MainView.vue'),
   },
-    
+
   {
     path: '/measure',
     name: PAGE_NAME_ENUM.MEASURE,
@@ -59,4 +59,4 @@ export default [
     name: PAGE_NAME_ENUM.NOT_FOUND,
     redirect: { name: PAGE_NAME_ENUM.MAIN },
   },
-];
+]

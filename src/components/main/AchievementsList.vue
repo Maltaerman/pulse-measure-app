@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-import { PAGE_NAME_ENUM } from '@/router';
+import { defineAsyncComponent } from 'vue'
+import { PAGE_NAME_ENUM } from '@/router'
 
-import { useAchievements } from '@/composables/useAchievements';
+import { useAchievements } from '@/composables/useAchievements'
 
-const MAX_ACHIEVEMENTS = 5;
+const MAX_ACHIEVEMENTS = 5
 
 const AchievementItem = defineAsyncComponent(
-  () => import('@/components/achievements/AchievementItem.vue')
-);
+  () => import('@/components/achievements/AchievementItem.vue'),
+)
 
-const { getAchievementsList, achievementsList } = useAchievements();
+const { getAchievementsList, achievementsList } = useAchievements()
 
-getAchievementsList();
+getAchievementsList()
 </script>
 
 <template>
-  <div
-    v-if="achievementsList.length"
-    class="flex flex-row gap-4 p-2 overflow-scroll -mx-2 px-2"
-  >
+  <div v-if="achievementsList.length" class="flex flex-row gap-4 p-2 overflow-scroll -mx-2 px-2">
     <AchievementItem
       v-for="achievement in achievementsList.filter((_, i) => i < MAX_ACHIEVEMENTS)"
       :key="achievement.id"
