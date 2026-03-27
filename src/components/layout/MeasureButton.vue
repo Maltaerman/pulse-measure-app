@@ -10,7 +10,10 @@ import CommonHeart from '@/components/CommonHeart.vue'
     type="button"
     @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE })"
   >
-    <CommonHeart :size="20" />
+    <CommonHeart
+      :size="20"
+      class="animate-heartbeat"
+    />
     
     <CommonHeart
       :size="20"
