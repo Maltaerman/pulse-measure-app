@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<IAchievementItem>(), {})
 
       <BaseProgressBar
         v-if="props.status !== 'locked'"
-        :theme="props.progress === 100 ? 'green' : 'violet'"
+        :theme="props.progress === 100 ? 'primary' : 'secondary'"
         :progress="props.progress || 0"
         class="mt-auto"
       />

@@ -10,7 +10,6 @@ const props = withDefaults(defineProps<IAchievementItem>(), {})
   <div
     class="relative flex flex-col gap-2 rounded-sm p-2 shadow-shadow"
     :class="props.status === 'locked' ? 'bg-bg-muted opacity-40' : 'bg-bg-card opac'"
-    :c
   >
     <p
       class="text-center text-text-primary text-md font-semibold line-clamp-2"
@@ -26,7 +25,7 @@ const props = withDefaults(defineProps<IAchievementItem>(), {})
 
       <BaseProgressBar
         v-if="props.status !== 'locked'"
-        :theme="props.progress === 100 ? 'green' : 'violet'"
+        :theme="props.progress === 100 ? 'primary' : 'secondary'"
         :progress="props.progress || 0"
         class="mt-auto"
       />

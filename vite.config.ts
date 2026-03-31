@@ -19,7 +19,6 @@ export default defineConfig({
 
   server: {
     host: '0.0.0.0',
-    https: true,
   },
 
   resolve: {
@@ -28,21 +27,21 @@ export default defineConfig({
     },
   },
 
-  test: {
-    globals: true,
+  // test: {
+  //   globals: true,
 
-    environment: 'jsdom',
+  //   environment: 'jsdom',
 
-    reporters: 'dot',
+  //   reporters: 'dot',
 
-    deps: {
-      inline: ['vue2', '@vue/composition-api', 'vue-demi', '@vueuse/core'],
-    },
+  //   deps: {
+  //     inline: ['vue2', '@vue/composition-api', 'vue-demi', '@vueuse/core'],
+  //   },
 
-    coverage: {
-      provider: 'v8',
-    },
+  //   coverage: {
+  //     provider: 'v8',
+  //   },
 
-    pool: 'vmThreads',
-  },
+  //   pool: 'vmThreads',
+  // },
 })

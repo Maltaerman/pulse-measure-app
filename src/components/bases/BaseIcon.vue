@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 
@@ -12,7 +13,7 @@ const svgModules = import.meta.glob('/src/assets/icons/*.svg', {
   import: 'default',
 })
 
-const iconComponent = shallowRef(null)
+const iconComponent = shallowRef<any>(null)
 
 function loadIcon() {
   const svgPath = `/src/assets/icons/${props.name}.svg`
