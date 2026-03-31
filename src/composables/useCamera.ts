@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ref, onMounted, onUnmounted } from 'vue'
 
 import { useBPM } from './useBPM'
@@ -10,19 +11,19 @@ const VIDEO_PRESET = {
 
 const MEDIA_PRESET = { video: VIDEO_PRESET }
 
-let stream
+let stream: any
 let intervalId: number
 
 const isTorchAvailable = ref(false)
 
 const avgR = ref(0)
 
-const signal = []
-const timestamps = []
+const signal: number[] = []
+const timestamps: number[] = []
 
 const isManualTorchOn = ref(true)
 
-export function useCamera(video, canvas, ctx) {
+export function useCamera(video: any, canvas: any, ctx: any) {
   const { setBPM } = useBPM()
 
   function enableManualTorch() {
@@ -86,7 +87,7 @@ export function useCamera(video, canvas, ctx) {
   function deinit() {
     clearInterval(intervalId)
 
-    stream?.getTracks().forEach((t) => t.stop())
+    stream?.getTracks().forEach((t: any) => t.stop())
   }
 
   onMounted(init)
