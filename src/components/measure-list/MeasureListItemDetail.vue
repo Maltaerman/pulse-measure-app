@@ -1,17 +1,19 @@
 <script setup lang="ts">
-// import LastMeasureGraph from '@/components/main/LastMeasureGraph.vue'
-
 import BaseLabel from '@/components/bases/BaseLabel.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
+
+import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 
 export interface IProps {
   id: string
   bpm: number
+  measure: number[]
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   id: '',
   bpm: 0,
+  measure: () => [],
 })
 </script>
 
@@ -30,17 +32,7 @@ const props = withDefaults(defineProps<IProps>(), {
         <span class="text-sm text-text-secondary" v-text="'60–100 bpm'" />
       </div>
 
-      <div class="h-16 w-full">
-        <svg viewBox="0 0 300 60" class="w-full h-full">
-          <path
-            d="M0 30 L20 30 L30 28 L40 45 L50 15 L60 30 L80 30 L90 25 L100 40 L110 20 L130 30 L160 30 L170 26 L180 38 L190 22 L210 30 L240 30 L250 24 L260 40 L270 18 L290 30 L300 30"
-            fill="none"
-            stroke="var(--color-primary)"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-        </svg>
-      </div>
+      <MeasureDetailGraph class="w-full h-40" :data="props.measure" />
     </div>
 
     <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left">

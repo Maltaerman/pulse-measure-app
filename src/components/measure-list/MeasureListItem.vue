@@ -44,6 +44,18 @@ const props = withDefaults(defineProps<IProps>(), {
       </div>
     </div>
 
+    <div class="h-10 w-full">
+      <svg viewBox="0 0 300 60" class="size-full">
+        <path
+          d="M0 30 L20 30 L30 28 L40 45 L50 15 L60 30 L80 30 L90 25 L100 40 L110 20 L130 30 L160 30 L170 26 L180 38 L190 22 L210 30 L240 30 L250 24 L260 40 L270 18 L290 30 L300 30"
+          fill="none"
+          stroke="var(--color-primary)"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
+
     <div class="flex items-center gap-2">
       <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
 
