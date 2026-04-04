@@ -40,12 +40,12 @@ export default [
     // },
   },
 
-  {
-    path: '/message',
-    name: PAGE_NAME_ENUM.WARNING,
-    meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/WarningView.vue'),
-  },
+  // {
+  //   path: '/message',
+  //   name: PAGE_NAME_ENUM.WARNING,
+  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
+  //   component: () => import('@/views/WarningView.vue'),
+  // },
 
   {
     path: '/settings',

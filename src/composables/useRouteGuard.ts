@@ -10,6 +10,6 @@ export function useRouteGuard() {
   router.beforeEach((to) => {
     const isWarning = isDesktop.value && to.name !== PAGE_NAME_ENUM.WARNING
 
-    if (isWarning) return { name: PAGE_NAME_ENUM.WARNING }
+    // if (isWarning) return { name: PAGE_NAME_ENUM.WARNING }
   })
 }
