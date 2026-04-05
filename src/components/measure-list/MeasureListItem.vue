@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-
 import { PAGE_NAME_ENUM } from '@/router'
+
+import { useMeasure } from '@/composables/useMeasure'
 
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 
 export interface IProps {
-  id: string
+  id: number
   bpm: number
   createdAt: number
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  id: '',
   bpm: 0,
   createdAt: 0,
 })
+
+const { deleteMeasure } = useMeasure()
 </script>
 
 <template>
@@ -59,7 +61,14 @@ const props = withDefaults(defineProps<IProps>(), {
     <div class="flex items-center gap-2">
       <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
 
-      <BaseIcon class="size-4 -rotate-90" name="arrow" />
+      <button
+        type="button"
+        @click.stop="deleteMeasure(props.id)"
+      >
+        <BaseIcon class="size-4 text-danger" name="bin" />
+      </button>
+
+      <BaseIcon class="size-4 -rotate-90 text-text-primary" name="arrow" />
     </div>
   </div>
 </template>

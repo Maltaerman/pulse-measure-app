@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
-const BASE_URL = 'http://localhost:3001'
+// const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://pulse-measure.onrender.com'
 export interface IMeasure {
   // id: string;
   // userId?: string;
@@ -20,12 +21,16 @@ export interface IMeasure {
   measure: number[]
 }
 
-async function addMeasure(data: IMeasure) {
+async function addItem(data: IMeasure) {
   await fetch(`${BASE_URL}/measures`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
+}
+
+async function deleteItem(id: number) {
+  await fetch(`${BASE_URL}/measures/${id}`, { method: 'DELETE' })
 }
 
 const measureList = ref<IMeasure[]>([])
@@ -45,11 +50,13 @@ export function useMeasure() {
     }
   }
 
-  function resetMeasureList() {
+  async function deleteMeasure(id: number) {
     try {
       isLoadingMeasureList.value = true
 
-      measureList.value = []
+      await deleteItem(id)
+
+      await getMeasureList()
     } finally {
       isLoadingMeasureList.value = false
     }
@@ -59,8 +66,8 @@ export function useMeasure() {
     measureList,
     isLoadingMeasureList,
     getMeasureList,
-    resetMeasureList,
 
-    addMeasure,
+    addMeasure: addItem,
+    deleteMeasure,
   }
 }
