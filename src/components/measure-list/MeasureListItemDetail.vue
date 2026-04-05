@@ -35,11 +35,11 @@ const props = withDefaults(defineProps<IProps>(), {
       <MeasureDetailGraph class="w-full h-40" :data="props.measure" />
     </div>
 
-    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left">
+    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary">
       Add a Note
     </button>
 
-    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left">
+    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary">
       Share Data
     </button>
 

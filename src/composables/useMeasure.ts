@@ -16,6 +16,7 @@ export interface IMeasure {
   // tag?: "resting" | "active" | "recovery" | "peak";
   // createdAt: number;
   id: string
+  userId: string
   bpm: number
   createdAt: number
   measure: number[]

@@ -8,6 +8,7 @@ import BaseIcon from '@/components/bases/BaseIcon.vue'
 
 export interface IProps {
   id: number
+  userId: string
   bpm: number
   createdAt: number
   measure: number[]
@@ -16,7 +17,6 @@ export interface IProps {
 const props = withDefaults(defineProps<IProps>(), {
   bpm: 0,
   createdAt: 0,
-  measure: [],
 })
 
 const { deleteMeasure } = useMeasure()
@@ -27,7 +27,7 @@ import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.v
 
 <template>
   <div
-    class="bg-card border border-border bg-bg-card rounded-lg px-4 py-3 flex items-center justify-between hover:bg-bg-muted transition-colors duration-300"
+    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
     @click="
       $router.push({
         name: PAGE_NAME_ENUM.MEASURE_ITEM,
@@ -39,12 +39,15 @@ import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.v
       <BaseIcon class="size-6 text-primary" name="heart" />
 
       <div class="flex flex-col">
-        <span
-          class="text-text-secondary text-sm font-bold transition-colors duration-300"
-          v-text="format(props.createdAt, 'HH:MM')"
-        />
+        <div
+          class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
+        >
+          <p>{{ format(props.createdAt, 'HH:MM') }}</p>
+          /
+          <p class="w-40 truncate">User: {{ props.userId }}</p>
+        </div>
 
-        <span
+        <p
           class="text-text-muted text-xs transition-colors duration-300"
           v-text="`${props.bpm} bpm`"
         />
@@ -53,7 +56,7 @@ import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.v
 
 
     <MeasureDetailGraph
-      class="min-w-40 w-full h-8"
+      class="max-w-40 w-fit h-9"
       :data="props.measure"
       :borderWidth="1"
     />
