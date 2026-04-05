@@ -11,10 +11,12 @@ import {
 
 export interface IProps {
   data: number[]
+  borderWidth: number
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   data: () => [],
+  borderWidth: 4,
 })
 
 Chart.register(LineController, LineElement, PointElement, LinearScale, CategoryScale)
@@ -32,7 +34,7 @@ onMounted(() => {
         {
           data: [] as number[],
           borderColor: 'oklch(0.65 0.23 25)',
-          borderWidth: 4,
+          borderWidth: props.borderWidth,
           tension: 0,
           pointRadius: 0,
         },
