@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { PAGE_NAME_ENUM } from '@/router'
+
 import BaseLabel from '@/components/bases/BaseLabel.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
-
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
+
+import { useMeasure } from '@/composables/useMeasure'
 
 export interface IProps {
   id: string
@@ -15,6 +18,8 @@ const props = withDefaults(defineProps<IProps>(), {
   bpm: 0,
   measure: () => [],
 })
+
+const { deleteMeasure } = useMeasure()
 </script>
 
 <template>
@@ -43,6 +48,15 @@ const props = withDefaults(defineProps<IProps>(), {
       Share Data
     </button>
 
-    <BaseButton class="capitalize" size="lg" @click="() => {}"> Reset measure data </BaseButton>
+    <BaseButton
+      class="capitalize" size="lg"
+      @click="async () => {
+        await deleteMeasure(props.id)
+
+        $router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+      }"
+    >
+      Delete measure
+    </BaseButton>
   </div>
 </template>
