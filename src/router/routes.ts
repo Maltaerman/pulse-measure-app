@@ -15,12 +15,12 @@ export default [
     component: () => import('@/views/MainView.vue'),
   },
 
-  {
-    path: '/measure',
-    name: PAGE_NAME_ENUM.MEASURE,
-    meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/MeasureView.vue'),
-  },
+  // {
+  //   path: '/measure',
+  //   name: PAGE_NAME_ENUM.MEASURE,
+  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
+  //   component: () => import('@/views/MeasureView.vue'),
+  // },
 
   {
     path: '/measure-list',
