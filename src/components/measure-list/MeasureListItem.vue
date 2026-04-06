@@ -5,6 +5,7 @@ import { PAGE_NAME_ENUM } from '@/router'
 import { useMeasure } from '@/composables/useMeasure'
 
 import BaseIcon from '@/components/bases/BaseIcon.vue'
+import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 
 export interface IProps {
   id: number
@@ -20,9 +21,6 @@ const props = withDefaults(defineProps<IProps>(), {
 })
 
 const { deleteMeasure } = useMeasure()
-
-import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
-
 </script>
 
 <template>

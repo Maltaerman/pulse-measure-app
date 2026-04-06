@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
 // const BASE_URL = 'http://localhost:3001'
-const BASE_URL = 'https://pulse-measure.onrender.com'
+const BASE_URL = 'https://pulse-measure-server.onrender.com'
 export interface IMeasure {
   // id: string;
   // userId?: string;
