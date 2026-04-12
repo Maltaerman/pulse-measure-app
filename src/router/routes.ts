@@ -2,35 +2,35 @@ import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums'
 
 export default [
   {
-    path: '/achievements',
+    path: '/:locale?/achievements',
     name: PAGE_NAME_ENUM.ACHIEVEMENTS,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/AchievementsView.vue'),
   },
 
   {
-    path: '/',
+    path: '/:locale?/',
     name: PAGE_NAME_ENUM.MAIN,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MainView.vue'),
   },
 
   // {
-  //   path: '/measure',
+  //   path: '/:locale?/measure',
   //   name: PAGE_NAME_ENUM.MEASURE,
   //   meta: { layout: LAYOUT_ENUM.DEFAULT },
   //   component: () => import('@/views/MeasureView.vue'),
   // },
 
   {
-    path: '/measure-list',
+    path: '/:locale?/measure-list',
     name: PAGE_NAME_ENUM.MEASURE_LIST,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MeasureListView.vue'),
   },
 
   {
-    path: '/measure-detail/:id',
+    path: '/:locale?/measure-detail/:id',
     name: PAGE_NAME_ENUM.MEASURE_ITEM,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MeasureDetailView.vue'),
@@ -41,21 +41,21 @@ export default [
   },
 
   // {
-  //   path: '/message',
+  //   path: '/:locale?/message',
   //   name: PAGE_NAME_ENUM.WARNING,
   //   meta: { layout: LAYOUT_ENUM.DEFAULT },
   //   component: () => import('@/views/WarningView.vue'),
   // },
 
   {
-    path: '/settings',
+    path: '/:locale?/settings',
     name: PAGE_NAME_ENUM.SETTINGS,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/SettingsView.vue'),
   },
 
   {
-    path: '/:catchAll(.*)',
+    path: '/:locale?/:catchAll(.*)',
     name: PAGE_NAME_ENUM.NOT_FOUND,
     redirect: { name: PAGE_NAME_ENUM.MAIN },
   },

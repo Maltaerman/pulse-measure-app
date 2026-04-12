@@ -25,7 +25,6 @@ const props = withDefaults(defineProps<IProps>(), {
     class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
     @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
   >
-      
     <div class="flex items-center gap-3">
       <BaseIcon class="size-6 text-primary" name="heart" />
 
@@ -45,12 +44,7 @@ const props = withDefaults(defineProps<IProps>(), {
       </div>
     </div>
 
-
-    <MeasureDetailGraph
-      class="max-w-40 w-fit h-9"
-      :data="props.measure"
-      :borderWidth="1"
-    />
+    <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <button
       class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary"

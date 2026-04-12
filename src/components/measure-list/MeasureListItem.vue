@@ -52,21 +52,12 @@ const { deleteMeasure } = useMeasure()
       </div>
     </div>
 
-
-    <MeasureDetailGraph
-      class="max-w-40 w-fit h-9"
-      :data="props.measure"
-      :borderWidth="1"
-    />
-
+    <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <div class="flex items-center gap-2">
       <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
 
-      <button
-        type="button"
-        @click.stop="deleteMeasure(props.id)"
-      >
+      <button type="button" @click.stop="deleteMeasure(props.id)">
         <BaseIcon class="size-4 text-danger" name="bin" />
       </button>
 

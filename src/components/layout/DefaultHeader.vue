@@ -5,22 +5,35 @@ import BaseIcon from '@/components/bases/BaseIcon.vue'
 
 import { useTheme } from '@/composables/useTheme'
 
+import { usePopupManager } from '@/components/popups/usePopupManager'
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
+const { openPopup } = usePopupManager()
+
 const { toggleTheme } = useTheme()
 
 const LEFT_NAVIGATION = {
   [PAGE_NAME_ENUM.MAIN]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'iconNameMockup',
+    icon: 'burger-menu',
+    iconClasses: '',
   },
 
   [PAGE_NAME_ENUM.MEASURE_LIST]: {
     to: { name: PAGE_NAME_ENUM.MAIN },
-    icon: 'iconNameMockup',
+    icon: 'burger-menu',
+    iconClasses: '',
+  },
+
+  [PAGE_NAME_ENUM.SETTINGS]: {
+    to: { name: PAGE_NAME_ENUM.MAIN },
+    icon: 'burger-menu',
+    iconClasses: '',
   },
 
   [PAGE_NAME_ENUM.MEASURE_ITEM]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'iconNameMockup',
+    icon: 'arrow',
+    iconClasses: 'rotate-90',
   },
 }
 </script>
@@ -31,11 +44,13 @@ const LEFT_NAVIGATION = {
   >
     <button
       v-if="LEFT_NAVIGATION[$route.name as string]"
+      :key="LEFT_NAVIGATION[$route.name as string].icon"
       type="button"
       class="text-text-secondary hover:text-text-primary active:text-text-primary"
+      :class="LEFT_NAVIGATION[$route.name as string].iconClasses"
       @click="$router.push(LEFT_NAVIGATION[$route.name as string].to)"
     >
-      <BaseIcon name="burger-menu" class="size-6" />
+      <BaseIcon :name="LEFT_NAVIGATION[$route.name as string].icon" class="size-6" />
     </button>
 
     <h1
@@ -49,7 +64,7 @@ const LEFT_NAVIGATION = {
       <button
         type="button"
         class="text-text-secondary hover:text-text-primary active:text-text-primary"
-        @click="() => {}"
+        @click="openPopup({ component: POPUP_NAME_ENUM.LANG })"
       >
         <BaseIcon name="planet" class="size-6" />
       </button>

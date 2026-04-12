@@ -40,21 +40,28 @@ const { deleteMeasure } = useMeasure()
       <MeasureDetailGraph class="w-full h-40" :data="props.measure" />
     </div>
 
-    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary">
+    <button
+      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
+    >
       Add a Note
     </button>
 
-    <button class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary">
+    <button
+      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
+    >
       Share Data
     </button>
 
     <BaseButton
-      class="capitalize" size="lg"
-      @click="async () => {
-        await deleteMeasure(props.id)
+      class="capitalize"
+      size="lg"
+      @click="
+        async () => {
+          await deleteMeasure(props.id)
 
-        $router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
-      }"
+          $router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+        }
+      "
     >
       Delete measure
     </BaseButton>

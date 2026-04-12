@@ -94,9 +94,7 @@ onBeforeUnmount(async () => {
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
 
-    <div
-      class="relative flex flex-col items-center justify-center"
-    >
+    <div class="relative flex flex-col items-center justify-center">
       <div
         class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
       />
@@ -116,14 +114,17 @@ onBeforeUnmount(async () => {
         Start
       </button>
 
-      <div v-else class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase">
+      <div
+        v-else
+        class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
+      >
         <p v-if="isStarted && bpm === 0" v-text="'Measuring'" />
 
         <template v-else-if="bpm">
           {{ bpm }}
         </template>
       </div>
-  </div>
+    </div>
 
     <LastMeasure
       v-if="lastMeasureData"
