@@ -4,6 +4,9 @@ import { PAGE_NAME_ENUM } from '@/router'
 
 import { useMeasure } from '@/composables/useMeasure'
 
+import { usePopupManager } from '@/components/popups/usePopupManager'
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
+
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 
@@ -20,7 +23,25 @@ const props = withDefaults(defineProps<IProps>(), {
   createdAt: 0,
 })
 
+const { openPopup, closePopup } = usePopupManager()
 const { deleteMeasure } = useMeasure()
+
+function deleteButtonHandler() {
+  openPopup({
+    component: POPUP_NAME_ENUM.CONFIRMATION,
+    data: {
+      title: 'Delete measurement?',
+      subtitle: 'This action cannot be undone. Your heart rate data will be permanently removed.',
+      callback: async () => {
+        try {
+          await deleteMeasure(props.id)
+        } finally {
+          closePopup()
+        }
+      },
+    },
+  })
+}
 </script>
 
 <template>
@@ -57,7 +78,7 @@ const { deleteMeasure } = useMeasure()
     <div class="flex items-center gap-2">
       <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
 
-      <button type="button" @click.stop="deleteMeasure(props.id)">
+      <button type="button" @click.stop="deleteButtonHandler">
         <BaseIcon class="size-4 text-danger" name="bin" />
       </button>
 

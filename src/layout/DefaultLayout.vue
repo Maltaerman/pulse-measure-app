@@ -3,11 +3,16 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { PAGE_NAME_ENUM } from '@/router'
+// import { POPUP_NAME_ENUM } from '@/components/popups/types'
+
+import PopupManager from '@/components/popups/PopupManager.vue'
+// import { usePopupManager } from '@/components/popups/usePopupManager'
 
 import DefaultHeader from '@/components/layout/DefaultHeader.vue'
 import MeasureButton from '@/components/layout/MeasureButton.vue'
 
 const route = useRoute()
+// const { openPopup } = usePopupManager()
 
 const isMeasureButton = computed(() =>
   [PAGE_NAME_ENUM.MEASURE_LIST, PAGE_NAME_ENUM.MEASURE_ITEM, PAGE_NAME_ENUM.SETTINGS].includes(
@@ -15,11 +20,7 @@ const isMeasureButton = computed(() =>
   ),
 )
 
-import PopupManager from '@/components/popups/PopupManager.vue'
-import { usePopupManager } from '@/components/popups/usePopupManager'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
-const { openPopup } = usePopupManager()
-openPopup({ component: POPUP_NAME_ENUM.INFO })
+// openPopup({ component: POPUP_NAME_ENUM.INFO })
 </script>
 
 <template>

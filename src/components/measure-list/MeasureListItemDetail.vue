@@ -1,25 +1,48 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { PAGE_NAME_ENUM } from '@/router'
+
+import { useMeasure } from '@/composables/useMeasure'
 
 import BaseLabel from '@/components/bases/BaseLabel.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 
-import { useMeasure } from '@/composables/useMeasure'
+import { usePopupManager } from '@/components/popups/usePopupManager'
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
 export interface IProps {
-  id: string
+  id: number
   bpm: number
-  measure: number[]
+  measure?: number[]
 }
 
 const props = withDefaults(defineProps<IProps>(), {
-  id: '',
-  bpm: 0,
   measure: () => [],
 })
 
+const router = useRouter()
+const { openPopup, closePopup } = usePopupManager()
 const { deleteMeasure } = useMeasure()
+
+function deleteButtonHandler() {
+  openPopup({
+    component: POPUP_NAME_ENUM.CONFIRMATION,
+    data: {
+      title: 'Delete measurement?',
+      subtitle: 'This action cannot be undone. Your heart rate data will be permanently removed.',
+      callback: async () => {
+        try {
+          await deleteMeasure(props.id)
+        } finally {
+          closePopup()
+
+          router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+        }
+      },
+    },
+  })
+}
 </script>
 
 <template>
@@ -52,17 +75,7 @@ const { deleteMeasure } = useMeasure()
       Share Data
     </button>
 
-    <BaseButton
-      class="capitalize"
-      size="lg"
-      @click="
-        async () => {
-          await deleteMeasure(props.id)
-
-          $router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
-        }
-      "
-    >
+    <BaseButton class="capitalize" size="lg" @click="deleteButtonHandler">
       Delete measure
     </BaseButton>
   </div>
