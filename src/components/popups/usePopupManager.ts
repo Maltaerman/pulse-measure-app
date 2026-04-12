@@ -1,12 +1,12 @@
 import { type Ref, ref } from 'vue'
 
-import { useBodyScrollLock } from '@/composables/useBodyScrollLock';
+import { useBodyScrollLock } from '@/composables/useBodyScrollLock'
 
-const { lockScroll, unlockScroll } = useBodyScrollLock();
+const { lockScroll, unlockScroll } = useBodyScrollLock()
 
 interface IPopupState {
-  component: string | null;
-  data?: unknown;
+  component: string | null
+  data?: unknown
 }
 
 const popupState: Ref<IPopupState> = ref({
@@ -26,13 +26,13 @@ export function usePopupManager() {
   async function openPopup(payload: IPopupState) {
     setPopupState(payload)
 
-    lockScroll();
+    lockScroll()
   }
 
   function closePopup() {
     resetPopupState()
 
-    unlockScroll();
+    unlockScroll()
   }
 
   return {

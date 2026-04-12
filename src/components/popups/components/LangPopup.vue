@@ -8,7 +8,6 @@ import { usePopupManager } from '@/components/popups/usePopupManager'
 import BaseButton from '@/components/bases/BaseButton.vue'
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 
-
 const { closePopup } = usePopupManager()
 
 const router = useRouter()
@@ -24,7 +23,7 @@ const changeLanguagePath = () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 p-5">
     <div class="flex flex-row items-center justify-between">
       <h2 class="text-lg font-semibold text-text-primary" v-text="'Language'" />
 

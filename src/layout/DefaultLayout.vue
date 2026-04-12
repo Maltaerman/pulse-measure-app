@@ -18,14 +18,8 @@ const isMeasureButton = computed(() =>
 import PopupManager from '@/components/popups/PopupManager.vue'
 import { usePopupManager } from '@/components/popups/usePopupManager'
 import { POPUP_NAME_ENUM } from '@/components/popups/types'
-
 const { openPopup } = usePopupManager()
-
-console.log('openPopup', openPopup)
-
-openPopup({
-  component: POPUP_NAME_ENUM.LANG,
-})
+openPopup({ component: POPUP_NAME_ENUM.INFO })
 </script>
 
 <template>
