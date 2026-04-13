@@ -11,17 +11,14 @@ const router = createRouter({
 
 const DEFAULT_LOCALE = 'en'
 
-export const LOCALES_LIST = [
-  { code: 'en', flag: 'colored-flag-en' },
-  { code: 'de', flag: 'colored-flag-de' },
-]
+export const LOCALES_LIST = ['en', 'de', 'en-ca', 'it', 'ja', 'fr']
 
 import { PAGE_NAME_ENUM } from '@/router'
 
 router.beforeEach((to) => {
   const locale = to.params.locale as string | undefined
 
-  const isValidLocale = locale && LOCALES_LIST.map(({ code }) => code).includes(locale)
+  const isValidLocale = locale && LOCALES_LIST.includes(locale)
 
   if (!isValidLocale) {
     return {
