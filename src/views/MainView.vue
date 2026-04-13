@@ -108,7 +108,7 @@ onBeforeUnmount(async () => {
       <button
         v-if="!isStarted"
         type="button"
-        class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase"
+        class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase cursor-pointer"
         @click="start"
       >
         {{ $t('global_start') }}

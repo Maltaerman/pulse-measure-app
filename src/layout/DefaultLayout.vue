@@ -28,7 +28,7 @@ const isMeasureButton = computed(() =>
     <DefaultHeader class="sticky top-0 z-20 h-(--headerHeight)" />
 
     <main
-      class="relative flex size-full flex-1 flex-col --screenMinHeight transition-colors duration-300 p-2 bg-bg"
+      class="relative flex size-full flex-1 flex-col --screenMinHeight transition-colors duration-300 p-4 bg-bg"
     >
       <slot />
 

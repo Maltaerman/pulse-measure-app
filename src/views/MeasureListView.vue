@@ -13,7 +13,7 @@ getMeasureList()
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 mt-4">
+  <section class="flex flex-col gap-4">
     <Transition mode="out-in" name="transition-fade">
       <MeasureList v-if="measureList.length" class="w-full" />
 

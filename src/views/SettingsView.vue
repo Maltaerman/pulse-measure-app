@@ -17,8 +17,10 @@ const state = reactive({
 </script>
 
 <template>
-  <section class="p-4">
-    <div class="bg-bg-card text-text-primary rounded-lg shadow-md p-4 flex flex-col gap-4">
+  <section>
+    <div
+      class="bg-bg-card text-text-primary border border-border rounded-lg shadow-sm p-4 flex flex-col gap-4"
+    >
       <div class="flex items-center justify-between py-2">
         <span class="text-sm" v-text="'Reminder to Measure'" />
 

@@ -50,7 +50,7 @@ function deleteButtonHandler() {
 
 <template>
   <div
-    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
+    class="cursor-pointer flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
     @click="
       $router.push({
         name: PAGE_NAME_ENUM.MEASURE_ITEM,
@@ -82,7 +82,7 @@ function deleteButtonHandler() {
     <div class="flex items-center gap-2">
       <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
 
-      <button type="button" @click.stop="deleteButtonHandler">
+      <button type="button" class="cursor-pointer" @click.stop="deleteButtonHandler">
         <BaseIcon class="size-4 text-danger" name="bin" />
       </button>
 

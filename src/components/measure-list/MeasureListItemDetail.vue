@@ -51,30 +51,34 @@ function deleteButtonHandler() {
 
 <template>
   <div class="flex flex-col gap-4">
-    <div class="rounded-lg p-4 bg-bg-card shadow-md border border-border flex flex-col gap-4">
-      <div class="flex items-end gap-2">
-        <p class="text-5xl font-bold text-primary" v-text="props.bpm" />
+    <div
+      class="relative flex flex-col gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3"
+    >
+      <div class="absolute left-2 top-2 flex flex-col items-start gap-2">
+        <div class="flex flex-row gap-1 items-center">
+          <p class="text-5xl font-bold text-primary" v-text="props.bpm" />
 
-        <p class="text-lg text-text-secondary mb-1" v-text="'bpm'" />
+          <p class="text-lg text-text-secondary mb-1" v-text="'bpm'" />
+        </div>
+
+        <div class="flex items-center gap-2">
+          <BaseLabel theme="secondary">Normal</BaseLabel>
+
+          <span class="text-sm text-text-secondary" v-text="'60–100 bpm'" />
+        </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <BaseLabel theme="secondary">Normal</BaseLabel>
-
-        <span class="text-sm text-text-secondary" v-text="'60–100 bpm'" />
-      </div>
-
-      <MeasureDetailGraph class="w-full h-40" :data="props.measure" />
+      <MeasureDetailGraph class="ml-auto w-70 md:w-80 h-40" :data="props.measure" />
     </div>
 
     <button
-      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
+      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary cursor-pointer"
     >
       {{ $t('measure_detail_note') }}
     </button>
 
     <button
-      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
+      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary cursor-pointer"
     >
       {{ $t('measure_detail_share') }}
     </button>

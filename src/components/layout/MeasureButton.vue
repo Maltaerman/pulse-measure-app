@@ -5,7 +5,7 @@ import CommonHeart from '@/components/CommonHeart.vue'
 </script>
 
 <template>
-  <button type="button" @click="$router.push({ name: PAGE_NAME_ENUM.MAIN })">
+  <button type="button" class="cursor-pointer" @click="$router.push({ name: PAGE_NAME_ENUM.MAIN })">
     <CommonHeart :size="20" class="animate-heartbeat" />
 
     <CommonHeart

@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <template>
   <div
-    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
+    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
     @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
   >
     <div class="flex items-center gap-3">
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<IProps>(), {
     <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <button
-      class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary"
+      class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
       @click.prevent
     >
       {{ $t('global_view-all') }}
