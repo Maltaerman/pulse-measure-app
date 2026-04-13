@@ -1,6 +1,6 @@
 :root {
   --headerHeight: 60px;
-  --zIndexCookieBannerLink: 200;
+  --zIndexPopup: 300;
   --zIndexDrawer: 500;
 }
 

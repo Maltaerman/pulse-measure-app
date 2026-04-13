@@ -44,8 +44,6 @@ const intervalId = ref(0)
 const localMeasureData = ref([])
 
 function intervalHandler() {
-  console.log('intervalHandler', measureProgress.value)
-
   measureProgress.value += 10
 
   if (measureProgress.value === 100 && bpm.value === 0) {
@@ -58,8 +56,6 @@ function intervalHandler() {
 }
 
 function start() {
-  console.log('start')
-
   isStarted.value = true
 
   intervalId.value = setInterval(intervalHandler, 1000)
@@ -126,10 +122,12 @@ onBeforeUnmount(async () => {
       </div>
     </div>
 
-    <LastMeasure
-      v-if="lastMeasureData"
-      v-bind="lastMeasureData"
-      class="w-[calc(100%-16px)] absolute bottom-2"
-    />
+    <Transition mode="out-in" name="transition-slide-bottom">
+      <LastMeasure
+        v-if="lastMeasureData"
+        v-bind="lastMeasureData"
+        class="w-[calc(100%-16px)] absolute bottom-2"
+      />
+    </Transition>
   </section>
 </template>

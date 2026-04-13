@@ -3,15 +3,17 @@ import { format } from 'date-fns'
 import { defineAsyncComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { useMeasure } from '@/composables/useMeasure'
+import BaseLoader from '@/components/bases/BaseLoader.vue'
 
-const route = useRoute()
+import { useMeasure } from '@/composables/useMeasure'
 
 const MeasureListItemDetail = defineAsyncComponent(
   () => import('@/components/measure-list/MeasureListItemDetail.vue'),
 )
 
-const { measureList, getMeasureList } = useMeasure()
+const route = useRoute()
+
+const { measureList, isLoadingMeasureList, getMeasureList } = useMeasure()
 
 getMeasureList()
 
@@ -19,13 +21,17 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
 </script>
 
 <template>
-  <section class="flex flex-col gap-4">
-    <h3
-      v-if="measureData?.createdAt"
-      class="text-lg font-bold text-text-secondary"
-      v-text="format(measureData.createdAt, 'MMMM d, yyyy')"
-    />
+  <Transition mode="out-in" name="transition-fade">
+    <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 
-    <MeasureListItemDetail v-if="measureData" v-bind="measureData" />
-  </section>
+    <section v-else class="flex flex-col gap-4">
+      <h3
+        v-if="measureData?.createdAt"
+        class="text-lg font-bold text-text-secondary"
+        v-text="format(measureData.createdAt, 'MMMM d, yyyy')"
+      />
+
+      <MeasureListItemDetail v-if="measureData" v-bind="measureData" />
+    </section>
+  </Transition>
 </template>

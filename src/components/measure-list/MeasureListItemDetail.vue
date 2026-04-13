@@ -71,18 +71,6 @@ function deleteButtonHandler() {
       <MeasureDetailGraph class="ml-auto w-70 md:w-80 h-40" :data="props.measure" />
     </div>
 
-    <button
-      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary cursor-pointer"
-    >
-      {{ $t('measure_detail_note') }}
-    </button>
-
-    <button
-      class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary cursor-pointer"
-    >
-      {{ $t('measure_detail_share') }}
-    </button>
-
     <BaseButton class="capitalize" size="lg" @click="deleteButtonHandler">
       {{ $t('measure_detail_delete') }}
     </BaseButton>

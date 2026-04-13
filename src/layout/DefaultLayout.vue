@@ -35,6 +35,9 @@ const isMeasureButton = computed(() =>
       <MeasureButton v-if="isMeasureButton" class="fixed bottom-8 left-8" />
     </main>
 
-    <PopupManager class="z-30" />
+    <Transition mode="out-in" name="transition-fade">
+      <PopupManager class="z-(--zIndexPopup)" />
+    </Transition>
   </div>
 </template>
+I

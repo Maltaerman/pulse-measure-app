@@ -9,7 +9,8 @@ export function useLayoutRouteTransition() {
   let lastPath = route.fullPath
 
   watch(route, ({ fullPath }) => {
-    layoutRouteTransition.value = fullPath.length > lastPath.length ? 'slide-left' : 'slide-right'
+    layoutRouteTransition.value =
+      fullPath.length > lastPath.length ? 'transition-slide-left' : 'transition-slide-right'
 
     lastPath = fullPath
   })

@@ -15,6 +15,8 @@ export const LOCALES_LIST = ['en', 'de', 'en-ca', 'it', 'ja', 'fr']
 
 import { PAGE_NAME_ENUM } from '@/router'
 
+import { i18n } from '@/plugins/i18n'
+
 router.beforeEach((to) => {
   const locale = to.params.locale as string | undefined
 
@@ -32,6 +34,8 @@ router.beforeEach((to) => {
       replace: true,
     }
   }
+
+  i18n.global.locale.value = locale as string
 })
 
 export default router

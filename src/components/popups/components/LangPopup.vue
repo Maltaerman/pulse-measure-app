@@ -1,29 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { i18n } from '@/plugins/i18n'
-
 import { LOCALES_LIST } from '@/router'
 
 import { usePopupManager } from '@/components/popups/usePopupManager'
+import { useLocale } from '@/composables/useLocale'
 
 import BaseButton from '@/components/bases/BaseButton.vue'
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 
-const router = useRouter()
-const route = useRoute()
-
 const { closePopup } = usePopupManager()
-
-const selectedLocale = ref(route.params.locale)
-
-function changeLanguagePath() {
-  i18n.global.locale.value = selectedLocale.value as string
-
-  router.push({ params: { locale: selectedLocale.value }, query: route.query })
-
-  closePopup()
-}
+const { selectedLocale, changeLocale } = useLocale()
 </script>
 
 <template>
@@ -56,7 +41,13 @@ function changeLanguagePath() {
       </li>
     </ul>
 
-    <BaseButton class="w-full" @click="changeLanguagePath">
+    <BaseButton
+      class="w-full"
+      @click="
+        changeLocale();
+        closePopup();
+      "
+    >
       {{ $t('popup_language_submit') }}
     </BaseButton>
   </div>
