@@ -63,7 +63,7 @@ const LEFT_NAVIGATION = {
     <div class="flex flex-row gap-4 ml-auto">
       <button
         type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
         @click="openPopup({ component: POPUP_NAME_ENUM.LANG })"
       >
         <BaseIcon name="planet" class="size-6" />
@@ -71,7 +71,7 @@ const LEFT_NAVIGATION = {
 
       <button
         type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
         @click="toggleTheme"
       >
         <BaseIcon name="light" class="size-6" />
@@ -79,7 +79,7 @@ const LEFT_NAVIGATION = {
 
       <button
         type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
         @click="$router.push({ name: PAGE_NAME_ENUM.SETTINGS })"
       >
         <BaseIcon name="settings" class="size-6" />
