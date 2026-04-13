@@ -26,20 +26,24 @@ const { openPopup, closePopup } = usePopupManager()
 const { deleteMeasure } = useMeasure()
 
 function deleteButtonHandler() {
+  function callback() {
+    try {
+      deleteMeasure(props.id)
+    } finally {
+      closePopup()
+
+      router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+    }
+  }
+
   openPopup({
     component: POPUP_NAME_ENUM.CONFIRMATION,
     data: {
-      title: 'Delete measurement?',
-      subtitle: 'This action cannot be undone. Your heart rate data will be permanently removed.',
-      callback: async () => {
-        try {
-          await deleteMeasure(props.id)
-        } finally {
-          closePopup()
-
-          router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
-        }
-      },
+      title: 'popup_confirmation_title',
+      subtitle: 'popup_confirmation_subtitle',
+      submitButton: 'popup_confirmation_submit-button',
+      cancelButton: 'popup_confirmation_cancel-button',
+      callback,
     },
   })
 }

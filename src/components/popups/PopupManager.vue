@@ -6,7 +6,7 @@ const { popupState } = usePopupManager()
 </script>
 
 <template>
-  <div v-if="popupState.component" class="fixed inset-0 bg-secondary/40 backdrop-blur-sm">
+  <div v-if="popupState.component" class="fixed inset-0 sm:bg-secondary/40 sm:backdrop-blur-sm">
     <slot name="overlay">
       <div aria-hidden="true" />
     </slot>
@@ -14,7 +14,7 @@ const { popupState } = usePopupManager()
     <div class="flex h-dvh overflow-y-auto overscroll-contain sm:py-6 md:py-10">
       <dialog
         :id="popupState.component"
-        class="w-full sm:w-100 min-h-full sm:min-h-0 relative m-auto flex bg-bg-card shadow-lg border border-border sm:rounded-lg"
+        class="relative w-full min-h-full m-auto flex bg-bg-card sm:w-100 sm:min-h-0 sm:shadow-lg sm:border sm:border-border sm:rounded-lg"
       >
         <component
           :is="popupRegistry[popupState.component]"
