@@ -44,8 +44,10 @@ const { selectedLocale, changeLocale } = useLocale()
     <BaseButton
       class="w-full"
       @click="
-        changeLocale();
-        closePopup();
+        () => {
+          changeLocale()
+          closePopup()
+        }
       "
     >
       {{ $t('popup_language_submit') }}
