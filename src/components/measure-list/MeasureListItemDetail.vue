@@ -41,8 +41,8 @@ function deleteButtonHandler() {
     data: {
       title: 'popup_confirmation_title',
       subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit-button',
-      cancelButton: 'popup_confirmation_cancel-button',
+      submitButton: 'popup_confirmation_submit',
+      cancelButton: 'popup_confirmation_cancel',
       callback,
     },
   })
@@ -70,17 +70,17 @@ function deleteButtonHandler() {
     <button
       class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
     >
-      Add a Note
+      {{ $t('measure_detail_note') }}
     </button>
 
     <button
       class="w-full p-4 rounded-lg bg-bg-card border border-border text-left text-text-primary"
     >
-      Share Data
+      {{ $t('measure_detail_share') }}
     </button>
 
     <BaseButton class="capitalize" size="lg" @click="deleteButtonHandler">
-      Delete measure
+      {{ $t('measure_detail_delete') }}
     </BaseButton>
   </div>
 </template>

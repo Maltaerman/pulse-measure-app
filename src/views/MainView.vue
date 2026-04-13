@@ -111,14 +111,14 @@ onBeforeUnmount(async () => {
         class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase"
         @click="start"
       >
-        Start
+        {{ $t('global_start') }}
       </button>
 
       <div
         v-else
         class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
       >
-        <p v-if="isStarted && bpm === 0" v-text="'Measuring'" />
+        <p v-if="isStarted && bpm === 0" v-text="$t('global_measuring')" />
 
         <template v-else-if="bpm">
           {{ bpm }}

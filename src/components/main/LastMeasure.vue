@@ -50,7 +50,7 @@ const props = withDefaults(defineProps<IProps>(), {
       class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary"
       @click.prevent
     >
-      View all
+      {{ $t('global_view-all') }}
 
       <BaseIcon class="size-4 -rotate-90" name="arrow" />
     </button>

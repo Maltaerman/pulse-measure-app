@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { i18n } from '@/plugins/i18n'
 
 import { LOCALES_LIST } from '@/router'
 
@@ -17,6 +18,8 @@ const { closePopup } = usePopupManager()
 const selectedLocale = ref(route.params.locale)
 
 function changeLanguagePath() {
+  i18n.global.locale.value = selectedLocale.value as string
+
   router.push({ params: { locale: selectedLocale.value }, query: route.query })
 
   closePopup()
@@ -48,13 +51,13 @@ function changeLanguagePath() {
         >
           <BaseIcon :name="`colored-flag-${code}`" class="size-4 m-auto" />
 
-          <p class="text-text-primary font-normal text-center" v-text="$t(`lang_name_${code}`)" />
+          <p class="text-text-primary font-normal text-center" v-text="$t(`global_lang_${code}`)" />
         </button>
       </li>
     </ul>
 
     <BaseButton class="w-full" @click="changeLanguagePath">
-      {{ $t('popup_language_submit-button') }}
+      {{ $t('popup_language_submit') }}
     </BaseButton>
   </div>
 </template>

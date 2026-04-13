@@ -40,8 +40,8 @@ function deleteButtonHandler() {
     data: {
       title: 'popup_confirmation_title',
       subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit-button',
-      cancelButton: 'popup_confirmation_cancel-button',
+      submitButton: 'popup_confirmation_submit',
+      cancelButton: 'popup_confirmation_cancel',
       callback,
     },
   })
@@ -67,12 +67,12 @@ function deleteButtonHandler() {
         >
           <p>{{ format(props.createdAt, 'HH:MM') }}</p>
           /
-          <p class="w-40 truncate">User: {{ props.userId }}</p>
+          <p class="w-40 truncate">{{ $t('global_user') }}: {{ props.userId }}</p>
         </div>
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
-          v-text="`${props.bpm} bpm`"
+          v-text="`${props.bpm} ${$t('global_bpm')}`"
         />
       </div>
     </div>
