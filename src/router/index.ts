@@ -35,7 +35,7 @@ router.beforeEach((to) => {
     }
   }
 
-  i18n.global.locale.value = locale as string
+  i18n.global.locale.value = locale as 'en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr'
 })
 
 export default router

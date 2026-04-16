@@ -3,7 +3,7 @@ import { ref } from 'vue'
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
 export interface IMeasure {
-  id: string
+  id: string | number
   userId: string
   bpm: number
   createdAt: number

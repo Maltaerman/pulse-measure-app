@@ -11,7 +11,7 @@ export function useLocale() {
   )
 
   function changeLocale() {
-    i18n.global.locale.value = selectedLocale.value as string
+    i18n.global.locale.value = selectedLocale.value as 'en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr'
 
     router.push({ params: { locale: selectedLocale.value }, query: route.query })
   }

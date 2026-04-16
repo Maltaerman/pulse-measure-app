@@ -31,7 +31,7 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
         v-text="format(measureData.createdAt, 'MMMM d, yyyy')"
       />
 
-      <MeasureListItemDetail v-if="measureData" v-bind="measureData" />
+      <MeasureListItemDetail v-if="measureData" v-bind="{ ...measureData, id: Number(measureData.id) }" />
     </section>
   </Transition>
 </template>

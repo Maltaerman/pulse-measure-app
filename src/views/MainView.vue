@@ -69,7 +69,7 @@ onBeforeUnmount(async () => {
   if (intervalId.value) clearInterval(intervalId.value)
 
   await addMeasure({
-    id: `${Date.now()}`,
+    id: Date.now(),
     userId: userId.value,
     createdAt: Date.now(),
     bpm: 0,
@@ -125,7 +125,7 @@ onBeforeUnmount(async () => {
     <Transition mode="out-in" name="transition-slide-bottom">
       <LastMeasure
         v-if="lastMeasureData"
-        v-bind="lastMeasureData"
+        v-bind="{ ...lastMeasureData, id: Number(lastMeasureData.id) }"
         class="w-[calc(100%-16px)] absolute bottom-2"
       />
     </Transition>

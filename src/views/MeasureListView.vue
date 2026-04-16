@@ -34,7 +34,7 @@ getMeasureList()
             v-text="format(measureListItem.createdAt, 'MMMM d, yyyy')"
           />
 
-          <MeasureListItem v-bind="measureListItem" />
+          <MeasureListItem v-bind="{ ...measureListItem, id: Number(measureListItem.id) }" />
         </div>
       </div>
 
