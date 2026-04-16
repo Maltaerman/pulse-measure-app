@@ -1,20 +1,8 @@
 import { ref } from 'vue'
 
-// const BASE_URL = 'http://localhost:3001'
-const BASE_URL = 'https://pulse-measure-server.onrender.com'
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 export interface IMeasure {
-  // id: string;
-  // userId?: string;
-  // bpm: number;
-  // timestamp: number;
-  // durationMs: number;
-  // isValid: boolean;
-  // confidence?: number;
-  // signalQuality?: "low" | "medium" | "high";
-  // rrIntervalsMs?: number[];
-  // rawSignal?: number[];
-  // tag?: "resting" | "active" | "recovery" | "peak";
-  // createdAt: number;
   id: string
   userId: string
   bpm: number

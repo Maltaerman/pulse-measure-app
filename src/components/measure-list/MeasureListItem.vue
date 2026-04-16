@@ -66,8 +66,6 @@ function deleteButtonHandler() {
           class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
         >
           <p>{{ format(props.createdAt, 'HH:MM') }}</p>
-          /
-          <p class="w-40 truncate">{{ $t('global_user') }}: {{ props.userId }}</p>
         </div>
 
         <p

@@ -33,8 +33,6 @@ const props = withDefaults(defineProps<IProps>(), {
           class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
         >
           <p>{{ format(props.createdAt, 'HH:MM') }}</p>
-          /
-          <p class="w-40 truncate">User: {{ props.userId }}</p>
         </div>
 
         <p
@@ -44,7 +42,7 @@ const props = withDefaults(defineProps<IProps>(), {
       </div>
     </div>
 
-    <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
+    <MeasureDetailGraph class="max-w -40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <button
       class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"

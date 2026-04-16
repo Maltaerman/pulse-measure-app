@@ -68,7 +68,11 @@ function deleteButtonHandler() {
         </div>
       </div>
 
-      <MeasureDetailGraph class="ml-auto w-70 md:w-80 h-40" :data="props.measure" />
+      <MeasureDetailGraph
+        class="ml-auto w-70 md:w-80 h-40"
+        :data="props.measure"
+        :border-width="2"
+      />
     </div>
 
     <BaseButton class="capitalize" size="lg" @click="deleteButtonHandler">
