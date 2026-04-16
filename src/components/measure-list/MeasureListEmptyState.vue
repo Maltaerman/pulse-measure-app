@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import BaseTitle from '@/components/bases/BaseTitle.vue'
-</script>
+<script setup lang="ts" />
 
 <template>
-  <BaseTitle tag="h3" class="p-2">
-    <slot>No measure history</slot>
-  </BaseTitle>
+  <p class="text-lg font-medium text-text-primary" v-text="$t('measure_list_empty_title')" />
 </template>

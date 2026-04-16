@@ -2,11 +2,14 @@
 import { useLayout } from '@/layout/useLayout'
 // import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
 import { useRouteGuard } from '@/composables/useRouteGuard'
+import { useUser } from '@/composables/useUser'
 
 const { layoutComponent } = useLayout()
+const { setUser } = useUser()
 // const { layoutRouteTransition } = useLayoutRouteTransition();
 
 useRouteGuard()
+setUser()
 </script>
 
 <template>

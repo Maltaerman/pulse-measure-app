@@ -29,7 +29,7 @@ const props = defineProps({
 
   toggleSizeClasses: {
     type: String,
-    default: 'size-4',
+    default: 'size-5',
   },
 
   transitionClasses: {
@@ -54,18 +54,16 @@ const containerBackgroundColorClasses = computed(() => {
 const containerBorderClasses = computed(() => {
   if (props.isDisabled) return 'border-border'
 
-  return model.value ? 'border-border' : 'border-border'
+  return 'border-border'
 })
 
 const toggleColorClasses = computed(() => {
-  if (props.isDisabled) return 'bg-light'
+  if (props.isDisabled) return 'bg-text-secondary border border-transparent'
 
-  return 'bg-light'
+  return 'bg-light border border-border'
 })
 
-const cursorClasses = computed(() =>
-  props.isDisabled ? 'can-hover:cursor-default' : 'can-hover:cursor-pointer',
-)
+const cursorClasses = computed(() => (props.isDisabled ? 'cursor-default' : 'cursor-pointer'))
 
 const containerClasses = computed(() => [
   'relative rounded-full border',
@@ -77,7 +75,7 @@ const containerClasses = computed(() => [
 
 const toggleClasses = computed(() => [
   'absolute top-1/2 -translate-y-1/2 rounded-full  mx-px',
-  model.value ? 'translate-x-5' : 'translate-x-0',
+  model.value ? 'translate-x-5' : '-translate-x-1',
   toggleColorClasses.value,
   props.toggleSizeClasses,
   props.transitionClasses,

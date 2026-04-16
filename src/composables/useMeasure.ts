@@ -1,31 +1,25 @@
 import { ref } from 'vue'
 
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = import.meta.env.VITE_BASE_URL
+
 export interface IMeasure {
-  // id: string;
-  // userId?: string;
-  // bpm: number;
-  // timestamp: number;
-  // durationMs: number;
-  // isValid: boolean;
-  // confidence?: number;
-  // signalQuality?: "low" | "medium" | "high";
-  // rrIntervalsMs?: number[];
-  // rawSignal?: number[];
-  // tag?: "resting" | "active" | "recovery" | "peak";
-  // createdAt: number;
-  id: string
+  id: string | number
+  userId: string
   bpm: number
   createdAt: number
   measure: number[]
 }
 
-async function addMeasure(data: IMeasure) {
+async function addItem(data: IMeasure) {
   await fetch(`${BASE_URL}/measures`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
+}
+
+async function deleteItem(id: number) {
+  await fetch(`${BASE_URL}/measures/${id}`, { method: 'DELETE' })
 }
 
 const measureList = ref<IMeasure[]>([])
@@ -45,11 +39,13 @@ export function useMeasure() {
     }
   }
 
-  function resetMeasureList() {
+  async function deleteMeasure(id: number) {
     try {
       isLoadingMeasureList.value = true
 
-      measureList.value = []
+      await deleteItem(id)
+
+      await getMeasureList()
     } finally {
       isLoadingMeasureList.value = false
     }
@@ -59,8 +55,8 @@ export function useMeasure() {
     measureList,
     isLoadingMeasureList,
     getMeasureList,
-    resetMeasureList,
 
-    addMeasure,
+    addMeasure: addItem,
+    deleteMeasure,
   }
 }

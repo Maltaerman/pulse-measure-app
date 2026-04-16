@@ -7,8 +7,10 @@ import { useBPM } from '@/composables/useBPM'
 import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 
 import { useMeasure } from '@/composables/useMeasure'
+import { useUser } from '@/composables/useUser'
 
 const { addMeasure, getMeasureList } = useMeasure()
+const { userId } = useUser()
 
 const videoRef = useTemplateRef('videoRef')
 const canvasRef = useTemplateRef('canvasRef')
@@ -62,6 +64,7 @@ onBeforeUnmount(async () => {
 
   await addMeasure({
     id: `${Date.now()}`,
+    userId: userId.value,
     createdAt: Date.now(),
     bpm: 0,
     measure: localMeasureData.value,
