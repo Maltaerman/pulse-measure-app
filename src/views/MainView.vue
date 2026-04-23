@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { PAGE_NAME_ENUM } from '@/router'
 
 import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
