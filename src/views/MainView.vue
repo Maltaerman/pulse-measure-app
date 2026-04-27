@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
-import { useCamera } from '@/composables/useCamera'
+// import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
@@ -30,7 +30,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-const { avgR } = useCamera(videoRef, canvasRef, ctx)
+// const { avgR } = useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)

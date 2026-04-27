@@ -25,7 +25,11 @@ const { selectedLocale, changeLocale } = useLocale()
     </div>
 
     <ul class="grid grid-cols-2 gap-4">
-      <li v-for="code in LOCALES_LIST" :key="code" @click="selectedLocale = code as ('en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr')">
+      <li
+        v-for="code in LOCALES_LIST"
+        :key="code"
+        @click="selectedLocale = code as 'en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr'"
+      >
         <button
           class="flex w-full flex-col items-center justify-start gap-2 justify-self-center rounded-lg p-2 can-hover:cursor-pointer shrink-0 cursor-pointer transition-all duration-300"
           :class="{
