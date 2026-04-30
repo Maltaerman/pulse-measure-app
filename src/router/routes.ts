@@ -15,13 +15,6 @@ export default [
     component: () => import('@/views/MainView.vue'),
   },
 
-  // {
-  //   path: '/:locale?/measure',
-  //   name: PAGE_NAME_ENUM.MEASURE,
-  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
-  //   component: () => import('@/views/MeasureView.vue'),
-  // },
-
   {
     path: '/:locale?/measure-list',
     name: PAGE_NAME_ENUM.MEASURE_LIST,
@@ -34,10 +27,6 @@ export default [
     name: PAGE_NAME_ENUM.MEASURE_ITEM,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MeasureDetailView.vue'),
-    // beforeEnter: async (to) => {
-    //   const id = to.params.id
-    //   if (!id) return { name: PAGE_NAME_ENUM.NOT_FOUND };
-    // },
   },
 
   // {
