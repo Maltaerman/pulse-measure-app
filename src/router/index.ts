@@ -17,7 +17,7 @@ import { PAGE_NAME_ENUM } from '@/router'
 
 import { i18n } from '@/plugins/i18n'
 
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
   const locale = to.params.locale as string | undefined
 
   const isValidLocale = locale && LOCALES_LIST.includes(locale)
@@ -27,7 +27,7 @@ router.beforeEach((to) => {
       name: to.name ?? PAGE_NAME_ENUM.MAIN,
       params: {
         ...to.params,
-        locale: DEFAULT_LOCALE,
+        locale: from.params.locale || DEFAULT_LOCALE,
       },
       query: to.query,
       hash: to.hash,
