@@ -1,0 +1,27 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Card -->
+  <rect x="20" y="30" width="160" height="110" rx="20" fill="white" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+  <!-- Heart -->
+  <path d="M86 68C86 64.1 89.6 60.5 93.8 60.5C96.2 60.5 98.2 62 99.5 64C100.8 62 102.8 60.5 105.2 60.5C109.4 60.5 113 64.1 113 68C113 75.5 99.5 85 99.5 85C99.5 85 86 75.5 86 68Z" fill="#E05A3A"/>
+  <!-- BPM number -->
+  <text x="100" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#1A1825">72</text>
+  <text x="100" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#9A96A8">BPM</text>
+  <!-- Stat chips -->
+  <rect x="24" y="150" width="68" height="32" rx="10" fill="#F5F2EE"/>
+  <text x="58" y="163" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#9A96A8" letter-spacing="0.06em">MIN</text>
+  <text x="58" y="176" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1A1825">64</text>
+  <rect x="108" y="150" width="68" height="32" rx="10" fill="rgba(224,90,58,0.1)"/>
+  <text x="142" y="163" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="700" fill="#E05A3A" letter-spacing="0.06em">MAX</text>
+  <text x="142" y="176" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#E05A3A">81</text>
+  <!-- Confetti -->
+  <circle cx="18" cy="38" r="6" fill="#E05A3A" opacity="0.65"/>
+  <circle cx="182" cy="32" r="5" fill="#E0A83A" opacity="0.6"/>
+  <circle cx="186" cy="158" r="6" fill="#3ABBE0" opacity="0.55"/>
+  <circle cx="14" cy="162" r="5" fill="#8A3AE0" opacity="0.5"/>
+  <rect x="172" y="78" width="8" height="8" rx="2" fill="#E05A3A" opacity="0.45" transform="rotate(22 176 82)"/>
+  <rect x="12" y="92" width="7" height="7" rx="1.5" fill="#3ABBE0" opacity="0.45" transform="rotate(-18 15 95)"/>
+  <!-- Success badge -->
+  <circle cx="170" cy="52" r="17" fill="#3ABBE0" opacity="0.15"/>
+  <circle cx="170" cy="52" r="13" fill="#3ABBE0"/>
+  <path d="M164 52 L168.5 56.5 L176 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
