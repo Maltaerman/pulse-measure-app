@@ -17,12 +17,12 @@ const props = withDefaults(defineProps<IProps>(), {})
     <div class="flex flex-col items-center gap-3 text-center">
       <p
         class="text-primary text-xs transition-colors duration-300"
-        v-text="$t('props.subtitle')"
+        v-text="$t(props.subtitle)"
       />
 
       <p
         class="text-text-primary text-sm font-bold transition-colors duration-300"
-        v-text="$t('props.title')"
+        v-text="$t(props.title)"
       />
     </div>
   </div>

@@ -24,7 +24,15 @@
     "popup_confirmation_submit": "Confirm",
     "popup_confirmation_cancel": "Cancel",
     "popup_language_title": "Select language",
-    "popup_language_submit": "Apply"
+    "popup_language_submit": "Apply",
+    "popup_info_slide-item_1_title": "Open the App",
+    "popup_info_slide-item_1_subtitle": "Step 1 of 4",
+    "popup_info_slide-item_2_title": "Cover the Camera",
+    "popup_info_slide-item_2_subtitle": "Step 2 of 4",
+    "popup_info_slide-item_3_title": "Wait ~30 Seconds",
+    "popup_info_slide-item_3_subtitle": "Step 3 of 4",
+    "popup_info_slide-item_4_title": "Your Result is Ready!",
+    "popup_info_slide-item_4_subtitle": "Step 4 of 4"
   },
 
   "en-ca": {
@@ -52,7 +60,15 @@
     "popup_confirmation_submit": "Confirm",
     "popup_confirmation_cancel": "Cancel",
     "popup_language_title": "Select language",
-    "popup_language_submit": "Apply"
+    "popup_language_submit": "Apply",
+    "popup_info_slide-item_1_title": "Open the App",
+    "popup_info_slide-item_1_subtitle": "Step 1 of 4",
+    "popup_info_slide-item_2_title": "Cover the Camera",
+    "popup_info_slide-item_2_subtitle": "Step 2 of 4",
+    "popup_info_slide-item_3_title": "Wait ~30 Seconds",
+    "popup_info_slide-item_3_subtitle": "Step 3 of 4",
+    "popup_info_slide-item_4_title": "Your Result is Ready!",
+    "popup_info_slide-item_4_subtitle": "Step 4 of 4"
   },
 
   "de": {
@@ -80,7 +96,15 @@
     "popup_confirmation_submit": "Bestätigen",
     "popup_confirmation_cancel": "Abbrechen",
     "popup_language_title": "Sprache auswählen",
-    "popup_language_submit": "Anwenden"
+    "popup_language_submit": "Anwenden",
+    "popup_info_slide-item_1_title": "App öffnen",
+    "popup_info_slide-item_1_subtitle": "Schritt 1 von 4",
+    "popup_info_slide-item_2_title": "Kamera abdecken",
+    "popup_info_slide-item_2_subtitle": "Schritt 2 von 4",
+    "popup_info_slide-item_3_title": "~30 Sekunden warten",
+    "popup_info_slide-item_3_subtitle": "Schritt 3 von 4",
+    "popup_info_slide-item_4_title": "Dein Ergebnis ist bereit!",
+    "popup_info_slide-item_4_subtitle": "Schritt 4 von 4"
   },
 
   "it": {
@@ -103,7 +127,15 @@
     "popup_confirmation_submit": "Conferma",
     "popup_confirmation_cancel": "Annulla",
     "popup_language_title": "Seleziona lingua",
-    "popup_language_submit": "Applica"
+    "popup_language_submit": "Applica",
+    "popup_info_slide-item_1_title": "Apri l'app",
+    "popup_info_slide-item_1_subtitle": "Passo 1 di 4",
+    "popup_info_slide-item_2_title": "Copri la fotocamera",
+    "popup_info_slide-item_2_subtitle": "Passo 2 di 4",
+    "popup_info_slide-item_3_title": "Attendi ~30 secondi",
+    "popup_info_slide-item_3_subtitle": "Passo 3 di 4",
+    "popup_info_slide-item_4_title": "Il tuo risultato è pronto!",
+    "popup_info_slide-item_4_subtitle": "Passo 4 di 4"
   },
 
   "ja": {
@@ -131,7 +163,15 @@
     "popup_confirmation_submit": "確認",
     "popup_confirmation_cancel": "キャンセル",
     "popup_language_title": "言語を選択",
-    "popup_language_submit": "適用"
+    "popup_language_submit": "適用",
+    "popup_info_slide-item_1_title": "アプリを開く",
+    "popup_info_slide-item_1_subtitle": "ステップ 1 / 4",
+    "popup_info_slide-item_2_title": "カメラを指で覆う",
+    "popup_info_slide-item_2_subtitle": "ステップ 2 / 4",
+    "popup_info_slide-item_3_title": "約30秒待つ",
+    "popup_info_slide-item_3_subtitle": "ステップ 3 / 4",
+    "popup_info_slide-item_4_title": "結果が表示されました！",
+    "popup_info_slide-item_4_subtitle": "ステップ 4 / 4"
   },
 
   "fr": {
@@ -159,6 +199,14 @@
     "popup_confirmation_submit": "Confirmer",
     "popup_confirmation_cancel": "Annuler",
     "popup_language_title": "Choisir la langue",
-    "popup_language_submit": "Appliquer"
+    "popup_language_submit": "Appliquer",
+    "popup_info_slide-item_1_title": "Ouvrir l'application",
+    "popup_info_slide-item_1_subtitle": "Étape 1 sur 4",
+    "popup_info_slide-item_2_title": "Couvrir l'objectif",
+    "popup_info_slide-item_2_subtitle": "Étape 2 sur 4",
+    "popup_info_slide-item_3_title": "Attendre ~30 secondes",
+    "popup_info_slide-item_3_subtitle": "Étape 3 sur 4",
+    "popup_info_slide-item_4_title": "Votre résultat est prêt !",
+    "popup_info_slide-item_4_subtitle": "Étape 4 sur 4"
   }
 }
