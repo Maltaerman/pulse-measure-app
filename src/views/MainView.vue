@@ -6,10 +6,14 @@ import { useBPM } from '@/composables/useBPM'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 import LastMeasure from '@/components/main/LastMeasure.vue'
+import BaseIcon from '@/components/bases/BaseIcon.vue'
 
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import { usePopupManager } from '@/components/popups/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
+const { openPopup } = usePopupManager()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -84,7 +88,23 @@ onBeforeUnmount(async () => {
 </script>
 
 <template>
-  <section class="flex-1 flex flex-col items-center justify-center">
+  <section class="relative flex-1 flex flex-col items-center justify-center">
+    <button
+      type="button"
+      class="group flex flex-row gap-1 items-center justify-center z-10 absolute left-2 top-4 cursor-pointer"
+      @click="openPopup({ component: POPUP_NAME_ENUM.INFO })"
+    >
+      <p
+        class="text-text-primary text-md font-medium transition-colors duration-300 group-hover:text-text-secondary"
+        v-text="$t('main_measure_hiw_title')"
+      />
+
+      <BaseIcon
+        name="info"
+        class="size-5 text-text-primary group-hover:text-text-secondary transition-all duration-300"
+      />
+    </button>
+
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
