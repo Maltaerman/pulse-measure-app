@@ -12,13 +12,10 @@ const props = withDefaults(defineProps<IProps>(), {})
 
 <template>
   <div class="flex flex-col items-center p-4 gap-4">
-    <BaseIcon :name="props.img" class="size-40 m-auto" draggable="false" />
+    <BaseIcon :name="props.img" class="size-70 m-auto" draggable="false" />
 
     <div class="flex flex-col items-center gap-3 text-center">
-      <p
-        class="text-primary text-xs transition-colors duration-300"
-        v-text="$t(props.subtitle)"
-      />
+      <p class="text-primary text-xs transition-colors duration-300" v-text="$t(props.subtitle)" />
 
       <p
         class="text-text-primary text-sm font-bold transition-colors duration-300"

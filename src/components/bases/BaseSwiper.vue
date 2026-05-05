@@ -25,11 +25,7 @@ const props = defineProps({
   breakpoints: {
     type: Object,
     default: () => ({
-      0: { slidesPerView: 'auto', slidesPerGroup: 3, spaceBetween: 16 },
-      540: { slidesPerView: 'auto', slidesPerGroup: 4, spaceBetween: 16 },
-      768: { slidesPerView: 'auto', slidesPerGroup: 5, spaceBetween: 16 },
-      1024: { slidesPerView: 'auto', slidesPerGroup: 6, spaceBetween: 16 },
-      1440: { slidesPerView: 'auto', slidesPerGroup: 7, spaceBetween: 16 },
+      0: { slidesPerView: 'auto', slidesPerGroup: 1, spaceBetween: 12 },
     }),
   },
 
@@ -170,3 +166,23 @@ const swiperOptions = computed(() => ({
     </Swiper>
   </div>
 </template>
+
+<style lang="css">
+@reference "tailwindcss";
+
+.swiperPaginationButtons {
+  @apply !w-fit;
+}
+
+.swiperPaginationButtons > .swiper-pagination-bullets {
+  @apply flex shrink-0 items-center justify-center gap-2;
+}
+
+.swiperPaginationButtons > .swiper-pagination-bullet {
+  @apply transition-all duration-300 relative isolate z-10 h-2 w-4 shrink-0 overflow-hidden rounded-full bg-red-400 hover:bg-red-600 text-transparent;
+}
+
+.swiperPaginationButtons > .swiper-pagination-bullet-active {
+  @apply rounded-full bg-red-600 w-10;
+}
+</style>

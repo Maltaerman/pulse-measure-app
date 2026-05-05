@@ -38,7 +38,7 @@ const slides = [
 ]
 
 const pagination = {
-  el: '.swiper-pagination-buttons',
+  el: '.swiperPaginationButtons',
   clickable: true,
   renderBullet: function (index: number, className: string) {
     return `<button class="${className}"> ${index + 1} </button>`
@@ -48,29 +48,32 @@ const pagination = {
 
 <template>
   <div class="relative">
-    <button type="button" @click="closePopup">
+    <!-- <button type="button" @click="closePopup">
       <BaseIcon
         name="close"
-        class="z-19 absolute right-2 top-2 size-4 text-text-muted hover:text-text-primary transition"
+        class="z-19 absolute right-4 top-4 size-5 text-text-muted hover:text-text-primary transition"
+      />
+    </button> -->
+
+    <button type="button" class="z-10 absolute right-4 top-4 cursor-pointer" @click="closePopup">
+      <BaseIcon
+        name="close"
+        class="size-4 text-text-muted hover:text-text-primary transition-all duration-300"
       />
     </button>
 
     <BaseSwiper
-      :breakpoints="{
-        0: { slidesPerView: 'auto', slidesPerGroup: 1, spaceBetween: 12 },
-      }"
       :component="InfoSlideItem"
       :pagination="pagination"
       :prev-btn-id="prevBtnId"
       :next-btn-id="nextBtnId"
       :slides="slides"
       swiper-offset="!overflow-hidden"
-      :autoplay="{ delay: 3000 }"
+      :autoplay="{ delay: 2000 }"
     />
 
-    <!-- <div class="flex w-full justify-center">
-      <div class="swiperPaginationButtons swiperBannersDefaultPaginationButtons
-          swiperPaginationButtons--default" />
-    </div> -->
+    <div class="mb-4 flex w-full items-center justify-center">
+      <div class="swiperPaginationButtons" />
+    </div>
   </div>
 </template>
