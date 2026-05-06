@@ -92,7 +92,7 @@ onBeforeUnmount(async () => {
     <button
       type="button"
       class="group flex flex-row gap-1 items-center justify-center z-10 absolute left-2 top-4 cursor-pointer"
-      @click="openPopup({ component: POPUP_NAME_ENUM.INFO })"
+      @click="openPopup({ component: POPUP_NAME_ENUM.MEASURE_INFO })"
     >
       <p
         class="text-text-primary text-md font-medium transition-colors duration-300 group-hover:text-text-secondary"

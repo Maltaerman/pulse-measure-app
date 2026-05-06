@@ -13,27 +13,33 @@ const nextBtnId = '-button-next'
 const slides = [
   {
     id: 1,
-    title: 'popup_info_slide-item_1_title',
-    subtitle: 'popup_info_slide-item_1_subtitle',
-    img: 'colored-info-slide-1',
+    title: 'popup_measure-info_slide-item_1_title',
+    subtitle: 'popup_measure-info_slide-item_1_subtitle',
+    img: 'colored-measure-info-slide-1',
   },
   {
     id: 2,
-    title: 'popup_info_slide-item_2_title',
-    subtitle: 'popup_info_slide-item_2_subtitle',
-    img: 'colored-info-slide-2',
+    title: 'popup_measure-info_slide-item_2_title',
+    subtitle: 'popup_measure-info_slide-item_2_subtitle',
+    img: 'colored-measure-info-slide-2',
   },
   {
     id: 3,
-    title: 'popup_info_slide-item_3_title',
-    subtitle: 'popup_info_slide-item_3_subtitle',
-    img: 'colored-info-slide-3',
+    title: 'popup_measure-info_slide-item_3_title',
+    subtitle: 'popup_measure-info_slide-item_3_subtitle',
+    img: 'colored-measure-info-slide-3',
   },
   {
     id: 4,
-    title: 'popup_info_slide-item_4_title',
-    subtitle: 'popup_info_slide-item_4_subtitle',
-    img: 'colored-info-slide-4',
+    title: 'popup_measure-info_slide-item_4_title',
+    subtitle: 'popup_measure-info_slide-item_4_subtitle',
+    img: 'colored-measure-info-slide-4',
+  },
+  {
+    id: 5,
+    title: 'popup_measure-info_slide-item_5_title',
+    subtitle: 'popup_measure-info_slide-item_5_subtitle',
+    img: 'colored-measure-info-slide-5',
   },
 ]
 
@@ -41,7 +47,7 @@ const pagination = {
   el: '.swiperPaginationButtons',
   clickable: true,
   renderBullet: function (index: number, className: string) {
-    return `<button class="${className}"> ${index + 1} </button>`
+    return `<button class="${className}"></button>`
   },
 }
 </script>

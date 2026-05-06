@@ -10,8 +10,13 @@ const popupRegistry = {
     loadingComponent: PopupPreloader,
   }),
 
-  [POPUP_NAME_ENUM.INFO]: defineAsyncComponent({
-    loader: () => import('./components/InfoPopup.vue') as Promise<Component>,
+  [POPUP_NAME_ENUM.FEATURES_INFO]: defineAsyncComponent({
+    loader: () => import('./components/FeaturesInfoPopup.vue') as Promise<Component>,
+    loadingComponent: PopupPreloader,
+  }),
+
+  [POPUP_NAME_ENUM.MEASURE_INFO]: defineAsyncComponent({
+    loader: () => import('./components/MeasureInfoPopup.vue') as Promise<Component>,
     loadingComponent: PopupPreloader,
   }),
 

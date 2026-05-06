@@ -1,0 +1,35 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light phone -->
+  <rect x="16" y="28" width="72" height="130" rx="14" fill="#F5F2EE" stroke="#D8D4CE" stroke-width="1.8"/>
+  <rect x="24" y="38" width="56" height="88" rx="7" fill="#EAE6E0"/>
+  <rect x="35" y="33" width="22" height="5" rx="2.5" fill="#D8D4CE"/>
+  <rect x="30" y="136" width="28" height="3.5" rx="1.75" fill="#D8D4CE"/>
+  <!-- Light phone content -->
+  <circle cx="52" cy="70" r="12" fill="rgba(224,90,58,0.15)" stroke="#E05A3A" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="52" y="75" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="#E05A3A">72</text>
+  <rect x="28" y="92" width="48" height="8" rx="4" fill="#EAE6E0"/>
+  <rect x="28" y="106" width="36" height="8" rx="4" fill="#EAE6E0"/>
+  <!-- Sun icon -->
+  <circle cx="130" cy="36" r="10" fill="rgba(224,165,0,0.15)"/>
+  <circle cx="130" cy="36" r="5" fill="#E0A500"/>
+  <line x1="130" y1="26" x2="130" y2="23" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="130" y1="46" x2="130" y2="49" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="120" y1="36" x2="117" y2="36" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="140" y1="36" x2="143" y2="36" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="123" y1="29" x2="121" y2="27" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="137" y1="43" x2="139" y2="45" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="137" y1="29" x2="139" y2="27" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="123" y1="43" x2="121" y2="45" stroke="#E0A500" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Dark phone -->
+  <rect x="112" y="42" width="72" height="130" rx="14" fill="#1E1B2E" stroke="#3D3860" stroke-width="1.8"/>
+  <rect x="120" y="52" width="56" height="88" rx="7" fill="#2A2640"/>
+  <rect x="131" y="47" width="22" height="5" rx="2.5" fill="#3D3860"/>
+  <rect x="126" y="150" width="28" height="3.5" rx="1.75" fill="#3D3860"/>
+  <!-- Dark phone content -->
+  <circle cx="148" cy="84" r="12" fill="rgba(224,90,58,0.22)" stroke="#E05A3A" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="148" y="89" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="#E05A3A">72</text>
+  <rect x="124" y="106" width="48" height="8" rx="4" fill="#3D3860"/>
+  <rect x="124" y="120" width="36" height="8" rx="4" fill="#3D3860"/>
+  <!-- Moon icon -->
+  <path d="M74 164c0-8.8 5.8-16.3 13.8-18.8A20 20 0 1 0 92 183.8 19.9 19.9 0 0 1 74 164z" fill="#9A96B0" opacity="0.9"/>
+</svg>

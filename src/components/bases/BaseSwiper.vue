@@ -179,7 +179,7 @@ const swiperOptions = computed(() => ({
 }
 
 .swiperPaginationButtons > .swiper-pagination-bullet {
-  @apply transition-all duration-300 relative isolate z-10 h-2 w-4 shrink-0 overflow-hidden rounded-full bg-red-400 hover:bg-red-600 text-transparent;
+  @apply transition-all duration-300 relative isolate z-10 h-2 w-4 shrink-0 overflow-hidden rounded-full bg-red-400 hover:bg-red-600;
 }
 
 .swiperPaginationButtons > .swiper-pagination-bullet-active {

@@ -20,7 +20,7 @@ const isMeasureButton = computed(() =>
   ),
 )
 
-openPopup({ component: POPUP_NAME_ENUM.INFO })
+setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
 </script>
 
 <template>

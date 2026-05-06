@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Card -->
+  <rect x="16" y="30" width="168" height="130" rx="18" fill="white" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+  <!-- Heart rate zone gradient bar -->
+  <defs>
+    <linearGradient id="zoneGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#4FC3F7"/>
+      <stop offset="33%"  stop-color="#81C784"/>
+      <stop offset="60%"  stop-color="#FFB74D"/>
+      <stop offset="100%" stop-color="#E05A3A"/>
+    </linearGradient>
+    <clipPath id="barClip">
+      <rect x="28" y="86" width="144" height="14" rx="7"/>
+    </clipPath>
+  </defs>
+  <rect x="28" y="86" width="144" height="14" rx="7" fill="url(#zoneGrad)"/>
+  <!-- Marker -->
+  <rect x="96" y="82" width="3" height="22" rx="1.5" fill="#1A1825"/>
+  <!-- Zone labels -->
+  <text x="34"  y="116" font-family="system-ui,-apple-system,sans-serif" font-size="8.5" fill="#9A96A8">Rest</text>
+  <text x="68"  y="116" font-family="system-ui,-apple-system,sans-serif" font-size="8.5" fill="#81C784" font-weight="600">Fat burn</text>
+  <text x="114" y="116" font-family="system-ui,-apple-system,sans-serif" font-size="8.5" fill="#FFB74D" font-weight="600">Cardio</text>
+  <text x="151" y="116" font-family="system-ui,-apple-system,sans-serif" font-size="8.5" fill="#E05A3A" font-weight="600">Peak</text>
+  <!-- Current zone badge -->
+  <rect x="60" y="126" width="80" height="24" rx="10" fill="rgba(224,90,58,0.1)"/>
+  <text x="100" y="142" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" font-weight="700" fill="#E05A3A">Fat Burn Zone</text>
+  <!-- BPM top -->
+  <text x="100" y="58" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="30" font-weight="700" fill="#1A1825">72</text>
+  <text x="100" y="72" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#9A96A8">BPM</text>
+  <!-- Heart -->
+  <path d="M82 53c0-2.5 2.3-4.5 4.8-4.5 1.4 0 2.5 1 3 2 .5-1 1.6-2 3-2 2.5 0 4.8 2 4.8 4.5 0 4.2-7.8 9-7.8 9S82 57.2 82 53z" fill="#E05A3A"/>
+</svg>

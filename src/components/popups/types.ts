@@ -1,5 +1,6 @@
 export const POPUP_NAME_ENUM = {
   LANG: 'LangPopup',
-  INFO: 'InfoPopup',
+  FEATURES_INFO: 'FeaturesInfoPopup',
+  MEASURE_INFO: 'MeasureInfoPopup',
   CONFIRMATION: 'ConfirmationPopup',
 }
