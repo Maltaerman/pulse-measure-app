@@ -42,7 +42,8 @@
     "popup_measure-info_slide-item_4_title": "Wait ~30 Seconds",
     "popup_measure-info_slide-item_4_subtitle": "Step 4 of 5",
     "popup_measure-info_slide-item_5_title": "Your Result is Ready!",
-    "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5"
+    "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5",
+    "main_measure_hiw_title": "How It Works"
   },
 
   "en-ca": {
@@ -88,7 +89,8 @@
     "popup_measure-info_slide-item_4_title": "Wait ~30 Seconds",
     "popup_measure-info_slide-item_4_subtitle": "Step 4 of 5",
     "popup_measure-info_slide-item_5_title": "Your Result is Ready!",
-    "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5"
+    "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5",
+    "main_measure_hiw_title": "How It Works"
   },
 
   "de": {
@@ -134,7 +136,8 @@
     "popup_measure-info_slide-item_4_title": "~30 Sekunden warten",
     "popup_measure-info_slide-item_4_subtitle": "Schritt 4 von 5",
     "popup_measure-info_slide-item_5_title": "Dein Ergebnis ist bereit!",
-    "popup_measure-info_slide-item_5_subtitle": "Schritt 5 von 5"
+    "popup_measure-info_slide-item_5_subtitle": "Schritt 5 von 5",
+    "main_measure_hiw_title": "So funktioniert es"
   },
 
   "it": {
@@ -175,7 +178,8 @@
     "popup_measure-info_slide-item_4_title": "Attendi ~30 secondi",
     "popup_measure-info_slide-item_4_subtitle": "Passo 4 di 5",
     "popup_measure-info_slide-item_5_title": "Il tuo risultato è pronto!",
-    "popup_measure-info_slide-item_5_subtitle": "Passo 5 di 5"
+    "popup_measure-info_slide-item_5_subtitle": "Passo 5 di 5",
+    "main_measure_hiw_title": "Come funziona"
   },
 
   "ja": {
@@ -221,7 +225,8 @@
     "popup_measure-info_slide-item_4_title": "約30秒待つ",
     "popup_measure-info_slide-item_4_subtitle": "ステップ 4 / 5",
     "popup_measure-info_slide-item_5_title": "結果が表示されました！",
-    "popup_measure-info_slide-item_5_subtitle": "ステップ 5 / 5"
+    "popup_measure-info_slide-item_5_subtitle": "ステップ 5 / 5",
+    "main_measure_hiw_title": "使い方"
   },
 
   "fr": {
@@ -267,6 +272,7 @@
     "popup_measure-info_slide-item_4_title": "Attendre ~30 secondes",
     "popup_measure-info_slide-item_4_subtitle": "Étape 4 sur 5",
     "popup_measure-info_slide-item_5_title": "Votre résultat est prêt !",
-    "popup_measure-info_slide-item_5_subtitle": "Étape 5 sur 5"
+    "popup_measure-info_slide-item_5_subtitle": "Étape 5 sur 5",
+    "main_measure_hiw_title": "Comment ça fonctionne"
   }
 }
