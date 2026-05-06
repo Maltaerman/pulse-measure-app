@@ -6,14 +6,16 @@ import { useBPM } from '@/composables/useBPM'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 import LastMeasure from '@/components/main/LastMeasure.vue'
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import HIWButton from '@/components/main/HIWButton.vue'
 
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
-import { usePopupManager } from '@/components/popups/usePopupManager'
+// import BaseIcon from '@/components/bases/BaseIcon.vue'
+
+// import { POPUP_NAME_ENUM } from '@/components/popups/types'
+// import { usePopupManager } from '@/components/popups/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
-const { openPopup } = usePopupManager()
+// const { openPopup } = usePopupManager()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -89,21 +91,7 @@ onBeforeUnmount(async () => {
 
 <template>
   <section class="relative flex-1 flex flex-col items-center justify-center">
-    <button
-      type="button"
-      class="group flex flex-row gap-1 items-center justify-center z-10 absolute left-2 top-4 cursor-pointer"
-      @click="openPopup({ component: POPUP_NAME_ENUM.MEASURE_INFO })"
-    >
-      <p
-        class="text-text-primary text-md font-medium transition-colors duration-300 group-hover:text-text-secondary"
-        v-text="$t('main_measure_hiw_title')"
-      />
-
-      <BaseIcon
-        name="info"
-        class="size-5 text-text-primary group-hover:text-text-secondary transition-all duration-300"
-      />
-    </button>
+    <HIWButton class="absolute left-2 top-2 z-10" />
 
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
