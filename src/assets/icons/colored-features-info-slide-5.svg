@@ -1,0 +1,61 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Globe base circle -->
+  <circle cx="100" cy="95" r="58" fill="#F5F2EE" stroke="#E0DBCF" stroke-width="1.5"/>
+
+  <!-- Latitude lines -->
+  <ellipse cx="100" cy="95" rx="58" ry="20" fill="none" stroke="#E0DBCF" stroke-width="1"/>
+  <ellipse cx="100" cy="95" rx="58" ry="40" fill="none" stroke="#E0DBCF" stroke-width="1"/>
+
+  <!-- Vertical meridian -->
+  <line x1="100" y1="37" x2="100" y2="153" stroke="#E0DBCF" stroke-width="1"/>
+
+  <!-- Outer globe border -->
+  <circle cx="100" cy="95" r="58" fill="none" stroke="#D8D4CE" stroke-width="1.5"/>
+
+  <!-- Language flag chips — positioned around globe -->
+
+  <!-- EN — top left -->
+  <rect x="18" y="30" width="36" height="20" rx="10" fill="#E05A3A"/>
+  <text x="36" y="44" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">EN</text>
+
+  <!-- DE — top right -->
+  <rect x="146" y="30" width="36" height="20" rx="10" fill="#4FC3F7"/>
+  <text x="164" y="44" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">DE</text>
+
+  <!-- FR — middle left -->
+  <rect x="8" y="85" width="36" height="20" rx="10" fill="#81C784"/>
+  <text x="26" y="99" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">FR</text>
+
+  <!-- IT — middle right -->
+  <rect x="156" y="85" width="36" height="20" rx="10" fill="#FFB74D"/>
+  <text x="174" y="99" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">IT</text>
+
+  <!-- JA — bottom left -->
+  <rect x="18" y="140" width="36" height="20" rx="10" fill="#BA68C8"/>
+  <text x="36" y="154" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">JA</text>
+
+  <!-- EN-CA — bottom right -->
+  <rect x="146" y="140" width="36" height="20" rx="10" fill="#E05A3A" opacity="0.65"/>
+  <text x="164" y="154" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="8" font-weight="700" fill="#fff">CA</text>
+
+  <!-- Connector dots from chips to globe -->
+  <circle cx="54" cy="55" r="2.5" fill="#D8D4CE"/>
+  <circle cx="146" cy="55" r="2.5" fill="#D8D4CE"/>
+  <circle cx="44" cy="95" r="2.5" fill="#D8D4CE"/>
+  <circle cx="156" cy="95" r="2.5" fill="#D8D4CE"/>
+  <circle cx="54" cy="135" r="2.5" fill="#D8D4CE"/>
+  <circle cx="146" cy="135" r="2.5" fill="#D8D4CE"/>
+
+  <!-- Connector lines -->
+  <line x1="54" y1="49" x2="54" y2="55" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="146" y1="49" x2="146" y2="55" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="44" y1="95" x2="58" y2="95" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="142" y1="95" x2="156" y2="95" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="54" y1="140" x2="54" y2="135" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+  <line x1="146" y1="140" x2="146" y2="135" stroke="#D8D4CE" stroke-width="1" stroke-dasharray="2 2"/>
+
+  <!-- Center heart on globe -->
+  <path d="M91 91c0-3.9 3.3-7 7.3-7 2.1 0 3.7 1.5 4.7 3 1-1.5 2.6-3 4.7-3 4 0 7.3 3.1 7.3 7 0 6.5-12 14-12 14S91 97.5 91 91z" fill="#E05A3A"/>
+
+</svg>

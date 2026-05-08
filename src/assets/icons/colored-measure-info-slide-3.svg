@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring (largest, most transparent) -->
+  <circle cx="100" cy="100" r="90" fill="rgba(224,90,58,0.06)"/>
+  <!-- Middle ring -->
+  <circle cx="100" cy="100" r="68" fill="rgba(224,90,58,0.10)"/>
+  <!-- Inner button -->
+  <circle cx="100" cy="100" r="48" fill="rgba(224,90,58,0.20)"/>
+
+  <!-- Finger tap hint — fingertip shape pressing button -->
+  <!-- Finger body coming from bottom-right -->
+  <ellipse cx="148" cy="158" rx="14" ry="22" fill="#F0C4A8" stroke="#D4956E" stroke-width="1.2" transform="rotate(-38 148 158)"/>
+  <!-- Fingernail -->
+  <ellipse cx="138" cy="143" rx="7" ry="4" fill="rgba(255,255,255,0.35)" transform="rotate(-38 138 143)"/>
+  <!-- Touch ripple where finger meets button -->
+  <circle cx="122" cy="128" r="10" fill="rgba(224,90,58,0.18)" stroke="#E05A3A" stroke-width="1" stroke-dasharray="3 2"/>
+  <circle cx="122" cy="128" r="16" stroke="#E05A3A" stroke-width="0.8" fill="none" opacity="0.25"/>
+
+  <!-- START label -->
+  <text
+    x="93"
+    y="106"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="18"
+    font-weight="700"
+    letter-spacing="0.08em"
+    fill="#E05A3A"
+  >START</text>
+</svg>

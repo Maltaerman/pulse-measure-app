@@ -1,16 +1,29 @@
 <script setup lang="ts">
-import { useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { PAGE_NAME_ENUM } from '@/router'
+import {
+  defineAsyncComponent,
+  useTemplateRef,
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
 
-import { useCamera } from '@/composables/useCamera'
+// import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
-import LastMeasure from '@/components/main/LastMeasure.vue'
+import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 
+// import BaseIcon from '@/components/bases/BaseIcon.vue'
+
+// import { POPUP_NAME_ENUM } from '@/components/popups'
+// import { usePopupManager } from '@/composables/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
+const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
+
+// const { openPopup } = usePopupManager()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -31,7 +44,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-const { avgR } = useCamera(videoRef, canvasRef, ctx)
+// const { avgR } = useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)
@@ -85,7 +98,9 @@ onBeforeUnmount(async () => {
 </script>
 
 <template>
-  <section class="flex-1 flex flex-col items-center justify-center">
+  <section class="relative flex-1 flex flex-col items-center justify-center">
+    <MainMeasureHIWButton class="absolute left-2 top-2 z-10" />
+
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
@@ -123,7 +138,7 @@ onBeforeUnmount(async () => {
     </div>
 
     <Transition mode="out-in" name="transition-slide-bottom">
-      <LastMeasure
+      <MainLastMeasure
         v-if="lastMeasureData"
         v-bind="{ ...lastMeasureData, id: Number(lastMeasureData.id) }"
         class="w-[calc(100%-16px)] absolute bottom-2"

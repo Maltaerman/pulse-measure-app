@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring background -->
+  <circle cx="100" cy="100" r="74" fill="#F5F2EE" stroke="#E8E4DE" stroke-width="2"/>
+  <!-- Track ring -->
+  <circle cx="100" cy="100" r="64" fill="none" stroke="#E8E3DC" stroke-width="10"/>
+  <!-- Progress arc ~75% = dasharray 301 402 -->
+  <circle cx="100" cy="100" r="64"
+    fill="none"
+    stroke="#E05A3A"
+    stroke-width="10"
+    stroke-dasharray="301 100"
+    stroke-dashoffset="88"
+    stroke-linecap="round"
+    transform="rotate(-90 100 100)"
+  />
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="50" fill="white" stroke="#F0EBE4" stroke-width="1.5"/>
+  <!-- Heart icon inside -->
+  <path d="M87 97C87 93.1 90.6 89.5 94.8 89.5C97.2 89.5 99.2 91 100.5 93C101.8 91 103.8 89.5 106.2 89.5C110.4 89.5 114 93.1 114 97C114 104.5 100.5 114 100.5 114C100.5 114 87 104.5 87 97Z" fill="#E05A3A"/>
+  <!-- Time text -->
+  <text x="100" y="122" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#9A96A8">30 sec</text>
+  <!-- Top indicator dot -->
+  <circle cx="100" cy="26" r="6" fill="#E05A3A"/>
+  <!-- ECG wave at bottom -->
+  <polyline
+    points="22,178 36,178 40,166 44,188 48,154 52,188 56,178 78,178 82,170 86,178 114,178 118,165 122,178 144,178 148,166 152,188 156,154 160,188 164,178 178,178"
+    stroke="#E05A3A"
+    stroke-width="1.8"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

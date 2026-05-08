@@ -2,14 +2,13 @@
 import { PAGE_NAME_ENUM } from '@/router'
 
 import BaseIcon from '@/components/bases/BaseIcon.vue'
+import { POPUP_NAME_ENUM } from '@/components/popups'
 
 import { useTheme } from '@/composables/useTheme'
-
-import { usePopupManager } from '@/components/popups/usePopupManager'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
-const { openPopup } = usePopupManager()
+import { usePopupManager } from '@/composables/usePopupManager'
 
 const { toggleTheme } = useTheme()
+const { openPopup } = usePopupManager()
 
 const LEFT_NAVIGATION = {
   [PAGE_NAME_ENUM.MAIN]: {
@@ -19,12 +18,6 @@ const LEFT_NAVIGATION = {
   },
 
   [PAGE_NAME_ENUM.MEASURE_LIST]: {
-    to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'burger-menu',
-    iconClasses: '',
-  },
-
-  [PAGE_NAME_ENUM.SETTINGS]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
     icon: 'burger-menu',
     iconClasses: '',
@@ -75,14 +68,6 @@ const LEFT_NAVIGATION = {
         @click="toggleTheme"
       >
         <BaseIcon name="light" class="size-6" />
-      </button>
-
-      <button
-        type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
-        @click="$router.push({ name: PAGE_NAME_ENUM.SETTINGS })"
-      >
-        <BaseIcon name="settings" class="size-6" />
       </button>
     </div>
   </header>

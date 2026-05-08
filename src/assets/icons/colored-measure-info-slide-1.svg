@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone body -->
+  <rect x="62" y="18" width="76" height="142" rx="16" fill="#F5F2EE" stroke="#D8D4CE" stroke-width="2"/>
+  <!-- Screen -->
+  <rect x="72" y="30" width="56" height="90" rx="8" fill="#EAE6E0"/>
+  <!-- Notch -->
+  <rect x="90" y="26" width="20" height="6" rx="3" fill="#D8D4CE"/>
+  <!-- Camera module on back (visible through screen area - simplified) -->
+  <circle cx="100" cy="126" r="13" fill="#C8C4BE" stroke="#B8B3AC" stroke-width="1.5"/>
+  <circle cx="100" cy="126" r="8" fill="#2C2A28"/>
+  <circle cx="97" cy="123" r="2.5" fill="white" opacity="0.45"/>
+  <!-- Flash -->
+  <rect x="112" y="123" width="7" height="7" rx="2" fill="#C8C4BE"/>
+  <!-- Power btn -->
+  <rect x="138" y="60" width="3.5" height="18" rx="1.75" fill="#C8C4BE"/>
+  <!-- Volume -->
+  <rect x="58.5" y="55" width="3.5" height="14" rx="1.75" fill="#C8C4BE"/>
+  <rect x="58.5" y="74" width="3.5" height="14" rx="1.75" fill="#C8C4BE"/>
+  <!-- Home bar -->
+  <rect x="85" y="151" width="30" height="4" rx="2" fill="#C8C4BE"/>
+  <!-- Pulse rings -->
+  <circle cx="100" cy="126" r="20" stroke="#E05A3A" stroke-width="2" stroke-dasharray="5 3" fill="rgba(224,90,58,0.1)"/>
+  <circle cx="100" cy="126" r="30" stroke="#E05A3A" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <circle cx="100" cy="126" r="40" stroke="#E05A3A" stroke-width="0.8" fill="none" opacity="0.15"/>
+</svg>

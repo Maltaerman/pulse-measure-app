@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePopupManager } from '@/components/popups/usePopupManager'
+import { usePopupManager } from '@/composables/usePopupManager'
 
 import BaseButton from '@/components/bases/BaseButton.vue'
 import BaseIcon from '@/components/bases/BaseIcon.vue'

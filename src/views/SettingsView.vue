@@ -51,7 +51,7 @@ const state = reactive({
       <div class="flex items-center justify-between py-2">
         <p class="text-sm">
           {{ $t('settings_color-theme') }} /
-          <span class="text-primary font-black uppercase">{{ theme }}</span>
+          <span class="text-primary font-black uppercase" v-text="theme" />
         </p>
 
         <BaseToggle

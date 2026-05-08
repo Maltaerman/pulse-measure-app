@@ -1,6 +1,6 @@
 import { type Ref, ref } from 'vue'
 
-import { useBodyScrollLock } from '@/composables/useBodyScrollLock'
+import { useBodyScrollLock } from './useBodyScrollLock'
 
 const { lockScroll, unlockScroll } = useBodyScrollLock()
 

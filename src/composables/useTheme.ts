@@ -24,8 +24,6 @@ export function useTheme() {
     setTheme(theme.value)
   }
 
-  // setTheme(theme.value)
-
   return {
     theme,
     setTheme,

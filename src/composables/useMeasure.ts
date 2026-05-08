@@ -2,12 +2,20 @@ import { ref } from 'vue'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
+// TODO: review
 export interface IMeasure {
   id: string | number
   userId: string
   bpm: number
   createdAt: number
   measure: number[]
+  // TODO: new enteties
+  duration?: number
+  bpmMin?: number
+  bpmAvg?: number
+  bpmMax?: number
+  hrv?: number
+  zone?: number
 }
 
 async function addItem(data: IMeasure) {
