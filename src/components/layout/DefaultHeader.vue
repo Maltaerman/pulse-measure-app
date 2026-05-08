@@ -24,12 +24,6 @@ const LEFT_NAVIGATION = {
     iconClasses: '',
   },
 
-  [PAGE_NAME_ENUM.SETTINGS]: {
-    to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'burger-menu',
-    iconClasses: '',
-  },
-
   [PAGE_NAME_ENUM.MEASURE_ITEM]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
     icon: 'arrow',
@@ -75,14 +69,6 @@ const LEFT_NAVIGATION = {
         @click="toggleTheme"
       >
         <BaseIcon name="light" class="size-6" />
-      </button>
-
-      <button
-        type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
-        @click="$router.push({ name: PAGE_NAME_ENUM.SETTINGS })"
-      >
-        <BaseIcon name="settings" class="size-6" />
       </button>
     </div>
   </header>

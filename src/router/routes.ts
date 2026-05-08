@@ -2,13 +2,6 @@ import { PAGE_NAME_ENUM, LAYOUT_ENUM } from './enums'
 
 export default [
   {
-    path: '/:locale?/achievements',
-    name: PAGE_NAME_ENUM.ACHIEVEMENTS,
-    meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/AchievementsView.vue'),
-  },
-
-  {
     path: '/:locale?/',
     name: PAGE_NAME_ENUM.MAIN,
     meta: { layout: LAYOUT_ENUM.DEFAULT },
@@ -29,19 +22,21 @@ export default [
     component: () => import('@/views/MeasureDetailView.vue'),
   },
 
+  // TODO: add this in the next iteration
   // {
-  //   path: '/:locale?/message',
-  //   name: PAGE_NAME_ENUM.WARNING,
+  //   path: '/:locale?/settings',
+  //   name: PAGE_NAME_ENUM.SETTINGS,
   //   meta: { layout: LAYOUT_ENUM.DEFAULT },
-  //   component: () => import('@/views/WarningView.vue'),
+  //   component: () => import('@/views/SettingsView.vue'),
   // },
 
-  {
-    path: '/:locale?/settings',
-    name: PAGE_NAME_ENUM.SETTINGS,
-    meta: { layout: LAYOUT_ENUM.DEFAULT },
-    component: () => import('@/views/SettingsView.vue'),
-  },
+  // TODO: add this in the next iteration
+  // {
+  //   path: '/:locale?/achievements',
+  //   name: PAGE_NAME_ENUM.ACHIEVEMENTS,
+  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
+  //   component: () => import('@/views/AchievementsView.vue'),
+  // },
 
   {
     path: '/:locale?/:catchAll(.*)',
