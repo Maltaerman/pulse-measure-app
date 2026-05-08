@@ -2,14 +2,13 @@
 import { PAGE_NAME_ENUM } from '@/router'
 
 import BaseIcon from '@/components/bases/BaseIcon.vue'
+import { POPUP_NAME_ENUM } from '@/components/popups'
 
 import { useTheme } from '@/composables/useTheme'
-
-import { usePopupManager } from '@/components/popups/usePopupManager'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
-const { openPopup } = usePopupManager()
+import { usePopupManager } from '@/composables/usePopupManager'
 
 const { toggleTheme } = useTheme()
+const { openPopup } = usePopupManager()
 
 const LEFT_NAVIGATION = {
   [PAGE_NAME_ENUM.MAIN]: {

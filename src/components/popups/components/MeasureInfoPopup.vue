@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { usePopupManager } from '@/components/popups/usePopupManager'
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 import BaseSwiper from '@/components/bases/BaseSwiper.vue'
 import BaseSwiperItem from '@/components/bases/BaseSwiperItem.vue'
+
+import { usePopupManager } from '@/composables/usePopupManager'
 
 const { closePopup } = usePopupManager()
 

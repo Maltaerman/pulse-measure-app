@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { usePopupManager } from './usePopupManager'
+import { usePopupManager } from '@/composables/usePopupManager'
+
 import { popupRegistry } from './popupRegistry'
 
 const { popupState } = usePopupManager()

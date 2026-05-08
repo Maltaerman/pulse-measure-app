@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<IProps>(), {
     <MeasureDetailGraph class="max-w -40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <button
-      class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
+      class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer transition-colors duration-300"
       @click.prevent
     >
       {{ $t('global_view-all') }}

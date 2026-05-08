@@ -30,10 +30,7 @@ const props = withDefaults(defineProps<IProps>(), {
       class="h-2 rounded-full relative mb-1"
       style="background: linear-gradient(to right, #4fc3f7, #81c784, #ffb74d, #e05a3a)"
     >
-      <div
-        class="absolute -top-1 h-4 w-1 rounded-full bg-text-primary"
-        :style="{ left: '80% '}"
-      />
+      <div class="absolute -top-1 h-4 w-1 rounded-full bg-text-primary" :style="{ left: '80% ' }" />
     </div>
 
     <div class="relative h-4">

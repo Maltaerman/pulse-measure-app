@@ -6,13 +6,12 @@ import { format } from 'date-fns'
 
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
-
-import { usePopupManager } from '@/components/popups/usePopupManager'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
-import { useMeasure } from '@/composables/useMeasure'
-
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
+
+import { usePopupManager } from '@/composables/usePopupManager'
+import { useMeasure } from '@/composables/useMeasure'
 
 const route = useRoute()
 const { t: $t } = useI18n()
@@ -144,7 +143,7 @@ function deleteButtonHandler() {
 
     <section v-else>
       <p
-        class="size-full m-auto text-center px-4 py-3 text-lg font-medium text-text-primary"
+        class="size-full m-auto text-center px-4 py-3 text-lg font-medium text-text-primary transition-colors duration-300"
         v-text="$t('measure_detail_empty')"
       />
     </section>

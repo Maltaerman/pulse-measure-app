@@ -6,7 +6,7 @@ import { PAGE_NAME_ENUM } from '@/router'
 import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
 import PopupManager from '@/components/popups/PopupManager.vue'
-import { usePopupManager } from '@/components/popups/usePopupManager'
+import { usePopupManager } from '@/composables/usePopupManager'
 
 import LayoutDefaultHeader from '@/components/layout/LayoutDefaultHeader.vue'
 import LayoutDefaultMeasureButton from '@/components/layout/LayoutDefaultMeasureButton.vue'
