@@ -8,8 +8,8 @@ import { POPUP_NAME_ENUM } from '@/components/popups/types'
 import PopupManager from '@/components/popups/PopupManager.vue'
 import { usePopupManager } from '@/components/popups/usePopupManager'
 
-import DefaultHeader from '@/components/layout/DefaultHeader.vue'
-import MeasureButton from '@/components/layout/MeasureButton.vue'
+import LayoutDefaultHeader from '@/components/layout/LayoutDefaultHeader.vue'
+import LayoutDefaultMeasureButton from '@/components/layout/LayoutDefaultMeasureButton.vue'
 
 const route = useRoute()
 const { openPopup } = usePopupManager()
@@ -25,14 +25,14 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
 
 <template>
   <div class="max-w-3xl mx-auto">
-    <DefaultHeader class="sticky top-0 z-20 h-(--headerHeight)" />
+    <LayoutDefaultHeader class="sticky top-0 z-20 h-(--headerHeight)" />
 
     <main
       class="relative flex size-full flex-1 flex-col --screenMinHeight transition-colors duration-300 p-4 bg-bg"
     >
       <slot />
 
-      <MeasureButton
+      <LayoutDefaultMeasureButton
         v-if="isMeasureButton"
         class="fixed bottom-8 left-8 md:left-[calc((100%-672px)/2)]"
       />
@@ -43,4 +43,3 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
     </Transition>
   </div>
 </template>
-I

@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t: $t } = useI18n()
 
-const ZONES_ENUM =[
+const ZONES_ENUM = [
   { key: 'rest', color: '#4fc3f7', leftShift: '12%' },
   { key: 'fat-burn', color: '#81c784', leftShift: '36%' },
   { key: 'cardio', color: '#ffb74d', leftShift: '62%' },

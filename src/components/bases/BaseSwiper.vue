@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type Component } from 'vue'
 
-import { Grid, Navigation, Pagination, Autoplay, Scrollbar } from 'swiper/modules'
+import { Navigation, Pagination, Autoplay, Scrollbar } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
 import 'swiper/css'
@@ -10,48 +10,50 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/grid'
 
-const props = defineProps({
-  component: {
-    type: Object,
-    required: true,
-  },
+interface IBreakpoint {
+  slidesPerView?: number | 'auto'
+  slidesPerGroup?: number
+  spaceBetween?: number
+}
 
-  slides: {
-    type: Array,
-    default: () => [],
-  },
+interface ISlide {
+  id: number | string
+  [key: string]: unknown
+}
 
-  breakpoints: {
-    type: Object,
-    default: () => ({
-      0: { slidesPerView: 'auto', slidesPerGroup: 1, spaceBetween: 12 },
-    }),
-  },
+interface IPagination {
+  clickable?: boolean
+  dynamicBullets?: boolean
+  [key: string]: unknown
+}
 
-  pagination: {
-    type: [Boolean, Object],
-    default: false,
-  },
+interface IAutoplay {
+  delay?: number
+  disableOnInteraction?: boolean
+  [key: string]: unknown
+}
 
-  itemWidthClass: {
-    type: String,
-    default: '',
-  },
+interface IProps {
+  component: Component
+  slides?: ISlide[]
+  breakpoints?: Record<number, IBreakpoint>
+  pagination?: boolean | IPagination
+  itemWidthClass?: string
+  itemHeightClass?: string
+  swiperOffset?: string
+  autoplay?: boolean | IAutoplay
+}
 
-  itemHeightClass: {
-    type: String,
-    default: '',
-  },
-
-  swiperOffset: {
-    type: String,
-    default: '',
-  },
-
-  autoplay: {
-    type: [Boolean, Object],
-    default: false,
-  },
+const props = withDefaults(defineProps<IProps>(), {
+  slides: () => [],
+  breakpoints: () => ({
+    0: { slidesPerView: 'auto', slidesPerGroup: 1, spaceBetween: 12 },
+  }),
+  pagination: false,
+  itemWidthClass: '',
+  itemHeightClass: '',
+  swiperOffset: '',
+  autoplay: false,
 })
 
 const swiperOptions = computed(() => ({
