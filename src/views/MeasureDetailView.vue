@@ -22,7 +22,7 @@ const { measureList, isLoadingMeasureList, getMeasureList, deleteMeasure } = use
 getMeasureList()
 
 const measureData = computed(() =>
-  measureList.value.find(({ id }) => id === Number(route.params.id)),
+  measureList.value.find(({ id }) => id === route.params.id),
 )
 
 const measureStats = computed(() => [
