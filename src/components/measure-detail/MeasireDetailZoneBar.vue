@@ -14,9 +14,9 @@ export interface IProps {
   zone: number
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  zone: 0,
-})
+// const props = withDefaults(defineProps<IProps>(), {
+//   zone: 0,
+// })
 </script>
 
 <template>

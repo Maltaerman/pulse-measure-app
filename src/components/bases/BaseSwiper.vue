@@ -17,7 +17,6 @@ interface IBreakpoint {
 }
 
 interface ISlide {
-  id: number | string
   [key: string]: unknown
 }
 

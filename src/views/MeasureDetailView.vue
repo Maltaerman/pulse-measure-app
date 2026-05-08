@@ -21,7 +21,9 @@ const { measureList, isLoadingMeasureList, getMeasureList, deleteMeasure } = use
 
 getMeasureList()
 
-const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id))
+const measureData = computed(() =>
+  measureList.value.find(({ id }) => id === Number(route.params.id)),
+)
 
 const measureStats = computed(() => [
   {
@@ -64,7 +66,9 @@ const measureStats2 = computed(() => [
 function deleteButtonHandler() {
   function callback() {
     try {
-      deleteMeasure(measureData.value?.id)
+      if (!measureData.value?.id) return
+
+      deleteMeasure(measureData.value.id as number)
     } finally {
       closePopup()
     }
