@@ -24,7 +24,7 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
 </script>
 
 <template>
-  <div>
+  <div class="max-w-2xl mx-auto">
     <DefaultHeader class="sticky top-0 z-20 h-(--headerHeight)" />
 
     <main
