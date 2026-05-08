@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <template>
   <div class="bg-bg-card border border-border shadow-sm rounded-lg px-4 py-3">
-    <p class="text-xs font-medium uppercase text-text-muted mb-2" v-text="'Heart rate zone'" />
+    <p class="text-xs font-medium uppercase text-text-muted mb-2" v-text="$t('measure_detail_zone-bar_title')" />
 
     <div
       class="h-2 rounded-full relative mb-1"

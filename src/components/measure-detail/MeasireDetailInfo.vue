@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<IProps>(), {})
     <div v-if="props.measure?.length" class="relative rounded-lg bg-bg-muted p-2">
       <p
         class="absolute top-2 left-2 text-sm font-normal uppercase text-text-muted mb-1.5"
-        v-text="'ECG waveform'"
+        v-text="$t('measure_detail_graph_title')"
       />
 
       <MeasureDetailGraph class="mx-auto w-full h-30" :data="props.measure" :border-width="2" />

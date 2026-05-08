@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { format } from 'date-fns'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { format } from 'date-fns'
+
 
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 
+import { usePopupManager } from '@/components/popups/usePopupManager'
+import { POPUP_NAME_ENUM } from '@/components/popups/types'
 import { useMeasure } from '@/composables/useMeasure'
 
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
 
 const route = useRoute()
+const { t: $t } = useI18n()
 
-const { measureList, isLoadingMeasureList, getMeasureList } = useMeasure()
+const { openPopup, closePopup } = usePopupManager()
+const { measureList, isLoadingMeasureList, getMeasureList, deleteMeasure } = useMeasure()
 
 getMeasureList()
 
@@ -21,22 +27,22 @@ const measureData = computed(() => measureList.value.find(({ id }) => id === rou
 
 const measureStats = computed(() => [
   {
-    title: 'Min',
+    title: $t('global_min'),
     value: measureData.value?.bpmMin || 0,
     subtitle: 'bpm',
   },
   {
-    title: 'Average',
+    title: $t('global_average'),
     value: measureData.value?.bpmAvg || 0,
     subtitle: 'bpm',
   },
   {
-    title: 'Max',
+    title: $t('global_max'),
     value: measureData.value?.bpmMax || 0,
     subtitle: 'bpm',
   },
   {
-    title: 'Variability',
+    title: $t('global_variability'),
     value: measureData.value?.hrv || 0,
     subtitle: 'ms HRV',
   },
@@ -44,18 +50,39 @@ const measureStats = computed(() => [
 
 const measureStats2 = computed(() => [
   {
-    title: 'time',
+    title: $t('global_time'),
     value: format(measureData.value?.createdAt || 0, 'HH:MM'),
   },
   {
-    title: 'duration',
+    title: $t('global_duration'),
     value: measureData.value?.duration || 0,
   },
   {
-    title: 'date',
+    title: $t('global_date'),
     value: format(measureData.value?.createdAt || 0, 'MMM dd'),
   },
 ])
+
+function deleteButtonHandler() {
+  function callback() {
+    try {
+      deleteMeasure(measureData.value?.id)
+    } finally {
+      closePopup()
+    }
+  }
+
+  openPopup({
+    component: POPUP_NAME_ENUM.CONFIRMATION,
+    data: {
+      title: 'popup_confirmation_title',
+      subtitle: 'popup_confirmation_subtitle',
+      submitButton: 'popup_confirmation_submit',
+      cancelButton: 'popup_confirmation_cancel',
+      callback,
+    },
+  })
+}
 </script>
 
 <template>
@@ -111,7 +138,7 @@ const measureStats2 = computed(() => [
         </div>
       </div>
 
-      <BaseButton class="mt-auto" size="lg" @click="() => {}">
+      <BaseButton class="mt-auto" size="lg" @click="deleteButtonHandler">
         {{ $t('measure_detail_delete') }}
       </BaseButton>
     </section>
@@ -119,7 +146,7 @@ const measureStats2 = computed(() => [
     <section v-else>
       <p
         class="size-full m-auto text-center px-4 py-3 text-lg font-medium text-text-primary"
-        v-text="'No measure found'"
+        v-text="$t('measure_detail_empty')"
       />
     </section>
   </Transition>
