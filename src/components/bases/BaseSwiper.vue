@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { Grid, Navigation, Pagination, Autoplay, Scrollbar } from 'swiper/modules'
-
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
-import { computed, useId } from 'vue'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -29,49 +28,9 @@ const props = defineProps({
     }),
   },
 
-  prevBtnId: {
-    type: String,
-    default: '',
-  },
-
-  nextBtnId: {
-    type: String,
-    default: '',
-  },
-
   pagination: {
     type: [Boolean, Object],
     default: false,
-  },
-
-  grid: {
-    type: Object,
-    default: null,
-  },
-
-  title: {
-    type: String,
-    default: '',
-  },
-
-  routeData: {
-    type: Object,
-    default: null,
-  },
-
-  areControlsShown: {
-    type: Boolean,
-    default: true,
-  },
-
-  headerMarginClass: {
-    type: String,
-    default: 'mb-4',
-  },
-
-  headerJustifyClass: {
-    type: String,
-    default: 'justify-between',
   },
 
   itemWidthClass: {
@@ -90,70 +49,29 @@ const props = defineProps({
   },
 
   autoplay: {
-    type: Object,
-    default: undefined,
-  },
-
-  isShadowShown: {
-    type: Boolean,
-    default: false,
-  },
-
-  leftShadowPositionClasses: {
-    type: String,
-    default: 'left-0 bottom-0 top-0',
-  },
-
-  rightShadowPositionClasses: {
-    type: String,
-    default: 'right-0 bottom-0 top-0',
-  },
-
-  shadowWidthClass: {
-    type: String,
-    default: 'w-30',
-  },
-
-  isCenterInsufficientSlides: {
-    type: Boolean,
-    default: false,
-  },
-
-  needScrollbar: {
-    type: Boolean,
+    type: [Boolean, Object],
     default: false,
   },
 })
 
-const nextBtnId = props.nextBtnId || useId()
-const prevBtnId = props.prevBtnId || useId()
-
 const swiperOptions = computed(() => ({
-  modules: [Navigation, Pagination, Autoplay, Scrollbar, ...(props.grid ? [Grid] : [])],
-  ...(props.grid ? { grid: props.grid } : {}),
+  modules: [Navigation, Pagination, Autoplay, Scrollbar],
   breakpoints: props.breakpoints,
   pagination: props.pagination,
-  navigation: {
-    nextEl: `#${nextBtnId}`,
-    prevEl: `#${prevBtnId}`,
-    disabledClass: '--disabled',
-  },
   scrollbar: {
-    el: '.swiper-scrollbar',
+    el: '',
     draggable: true,
     hide: false,
-    enabled: props.needScrollbar,
   },
   autoplay: props.autoplay,
-  centerInsufficientSlides: props.isCenterInsufficientSlides,
 }))
 </script>
 
 <template>
   <div class="relative">
     <Swiper v-bind="swiperOptions" :class="props.swiperOffset">
-      <SwiperSlide v-for="(slide, index) in props.slides" :key="index">
-        <slot name="slide" v-bind="{ slide, index }">
+      <SwiperSlide v-for="(slide, key) in props.slides" :key="key">
+        <slot name="slide" v-bind="{ slide, key }">
           <component
             :is="props.component"
             v-bind="slide"
@@ -161,8 +79,6 @@ const swiperOptions = computed(() => ({
           />
         </slot>
       </SwiperSlide>
-
-      <div v-if="props.needScrollbar" class="swiper-scrollbar" />
     </Swiper>
   </div>
 </template>
