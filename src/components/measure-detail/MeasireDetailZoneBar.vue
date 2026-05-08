@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<IProps>(), {
     >
       <div
         class="absolute -top-1 h-4 w-1 rounded-full bg-text-primary"
-        :style="{ left: `${440}px` }"
+        :style="{ left: '80% '}"
       />
     </div>
 
