@@ -1,9 +1,13 @@
 <script setup lang="ts">
-const ZONES_ENUM = [
-  { key: 'rest', label: 'Rest', color: '#4fc3f7', leftShift: '12%' },
-  { key: 'fat-burn', label: 'Fat burn', color: '#81c784', leftShift: '36%' },
-  { key: 'cardio', label: 'Cardio', color: '#ffb74d', leftShift: '62%' },
-  { key: 'peak', label: 'Peak', color: '#e05a3a', leftShift: '84%' },
+import { useI18n } from 'vue-i18n'
+
+const { t: $t } = useI18n()
+
+const ZONES_ENUM =[
+  { key: 'rest', color: '#4fc3f7', leftShift: '12%' },
+  { key: 'fat-burn', color: '#81c784', leftShift: '36%' },
+  { key: 'cardio', color: '#ffb74d', leftShift: '62%' },
+  { key: 'peak', color: '#e05a3a', leftShift: '84%' },
 ]
 
 export interface IProps {
@@ -34,11 +38,11 @@ const props = withDefaults(defineProps<IProps>(), {
 
     <div class="relative h-4">
       <p
-        v-for="{ key, label, leftShift } in ZONES_ENUM"
+        v-for="{ key, leftShift } in ZONES_ENUM"
         :key="key"
         class="absolute text-xs -translate-x-1/2 text-text-muted"
         :style="{ left: leftShift }"
-        v-text="label"
+        v-text="$t(`measure_detail_zone-bar_${key}`)"
       />
     </div>
   </div>
