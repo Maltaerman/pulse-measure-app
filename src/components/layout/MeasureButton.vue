@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PAGE_NAME_ENUM } from '@/router'
 
-import CommonHeart from '@/components/CommonHeart.vue'
+import CommonHeart from '@/components/common/CommonHeart.vue'
 </script>
 
 <template>

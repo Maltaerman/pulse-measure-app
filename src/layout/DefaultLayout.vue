@@ -32,9 +32,10 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
     >
       <slot />
 
-      <MeasureButton v-if="isMeasureButton" class="fixed bottom-8 left-8
-        md:left-[calc((100%-672px)/2)]
-      " />
+      <MeasureButton
+        v-if="isMeasureButton"
+        class="fixed bottom-8 left-8 md:left-[calc((100%-672px)/2)]"
+      />
     </main>
 
     <Transition mode="out-in" name="transition-fade">

@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import {
+  defineAsyncComponent,
+  useTemplateRef,
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
 
 // import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
-import LastMeasure from '@/components/main/LastMeasure.vue'
-import HIWButton from '@/components/main/HIWButton.vue'
+import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 
 // import BaseIcon from '@/components/bases/BaseIcon.vue'
 
@@ -14,6 +20,8 @@ import HIWButton from '@/components/main/HIWButton.vue'
 // import { usePopupManager } from '@/components/popups/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
+
+const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
 // const { openPopup } = usePopupManager()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
@@ -91,7 +99,7 @@ onBeforeUnmount(async () => {
 
 <template>
   <section class="relative flex-1 flex flex-col items-center justify-center">
-    <HIWButton class="absolute left-2 top-2 z-10" />
+    <MainMeasureHIWButton class="absolute left-2 top-2 z-10" />
 
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
@@ -130,7 +138,7 @@ onBeforeUnmount(async () => {
     </div>
 
     <Transition mode="out-in" name="transition-slide-bottom">
-      <LastMeasure
+      <MainLastMeasure
         v-if="lastMeasureData"
         v-bind="{ ...lastMeasureData, id: Number(lastMeasureData.id) }"
         class="w-[calc(100%-16px)] absolute bottom-2"
