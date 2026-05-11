@@ -8,22 +8,24 @@ import {
   onBeforeUnmount,
 } from 'vue'
 
-// import { useCamera } from '@/composables/useCamera'
-import { useBPM } from '@/composables/useBPM'
+import { toast } from 'vue3-toastify';
+import { useI18n } from 'vue-i18n'
+import 'vue3-toastify/dist/index.css';
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
+// import BaseIcon from '@/components/bases/BaseIcon.vue'
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 
-// import BaseIcon from '@/components/bases/BaseIcon.vue'
-
-// import { POPUP_NAME_ENUM } from '@/components/popups'
-// import { usePopupManager } from '@/composables/usePopupManager'
+// import { useCamera } from '@/composables/useCamera'
+import { useDevice } from '@/composables/useDevice'
+import { useBPM } from '@/composables/useBPM'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
-// const { openPopup } = usePopupManager()
+const { t: $t } = useI18n()
+const { isDesktop } = useDevice();
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -68,7 +70,21 @@ function intervalHandler() {
   }
 }
 
+
+
+
+
 function start() {
+  if (isDesktop.value) {
+    toast($t('measure_error_device'), {
+      type: 'error',
+      autoClose: 3000,
+    })
+
+    return
+  }
+
+
   isStarted.value = true
 
   intervalId.value = setInterval(intervalHandler, 1000)
@@ -105,7 +121,7 @@ onBeforeUnmount(async () => {
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
 
-    <div class="relative flex flex-col items-center justify-center">
+    <div class="relative flex flisMoex-col items-center justify-center">
       <div
         class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
       />

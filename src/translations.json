@@ -57,7 +57,8 @@
     "popup_measure-info_slide-item_4_subtitle": "Step 4 of 5",
     "popup_measure-info_slide-item_5_title": "Your Result is Ready!",
     "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5",
-    "main_measure_hiw_title": "How It Works"
+    "main_measure_hiw_title": "How It Works",
+    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets."
   },
 
   "en-ca": {
@@ -118,7 +119,8 @@
     "popup_measure-info_slide-item_4_subtitle": "Step 4 of 5",
     "popup_measure-info_slide-item_5_title": "Your Result is Ready!",
     "popup_measure-info_slide-item_5_subtitle": "Step 5 of 5",
-    "main_measure_hiw_title": "How It Works"
+    "main_measure_hiw_title": "How It Works",
+    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets."
   },
 
   "de": {
@@ -179,7 +181,8 @@
     "popup_measure-info_slide-item_4_subtitle": "Schritt 4 von 5",
     "popup_measure-info_slide-item_5_title": "Dein Ergebnis ist bereit!",
     "popup_measure-info_slide-item_5_subtitle": "Schritt 5 von 5",
-    "main_measure_hiw_title": "So funktioniert es"
+    "main_measure_hiw_title": "So funktioniert es",
+    "measure_error_device": "Die Herzfrequenzmessung ist nur auf Mobilgeräten und Tablets verfügbar."
   },
 
   "it": {
@@ -235,7 +238,8 @@
     "popup_measure-info_slide-item_4_subtitle": "Passo 4 di 5",
     "popup_measure-info_slide-item_5_title": "Il tuo risultato è pronto!",
     "popup_measure-info_slide-item_5_subtitle": "Passo 5 di 5",
-    "main_measure_hiw_title": "Come funziona"
+    "main_measure_hiw_title": "Come funziona",
+    "measure_error_device": "La misurazione della frequenza cardiaca è disponibile solo su dispositivi mobili e tablet."
   },
 
   "ja": {
@@ -296,7 +300,8 @@
     "popup_measure-info_slide-item_4_subtitle": "ステップ 4 / 5",
     "popup_measure-info_slide-item_5_title": "結果が表示されました！",
     "popup_measure-info_slide-item_5_subtitle": "ステップ 5 / 5",
-    "main_measure_hiw_title": "使い方"
+    "main_measure_hiw_title": "使い方",
+    "measure_error_device": "心拍数の測定はスマートフォンとタブレットのみ対応しています。"
   },
 
   "fr": {
@@ -357,6 +362,7 @@
     "popup_measure-info_slide-item_4_subtitle": "Étape 4 sur 5",
     "popup_measure-info_slide-item_5_title": "Votre résultat est prêt !",
     "popup_measure-info_slide-item_5_subtitle": "Étape 5 sur 5",
-    "main_measure_hiw_title": "Comment ça fonctionne"
+    "main_measure_hiw_title": "Comment ça fonctionne",
+    "measure_error_device": "La mesure de la fréquence cardiaque est uniquement disponible sur les appareils mobiles et les tablettes."
   }
 }
