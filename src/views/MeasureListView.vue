@@ -23,7 +23,7 @@ getMeasureList()
     <Transition mode="out-in" name="transition-fade">
       <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 
-      <div v-else-if="measureList.length > 0">
+      <div v-else-if="measureList.length > 0" class="flex flex-col gap-4">
         <div
           v-for="measureListItem in measureList"
           :key="measureListItem.id"
