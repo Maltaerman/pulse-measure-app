@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import {
-  defineAsyncComponent,
-  useTemplateRef,
-  ref,
-  computed,
-  onMounted,
-  onBeforeUnmount,
-} from 'vue'
+import { defineAsyncComponent, useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { PAGE_NAME_ENUM } from '@/router'
+
+import { useCamera } from '@/composables/useCamera'
+import { useBPM } from '@/composables/useBPM'
 
 import { toast } from 'vue3-toastify';
 import { useI18n } from 'vue-i18n'
 import 'vue3-toastify/dist/index.css';
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
-// import BaseIcon from '@/components/bases/BaseIcon.vue'
-import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
+// import LastMeasure from '@/components/main/LastMeasure.vue'
 
-// import { useCamera } from '@/composables/useCamera'
 import { useDevice } from '@/composables/useDevice'
-import { useBPM } from '@/composables/useBPM'
+
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
+
 
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
@@ -46,7 +42,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-// const { avgR } = useCamera(videoRef, canvasRef, ctx)
+const { avgR } = useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)
@@ -59,6 +55,8 @@ const intervalId = ref(0)
 const localMeasureData = ref([])
 
 function intervalHandler() {
+  console.log('intervalHandler', measureProgress.value)
+
   measureProgress.value += 10
 
   if (measureProgress.value === 100 && bpm.value === 0) {
@@ -69,10 +67,6 @@ function intervalHandler() {
     localMeasureData.value.push(bpm.value as never)
   }
 }
-
-
-
-
 
 function start() {
   if (isDesktop.value) {
@@ -98,7 +92,7 @@ onBeforeUnmount(async () => {
   if (intervalId.value) clearInterval(intervalId.value)
 
   await addMeasure({
-    id: Date.now(),
+    id: `${Date.now()}`,
     userId: userId.value,
     createdAt: Date.now(),
     bpm: 0,
