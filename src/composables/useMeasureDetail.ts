@@ -14,9 +14,9 @@ export interface IMeasureStats {
 }
 
 function getZone(bpm: number): MeasureZone {
-  if (bpm < 60)  return 'rest'
-  if (bpm < 70)  return 'fat-burn'
-  if (bpm < 85)  return 'cardio'
+  if (bpm < 60) return 'rest'
+  if (bpm < 70) return 'fat-burn'
+  if (bpm < 85) return 'cardio'
 
   return 'peak'
 }
@@ -24,27 +24,20 @@ function getZone(bpm: number): MeasureZone {
 function calcHrv(samples: number[]): number {
   if (samples.length < 2) return 0
 
-  const squaredDiffs = samples
-    .slice(1)
-    .map((val, i) => Math.pow(val - samples[i], 2))
+  const squaredDiffs = samples.slice(1).map((val, i) => Math.pow(val - samples[i], 2))
 
   const mean = squaredDiffs.reduce((sum, v) => sum + v, 0) / squaredDiffs.length
   return Math.round(Math.sqrt(mean))
 }
 
-export function useMeasureDetail(masureDetail: ComputedRef<IMeasure>,): IMeasureStats {
+export function useMeasureDetail(masureDetail: ComputedRef<IMeasure>): IMeasureStats {
   const samples = computed(() => masureDetail.value?.measure ?? [])
 
   const duration = computed(() => samples.value.length)
 
-  const bpmMin = computed(() =>
-    samples.value.length ? Math.min(...samples.value) : 0,
-  )
+  const bpmMin = computed(() => (samples.value.length ? Math.min(...samples.value) : 0))
 
-  const bpmMax = computed(() =>
-    samples.value.length ? Math.max(...samples.value) : 0,
-  )
-
+  const bpmMax = computed(() => (samples.value.length ? Math.max(...samples.value) : 0))
 
   const bpmAvg = computed(() => {
     if (!samples.value.length) return 0

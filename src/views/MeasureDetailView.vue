@@ -4,6 +4,8 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { format } from 'date-fns'
 
+import { DATE_FNS_LOCALES_LIST } from '@/router'
+
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
@@ -15,26 +17,16 @@ import { useMeasure } from '@/composables/useMeasure'
 import { useMeasureDetail } from '@/composables/useMeasureDetail'
 
 const route = useRoute()
-const { t: $t } = useI18n()
+const { locale, t: $t } = useI18n()
 
 const { openPopup, closePopup } = usePopupManager()
 const { measureList, isLoadingMeasureList, getMeasureList, deleteMeasure } = useMeasure()
 
 getMeasureList()
 
-const measureData = computed(() =>
-  measureList.value.find(({ id }) => id === route.params.id),
-)
+const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id))
 
-const {  duration,
-    bpmMin,
-    bpmAvg,
-    bpmMax,
-    hrv,
-    zone
-  
-  } = useMeasureDetail(measureData)
-
+const { duration, bpmMin, bpmAvg, bpmMax, hrv, zone } = useMeasureDetail(measureData)
 
 const measureStats = computed(() => [
   {
@@ -62,7 +54,9 @@ const measureStats = computed(() => [
 const measureStats2 = computed(() => [
   {
     title: $t('global_time'),
-    value: format(measureData.value?.createdAt || 0, 'HH:MM'),
+    value: format(measureData.value?.createdAt || 0, 'HH:MM', {
+      locale: DATE_FNS_LOCALES_LIST[locale.value],
+    }),
   },
   {
     title: $t('global_duration'),
@@ -70,7 +64,9 @@ const measureStats2 = computed(() => [
   },
   {
     title: $t('global_date'),
-    value: format(measureData.value?.createdAt || 0, 'MMM dd'),
+    value: format(measureData.value?.createdAt || 0, 'MMM dd', {
+      locale: DATE_FNS_LOCALES_LIST[locale.value],
+    }),
   },
 ])
 
@@ -99,11 +95,6 @@ function deleteButtonHandler() {
 </script>
 
 <template>
-
-  {{ 
-    zone
-     }}
-
   <Transition mode="out-in" name="transition-fade">
     <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 

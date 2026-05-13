@@ -2,6 +2,8 @@
 import { format } from 'date-fns'
 import { defineAsyncComponent } from 'vue'
 
+import { DATE_FNS_LOCALES_LIST } from '@/router'
+
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 
 const MeasureDetailGraph = defineAsyncComponent(() => import('./MeasureDetailGraph.vue'))
@@ -26,8 +28,10 @@ const props = withDefaults(defineProps<IProps>(), {})
       <div class="flex mb-auto items-center gap-1 text-xs text-text-muted">
         <BaseIcon name="calendar" class="size-4 text-text-muted" />
 
-        {{ format(props.createdAt, 'MMMM d, yyyy') }}
-        {{ format(props.createdAt, 'h:mm a') }}
+        {{
+          format(props.createdAt, 'MMMM d, yyyy', { locale: DATE_FNS_LOCALES_LIST[$i18n.locale] })
+        }}
+        {{ format(props.createdAt, 'h:mm a', { locale: DATE_FNS_LOCALES_LIST[$i18n.locale] }) }}
       </div>
     </div>
 

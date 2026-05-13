@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { defineAsyncComponent, useTemplateRef, ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import {
+  defineAsyncComponent,
+  useTemplateRef,
+  ref,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
 import { PAGE_NAME_ENUM } from '@/router'
 
 import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
-import { toast } from 'vue3-toastify';
+import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
-import 'vue3-toastify/dist/index.css';
+import 'vue3-toastify/dist/index.css'
 
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 // import LastMeasure from '@/components/main/LastMeasure.vue'
@@ -17,11 +24,10 @@ import { useDevice } from '@/composables/useDevice'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
-
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
 const { t: $t } = useI18n()
-const { isDesktop } = useDevice();
+const { isDesktop } = useDevice()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -77,7 +83,6 @@ function start() {
 
     return
   }
-
 
   isStarted.value = true
 

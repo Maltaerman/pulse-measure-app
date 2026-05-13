@@ -32,8 +32,8 @@ const props = withDefaults(defineProps<IProps>(), {})
     >
       <div
         class="absolute -top-1 h-4 w-1 rounded-full bg-text-primary"
-
-      :style="{ left: ZONES_ENUM.find(zone => zone.key === props.zone)?.leftShift }" />
+        :style="{ left: ZONES_ENUM.find((zone) => zone.key === props.zone)?.leftShift }"
+      />
     </div>
 
     <div class="relative h-4">
