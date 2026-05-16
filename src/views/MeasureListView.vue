@@ -37,7 +37,7 @@ getMeasureList()
             class="text-text-primary font-bold text-lg transition-colors duration-300"
             v-text="
               format(measureListItem.createdAt, 'MMMM d, yyyy', {
-                locale: DATE_FNS_LOCALES_LIST[$i18n.locale],
+                locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
               })
             "
           />

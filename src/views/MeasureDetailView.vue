@@ -26,7 +26,10 @@ getMeasureList()
 
 const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id))
 
-const { duration, bpmMin, bpmAvg, bpmMax, hrv, zone } = useMeasureDetail(measureData)
+const { duration, bpmMin, bpmAvg, bpmMax, hrv, zone } = useMeasureDetail(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  measureData as unknown as import('vue').UnwrapRef<any>,
+)
 
 const measureStats = computed(() => [
   {
@@ -55,7 +58,7 @@ const measureStats2 = computed(() => [
   {
     title: $t('global_time'),
     value: format(measureData.value?.createdAt || 0, 'HH:MM', {
-      locale: DATE_FNS_LOCALES_LIST[locale.value],
+      locale: DATE_FNS_LOCALES_LIST[locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
     }),
   },
   {
@@ -65,7 +68,7 @@ const measureStats2 = computed(() => [
   {
     title: $t('global_date'),
     value: format(measureData.value?.createdAt || 0, 'MMM dd', {
-      locale: DATE_FNS_LOCALES_LIST[locale.value],
+      locale: DATE_FNS_LOCALES_LIST[locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
     }),
   },
 ])

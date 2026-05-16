@@ -29,9 +29,15 @@ const props = withDefaults(defineProps<IProps>(), {})
         <BaseIcon name="calendar" class="size-4 text-text-muted" />
 
         {{
-          format(props.createdAt, 'MMMM d, yyyy', { locale: DATE_FNS_LOCALES_LIST[$i18n.locale] })
+          format(props.createdAt, 'MMMM d, yyyy', {
+            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
+          })
         }}
-        {{ format(props.createdAt, 'h:mm a', { locale: DATE_FNS_LOCALES_LIST[$i18n.locale] }) }}
+        {{
+          format(props.createdAt, 'h:mm a', {
+            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
+          })
+        }}
       </div>
     </div>
 
