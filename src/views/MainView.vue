@@ -7,15 +7,16 @@ import {
   onMounted,
   onBeforeUnmount,
 } from 'vue'
-import { PAGE_NAME_ENUM } from '@/router'
+// import { PAGE_NAME_ENUM } from '@/router'
 
-import { useCamera } from '@/composables/useCamera'
+// import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
 import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
 import 'vue3-toastify/dist/index.css'
 
+import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 // import LastMeasure from '@/components/main/LastMeasure.vue'
 
@@ -48,7 +49,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-const { avgR } = useCamera(videoRef, canvasRef, ctx)
+// const { avgR } = useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)
