@@ -4,6 +4,8 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { format } from 'date-fns'
 
+import { DATE_FNS_LOCALES_LIST } from '@/router'
+
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
@@ -12,38 +14,42 @@ import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
 import { usePopupManager } from '@/composables/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
+import { useMeasureDetail } from '@/composables/useMeasureDetail'
 
 const route = useRoute()
-const { t: $t } = useI18n()
+const { locale, t: $t } = useI18n()
 
 const { openPopup, closePopup } = usePopupManager()
 const { measureList, isLoadingMeasureList, getMeasureList, deleteMeasure } = useMeasure()
 
 getMeasureList()
 
-const measureData = computed(() =>
-  measureList.value.find(({ id }) => id === Number(route.params.id)),
+const measureData = computed(() => measureList.value.find(({ id }) => id === route.params.id))
+
+const { duration, bpmMin, bpmAvg, bpmMax, hrv, zone } = useMeasureDetail(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  measureData as unknown as import('vue').UnwrapRef<any>,
 )
 
 const measureStats = computed(() => [
   {
     title: $t('global_min'),
-    value: measureData.value?.bpmMin || 0,
+    value: bpmMin.value,
     subtitle: 'bpm',
   },
   {
     title: $t('global_average'),
-    value: measureData.value?.bpmAvg || 0,
+    value: bpmAvg.value,
     subtitle: 'bpm',
   },
   {
     title: $t('global_max'),
-    value: measureData.value?.bpmMax || 0,
+    value: bpmMax.value,
     subtitle: 'bpm',
   },
   {
     title: $t('global_variability'),
-    value: measureData.value?.hrv || 0,
+    value: hrv.value,
     subtitle: 'ms HRV',
   },
 ])
@@ -51,15 +57,19 @@ const measureStats = computed(() => [
 const measureStats2 = computed(() => [
   {
     title: $t('global_time'),
-    value: format(measureData.value?.createdAt || 0, 'HH:MM'),
+    value: format(measureData.value?.createdAt || 0, 'HH:MM', {
+      locale: DATE_FNS_LOCALES_LIST[locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
+    }),
   },
   {
     title: $t('global_duration'),
-    value: measureData.value?.duration || 0,
+    value: duration.value,
   },
   {
     title: $t('global_date'),
-    value: format(measureData.value?.createdAt || 0, 'MMM dd'),
+    value: format(measureData.value?.createdAt || 0, 'MMM dd', {
+      locale: DATE_FNS_LOCALES_LIST[locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
+    }),
   },
 ])
 
@@ -127,7 +137,7 @@ function deleteButtonHandler() {
         </div>
       </div>
 
-      <MeasireDetailZoneBar :zone="measureData?.zone || 0" />
+      <MeasireDetailZoneBar :zone="zone" />
 
       <div class="bg-bg-muted rounded-lg px-4 py-3 flex items-center justify-between">
         <div

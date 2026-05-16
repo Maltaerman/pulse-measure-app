@@ -7,23 +7,27 @@ import {
   onMounted,
   onBeforeUnmount,
 } from 'vue'
+import { PAGE_NAME_ENUM } from '@/router'
 
-// import { useCamera } from '@/composables/useCamera'
+import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
+import { toast } from 'vue3-toastify'
+import { useI18n } from 'vue-i18n'
+import 'vue3-toastify/dist/index.css'
+
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
-import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
+// import LastMeasure from '@/components/main/LastMeasure.vue'
 
-// import BaseIcon from '@/components/bases/BaseIcon.vue'
+import { useDevice } from '@/composables/useDevice'
 
-// import { POPUP_NAME_ENUM } from '@/components/popups'
-// import { usePopupManager } from '@/composables/usePopupManager'
 import { useMeasure } from '@/composables/useMeasure'
 import { useUser } from '@/composables/useUser'
 
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
-// const { openPopup } = usePopupManager()
+const { t: $t } = useI18n()
+const { isDesktop } = useDevice()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
@@ -44,7 +48,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-// const { avgR } = useCamera(videoRef, canvasRef, ctx)
+const { avgR } = useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)
@@ -57,6 +61,8 @@ const intervalId = ref(0)
 const localMeasureData = ref([])
 
 function intervalHandler() {
+  console.log('intervalHandler', measureProgress.value)
+
   measureProgress.value += 10
 
   if (measureProgress.value === 100 && bpm.value === 0) {
@@ -69,6 +75,15 @@ function intervalHandler() {
 }
 
 function start() {
+  if (isDesktop.value) {
+    toast($t('measure_error_device'), {
+      type: 'error',
+      autoClose: 3000,
+    })
+
+    return
+  }
+
   isStarted.value = true
 
   intervalId.value = setInterval(intervalHandler, 1000)
@@ -82,7 +97,7 @@ onBeforeUnmount(async () => {
   if (intervalId.value) clearInterval(intervalId.value)
 
   await addMeasure({
-    id: Date.now(),
+    id: `${Date.now()}`,
     userId: userId.value,
     createdAt: Date.now(),
     bpm: 0,
@@ -105,7 +120,7 @@ onBeforeUnmount(async () => {
 
     <canvas ref="canvasRef" width="320" height="240" class="hidden" />
 
-    <div class="relative flex flex-col items-center justify-center">
+    <div class="relative flex flisMoex-col items-center justify-center">
       <div
         class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
       />

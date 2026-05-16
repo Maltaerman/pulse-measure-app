@@ -2,6 +2,8 @@
 import { defineAsyncComponent } from 'vue'
 import { format } from 'date-fns'
 
+import { DATE_FNS_LOCALES_LIST } from '@/router'
+
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 
 import { useMeasure } from '@/composables/useMeasure'
@@ -20,10 +22,12 @@ getMeasureList()
 
 <template>
   <section class="relative flex flex-1 flex-col gap-4">
+    {{}}
+
     <Transition mode="out-in" name="transition-fade">
       <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 
-      <div v-else-if="measureList.length > 0">
+      <div v-else-if="measureList.length > 0" class="flex flex-col gap-4">
         <div
           v-for="measureListItem in measureList"
           :key="measureListItem.id"
@@ -31,7 +35,11 @@ getMeasureList()
         >
           <p
             class="text-text-primary font-bold text-lg transition-colors duration-300"
-            v-text="format(measureListItem.createdAt, 'MMMM d, yyyy')"
+            v-text="
+              format(measureListItem.createdAt, 'MMMM d, yyyy', {
+                locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
+              })
+            "
           />
 
           <MeasureListItem v-bind="{ ...measureListItem, id: Number(measureListItem.id) }" />

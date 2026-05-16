@@ -11,6 +11,10 @@ const router = createRouter({
 
 const DEFAULT_LOCALE = 'en'
 
+import { de, enCA, it, ja, fr } from 'date-fns/locale'
+
+export const DATE_FNS_LOCALES_LIST = { en: enCA, de, 'en-ca': enCA, it, ja, fr }
+
 export const LOCALES_LIST = ['en', 'de', 'en-ca', 'it', 'ja', 'fr']
 
 import { PAGE_NAME_ENUM } from '@/router'
