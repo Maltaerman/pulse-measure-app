@@ -9,7 +9,7 @@ import {
 } from 'vue'
 // import { PAGE_NAME_ENUM } from '@/router'
 
-// import { useCamera } from '@/composables/useCamera'
+import { useCamera } from '@/composables/useCamera'
 import { useBPM } from '@/composables/useBPM'
 
 import { toast } from 'vue3-toastify'
@@ -49,7 +49,7 @@ function resetContext() {
 
 onMounted(getContext)
 
-// const { avgR } = useCamera(videoRef, canvasRef, ctx)
+useCamera(videoRef, canvasRef, ctx)
 const { bpm } = useBPM()
 
 const measureProgress = ref(0)
