@@ -2,7 +2,7 @@
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
-import { usePopupManager } from '@/composables/usePopupManager'
+import { usePopupManager } from '@/composables'
 
 const { openPopup } = usePopupManager()
 </script>

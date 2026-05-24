@@ -3,7 +3,7 @@ import BaseIcon from '@/components/bases/BaseIcon.vue'
 import BaseSwiper from '@/components/bases/BaseSwiper.vue'
 import BaseSwiperItem from '@/components/bases/BaseSwiperItem.vue'
 
-import { usePopupManager } from '@/composables/usePopupManager'
+import { usePopupManager } from '@/composables'
 
 const { closePopup } = usePopupManager()
 

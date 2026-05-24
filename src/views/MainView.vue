@@ -9,8 +9,8 @@ import {
 } from 'vue'
 // import { PAGE_NAME_ENUM } from '@/router'
 
-import { useCamera } from '@/composables/useCamera'
-import { useBPM } from '@/composables/useBPM'
+import { useCamera } from '@/composables'
+import { useBPM } from '@/composables'
 
 import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
@@ -20,10 +20,10 @@ import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 // import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
 // import LastMeasure from '@/components/main/LastMeasure.vue'
 
-import { useDevice } from '@/composables/useDevice'
+import { useDevice } from '@/composables'
 
-import { useMeasure } from '@/composables/useMeasure'
-import { useUser } from '@/composables/useUser'
+import { useMeasure } from '@/composables'
+import { useUser } from '@/composables'
 
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 

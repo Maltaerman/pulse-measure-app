@@ -4,8 +4,8 @@ import { PAGE_NAME_ENUM } from '@/router'
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups'
 
-import { useTheme } from '@/composables/useTheme'
-import { usePopupManager } from '@/composables/usePopupManager'
+import { useTheme } from '@/composables'
+import { usePopupManager } from '@/composables'
 
 const { toggleTheme } = useTheme()
 const { openPopup } = usePopupManager()

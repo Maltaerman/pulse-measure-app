@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseButton from '@/components/bases/BaseButton.vue'
 
-import { useTheme } from '@/composables/useTheme'
+import { useTheme } from '@/composables'
 
 const { theme, toggleTheme } = useTheme()
 </script>

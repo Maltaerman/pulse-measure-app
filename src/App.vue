@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useLayout } from '@/layout/useLayout'
 // import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
-import { useRouteGuard } from '@/composables/useRouteGuard'
-import { useUser } from '@/composables/useUser'
+import { useRouteGuard } from '@/composables'
+import { useUser } from '@/composables'
 
 const { layoutComponent } = useLayout()
 const { setUser } = useUser()

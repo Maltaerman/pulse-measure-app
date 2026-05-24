@@ -3,9 +3,9 @@ import { reactive } from 'vue'
 
 import BaseToggle from '@/components/bases/BaseToggle.vue'
 
-import { useLocalTime } from '@/composables/useLocalTime'
+import { useLocalTime } from '@/composables'
 
-import { useTheme, THEME_ENUM } from '@/composables/useTheme'
+import { useTheme, THEME_ENUM } from '@/composables'
 
 const { theme, toggleTheme } = useTheme()
 const { localTime } = useLocalTime()

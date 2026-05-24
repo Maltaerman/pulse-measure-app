@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePopupManager } from '@/composables/usePopupManager'
+import { usePopupManager } from '@/composables'
 
 import { popupRegistry } from './popupRegistry'
 

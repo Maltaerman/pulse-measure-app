@@ -6,8 +6,8 @@ import BaseIcon from '@/components/bases/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups'
 
-import { usePopupManager } from '@/composables/usePopupManager'
-import { useMeasure } from '@/composables/useMeasure'
+import { usePopupManager } from '@/composables'
+import { useMeasure } from '@/composables'
 
 export interface IProps {
   id: number

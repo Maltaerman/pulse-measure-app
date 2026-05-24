@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import { type MeasureZone } from '@/composables/useMeasureDetail'
+import { type MeasureZone } from '@/composables'
 
 const { t: $t } = useI18n()
 

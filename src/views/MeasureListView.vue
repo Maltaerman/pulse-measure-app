@@ -6,7 +6,7 @@ import { DATE_FNS_LOCALES_LIST } from '@/router'
 
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 
-import { useMeasure } from '@/composables/useMeasure'
+import { useMeasure } from '@/composables'
 
 const MeasureListItem = defineAsyncComponent(
   () => import('@/components/measure-list/MeasureListItem.vue'),
