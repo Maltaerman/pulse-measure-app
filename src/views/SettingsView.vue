@@ -3,12 +3,9 @@ import { reactive } from 'vue'
 
 import BaseToggle from '@/components/bases/BaseToggle.vue'
 
-import { useLocalTime } from '@/composables'
-
 import { useTheme, THEME_ENUM } from '@/composables'
 
 const { theme, toggleTheme } = useTheme()
-const { localTime } = useLocalTime()
 
 const state = reactive({
   reminder: true,
@@ -36,10 +33,6 @@ const state = reactive({
 
       <div class="flex items-center justify-between py-2">
         <span class="text-sm" v-text="$t('settings_local-time')" />
-
-        <button type="button" class="text-sm text-text-secondary hover:text-text-primary">
-          {{ localTime }}
-        </button>
       </div>
 
       <div class="flex items-center justify-between py-2">
