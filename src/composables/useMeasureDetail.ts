@@ -13,10 +13,16 @@ export interface IMeasureStats {
   zone: ComputedRef<MeasureZone>
 }
 
+const ZONE_ENUM = {
+  REST: 60,
+  FAT_BURN: 70,
+  CARDIO: 85,
+}
+
 function getZone(bpm: number): MeasureZone {
-  if (bpm < 60) return 'rest'
-  if (bpm < 70) return 'fat-burn'
-  if (bpm < 85) return 'cardio'
+  if (bpm < ZONE_ENUM.REST) return 'rest'
+  if (bpm < ZONE_ENUM.FAT_BURN) return 'fat-burn'
+  if (bpm < ZONE_ENUM.CARDIO) return 'cardio'
 
   return 'peak'
 }
