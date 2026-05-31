@@ -62,8 +62,6 @@ const intervalId = ref(0)
 const localMeasureData = ref([])
 
 function intervalHandler() {
-  console.log('intervalHandler', measureProgress.value)
-
   measureProgress.value += 10
 
   if (measureProgress.value === 100 && bpm.value === 0) {
