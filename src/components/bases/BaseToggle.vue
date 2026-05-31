@@ -3,16 +3,18 @@ import { computed } from 'vue'
 
 export interface IProps {
   modelValue: boolean
-  isDisabled: boolean
-  name: string
-  containerSizeClasses: string
-  toggleSizeClasses: string
-  transitionClasses: string
+  isDisabled?: boolean
+  id?: string
+  name?: string
+  containerSizeClasses?: string
+  toggleSizeClasses?: string
+  transitionClasses?: string
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   modelValue: false,
   isDisabled: false,
+  id: '',
   name: '',
   containerSizeClasses: 'w-10 h-5',
   toggleSizeClasses: 'size-5',
