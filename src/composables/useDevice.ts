@@ -1,10 +1,10 @@
 import { ref, onMounted } from 'vue'
 
-export function useDevice() {
-  const isMobile = ref(false)
-  const isTablet = ref(false)
-  const isDesktop = ref(false)
+const isMobile = ref(false)
+const isTablet = ref(false)
+const isDesktop = ref(false)
 
+export function useDevice() {
   const detectDevice = () => {
     const ua = navigator.userAgent.toLowerCase()
 
