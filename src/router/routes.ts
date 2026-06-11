@@ -21,26 +21,4 @@ export default [
     meta: { layout: LAYOUT_ENUM.DEFAULT },
     component: () => import('@/views/MeasureDetailView.vue'),
   },
-
-  // TODO: add this in the next iteration
-  // {
-  //   path: '/:locale?/settings',
-  //   name: PAGE_NAME_ENUM.SETTINGS,
-  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
-  //   component: () => import('@/views/SettingsView.vue'),
-  // },
-
-  // TODO: add this in the next iteration
-  // {
-  //   path: '/:locale?/achievements',
-  //   name: PAGE_NAME_ENUM.ACHIEVEMENTS,
-  //   meta: { layout: LAYOUT_ENUM.DEFAULT },
-  //   component: () => import('@/views/AchievementsView.vue'),
-  // },
-
-  {
-    path: '/:locale?/:catchAll(.*)',
-    name: PAGE_NAME_ENUM.NOT_FOUND,
-    redirect: { name: PAGE_NAME_ENUM.MAIN },
-  },
 ]
