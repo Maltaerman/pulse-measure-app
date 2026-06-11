@@ -2,7 +2,7 @@
 import { format } from 'date-fns'
 import { defineAsyncComponent } from 'vue'
 
-import { DATE_FNS_LOCALES_LIST } from '@/router'
+import { DATE_FNS_LOCALES_LIST } from '@/composables'
 
 import BaseIcon from '@/components/bases/BaseIcon.vue'
 

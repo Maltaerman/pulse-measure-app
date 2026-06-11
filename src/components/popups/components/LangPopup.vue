@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { LOCALES_LIST } from '@/router'
-
-import { usePopupManager } from '@/composables'
-import { useLocale } from '@/composables'
+import { useLocale, usePopupManager, LOCALES_LIST } from '@/composables'
 
 import BaseButton from '@/components/bases/BaseButton.vue'
 import BaseIcon from '@/components/bases/BaseIcon.vue'

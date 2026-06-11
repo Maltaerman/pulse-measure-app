@@ -1,4 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { PAGE_NAME_ENUM } from '@/router'
+import { i18n } from '@/plugins/i18n'
+
+import { LOCALES_LIST, type Locale } from '@/composables'
 
 import routes from './routes'
 
@@ -10,16 +14,6 @@ const router = createRouter({
 })
 
 const DEFAULT_LOCALE = 'en'
-
-import { de, enCA, it, ja, fr } from 'date-fns/locale'
-
-export const DATE_FNS_LOCALES_LIST = { en: enCA, de, 'en-ca': enCA, it, ja, fr }
-
-export const LOCALES_LIST = ['en', 'de', 'en-ca', 'it', 'ja', 'fr']
-
-import { PAGE_NAME_ENUM } from '@/router'
-
-import { i18n } from '@/plugins/i18n'
 
 router.beforeEach((to, from) => {
   const locale = to.params.locale as string | undefined
@@ -39,7 +33,7 @@ router.beforeEach((to, from) => {
     }
   }
 
-  i18n.global.locale.value = locale as 'en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr'
+  i18n.global.locale.value = locale as Locale
 })
 
 export default router

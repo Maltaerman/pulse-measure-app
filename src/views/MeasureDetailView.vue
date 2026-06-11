@@ -4,17 +4,18 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { format } from 'date-fns'
 
-import { DATE_FNS_LOCALES_LIST } from '@/router'
-
 import BaseLoader from '@/components/bases/BaseLoader.vue'
 import BaseButton from '@/components/bases/BaseButton.vue'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
-import { usePopupManager } from '@/composables'
-import { useMeasure } from '@/composables'
-import { useMeasureDetail } from '@/composables'
+import {
+  usePopupManager,
+  useMeasure,
+  useMeasureDetail,
+  DATE_FNS_LOCALES_LIST,
+} from '@/composables'
 
 const route = useRoute()
 const { locale, t: $t } = useI18n()
