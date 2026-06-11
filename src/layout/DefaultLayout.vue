@@ -15,7 +15,7 @@ const route = useRoute()
 const { openPopup } = usePopupManager()
 
 const isMeasureButton = computed(() =>
-  [PAGE_NAME_ENUM.MEASURE_LIST, PAGE_NAME_ENUM.MEASURE_ITEM, PAGE_NAME_ENUM.SETTINGS].includes(
+  [PAGE_NAME_ENUM.MEASURE_LIST, PAGE_NAME_ENUM.MEASURE_ITEM].includes(
     route.name as string,
   ),
 )
