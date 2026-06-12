@@ -1,7 +1,6 @@
 :root {
   --headerHeight: 60px;
   --zIndexPopup: 300;
-  --zIndexDrawer: 500;
 }
 
 .--screenHeight {
