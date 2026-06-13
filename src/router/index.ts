@@ -6,7 +6,7 @@ import { LOCALES_LIST, type Locale } from '@/composables'
 
 import routes from './routes'
 
-export * from './enums'
+export * from './types'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
