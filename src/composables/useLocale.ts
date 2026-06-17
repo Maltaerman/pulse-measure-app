@@ -5,6 +5,7 @@ import { de, enCA, it, ja, fr } from 'date-fns/locale'
 
 export type Locale = 'en' | 'de' | 'en-ca' | 'it' | 'ja' | 'fr';
 
+export const DEFAULT_LOCALE = 'en'
 export const DATE_FNS_LOCALES_LIST = { en: enCA, de, 'en-ca': enCA, it, ja, fr }
 export const LOCALES_LIST = ['en', 'de', 'en-ca', 'it', 'ja', 'fr']
 

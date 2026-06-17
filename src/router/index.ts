@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { PAGE_NAME_ENUM } from '@/router'
 import { i18n } from '@/plugins/i18n'
 
-import { LOCALES_LIST, type Locale } from '@/composables'
+import { DEFAULT_LOCALE, LOCALES_LIST, type Locale } from '@/composables'
 
 import routes from './routes'
 
@@ -12,8 +12,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 })
-
-const DEFAULT_LOCALE = 'en'
 
 router.beforeEach((to, from) => {
   const locale = to.params.locale as string | undefined
