@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseLoader from '@/components/bases/BaseLoader.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 </script>
 
 <template>

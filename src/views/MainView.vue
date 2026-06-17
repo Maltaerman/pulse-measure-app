@@ -17,7 +17,7 @@ import { useI18n } from 'vue-i18n'
 import 'vue3-toastify/dist/index.css'
 
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
-// import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
+// import BaseCircleProgressBar from '@/components/base/BaseCircleProgressBar.vue'
 // import LastMeasure from '@/components/main/LastMeasure.vue'
 
 import { useDevice } from '@/composables'

@@ -2,7 +2,7 @@
 import { format } from 'date-fns'
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups'
 

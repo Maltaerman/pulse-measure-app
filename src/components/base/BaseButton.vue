@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineAsyncComponent, computed } from 'vue'
 
-const BaseLoader = defineAsyncComponent(() => import('@/components/bases/BaseLoader.vue'))
+const BaseLoader = defineAsyncComponent(() => import('@/components/base/BaseLoader.vue'))
 
 type ButtonType = 'button' | 'submit'
 type ButtonTheme = 'primary' | 'secondary'

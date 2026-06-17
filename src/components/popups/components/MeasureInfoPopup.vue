@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import BaseIcon from '@/components/bases/BaseIcon.vue'
-import BaseSwiper from '@/components/bases/BaseSwiper.vue'
-import BaseSwiperItem from '@/components/bases/BaseSwiperItem.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
+import BaseSwiper from '@/components/base/BaseSwiper.vue'
+import BaseSwiperItem from '@/components/base/BaseSwiperItem.vue'
 
 import { usePopupManager } from '@/composables'
 

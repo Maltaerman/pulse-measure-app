@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups'
 
 import { useTheme } from '@/composables'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 
 export interface IProps {
   title: string

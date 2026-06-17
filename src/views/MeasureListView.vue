@@ -2,7 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 import { format } from 'date-fns'
 
-import BaseLoader from '@/components/bases/BaseLoader.vue'
+import BaseLoader from '@/components/base/BaseLoader.vue'
 
 import { useMeasure, DATE_FNS_LOCALES_LIST } from '@/composables'
 

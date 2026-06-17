@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseHeart from '@/components/bases/BaseHeart.vue'
+import BaseHeart from '@/components/base/BaseHeart.vue'
 </script>
 
 <template>

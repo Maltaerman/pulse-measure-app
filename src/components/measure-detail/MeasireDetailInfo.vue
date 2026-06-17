@@ -5,7 +5,7 @@ import { defineAsyncComponent, computed } from 'vue'
 
 import { DATE_FNS_LOCALES_LIST } from '@/composables'
 
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 
 const MeasureDetailGraph = defineAsyncComponent(() => import('./MeasureDetailGraph.vue'))
 
