@@ -146,8 +146,9 @@ function deleteButtonHandler() {
           :key="title"
           class="flex flex-col items-center gap-0.5"
         >
-          <span class="text-sm font-bold text-text-primary" v-text="value" />
           <span class="text-xs uppercase text-text-muted" v-text="title" />
+
+          <span class="text-sm font-bold text-text-primary" v-text="value" />
         </div>
       </div>
 
