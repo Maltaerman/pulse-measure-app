@@ -35,11 +35,11 @@ const props = withDefaults(defineProps<IProps>(), {})
     <p class="text-left text-sm text-text-secondary" v-text="$t(props.data.subtitle)" />
 
     <div class="grid gap-2 sm:grid-cols-2">
-      <BaseButton class="w-full" @click="props.data.callback">
+      <BaseButton class="w-full" size="lg" @click="props.data.callback">
         {{ $t(props.data.submitButton) }}
       </BaseButton>
 
-      <BaseButton class="w-full sm:order-1" theme="secondary" @click="closePopup">
+      <BaseButton class="w-full sm:order-1" size="lg" theme="secondary" @click="closePopup">
         {{ $t(props.data.cancelButton) }}
       </BaseButton>
     </div>
