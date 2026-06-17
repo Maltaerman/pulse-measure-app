@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-import { defineAsyncComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { defineAsyncComponent, computed } from 'vue'
 
 import { DATE_FNS_LOCALES_LIST } from '@/composables'
 
@@ -15,6 +16,10 @@ export interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {})
+
+const i18n = useI18n()
+
+const locale = computed(() => DATE_FNS_LOCALES_LIST[i18n.locale.value as keyof typeof DATE_FNS_LOCALES_LIST])
 </script>
 
 <template>
@@ -28,16 +33,8 @@ const props = withDefaults(defineProps<IProps>(), {})
       <div class="flex mb-auto items-center gap-1 text-xs text-text-muted">
         <BaseIcon name="calendar" class="size-4 text-text-muted" />
 
-        {{
-          format(props.createdAt, 'MMMM d, yyyy', {
-            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
-          })
-        }}
-        {{
-          format(props.createdAt, 'h:mm a', {
-            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
-          })
-        }}
+        {{ format(props.createdAt, 'MMMM d, yyyy', { locale }) }}
+        {{ format(props.createdAt, 'h:mm a', { locale }) }}
       </div>
     </div>
 
