@@ -29,11 +29,10 @@ const props = withDefaults(defineProps<IProps>(), {
       <BaseIcon class="size-6 text-primary" name="heart" />
 
       <div class="flex flex-col">
-        <div
-          class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
-        >
-          <p>{{ format(props.createdAt, 'HH:MM') }}</p>
-        </div>
+        <p
+          class="ftext-text-secondary text-sm font-bold transition-colors duration-300"
+          v-text="format(props.createdAt, 'HH:MM')"
+        />
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
