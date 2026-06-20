@@ -34,10 +34,7 @@ const emit = defineEmits(['measure-start'])
       v-else
       class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
     >
-      <p
-        v-if="props.isStarted && props.bpm === 0"
-        v-text="$t('global_measuring')"
-      />
+      <p v-if="props.isStarted && props.bpm === 0" v-text="$t('global_measuring')" />
 
       <template v-else-if="props.bpm">
         {{ props.bpm }}

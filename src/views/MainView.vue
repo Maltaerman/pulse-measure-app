@@ -7,52 +7,29 @@ import {
   onMounted,
   onBeforeUnmount,
 } from 'vue'
-// import { PAGE_NAME_ENUM } from '@/router'
-
-import { useCamera } from '@/composables'
-import { useBPM } from '@/composables'
-
-import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
-import 'vue3-toastify/dist/index.css'
+import { toast } from 'vue3-toastify'
+
+import { useDevice, useCamera, useBPM, useMeasure, useUser } from '@/composables'
 
 import MainMeasureInfo from '@/components/main/MainMeasureInfo.vue'
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
 
-// import BaseCircleProgressBar from '@/components/base/BaseCircleProgressBar.vue'
-// import LastMeasure from '@/components/main/LastMeasure.vue'
-
-import { useDevice } from '@/composables'
-
-import { useMeasure } from '@/composables'
-import { useUser } from '@/composables'
-
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
 
+const videoRef = useTemplateRef('videoRef')
+const canvasRef = useTemplateRef('canvasRef')
+
+const canvasContex = ref<CanvasRenderingContext2D | null>(null)
+
 const { t: $t } = useI18n()
+useCamera(videoRef, canvasRef, canvasContex)
+const { bpm } = useBPM()
 const { isDesktop } = useDevice()
 const { addMeasure, measureList, getMeasureList } = useMeasure()
 const { userId } = useUser()
 
 getMeasureList()
-
-const videoRef = useTemplateRef('videoRef')
-const canvasRef = useTemplateRef('canvasRef')
-
-const ctx = ref<CanvasRenderingContext2D | null>(null)
-
-function getContext() {
-  if (canvasRef.value) ctx.value = canvasRef.value.getContext('2d')
-}
-
-function resetContext() {
-  ctx.value = null
-}
-
-onMounted(getContext)
-
-useCamera(videoRef, canvasRef, ctx)
-const { bpm } = useBPM()
 
 const measureProgress = ref(0)
 const isStarted = ref(false)
@@ -92,25 +69,39 @@ function start() {
   if (bpm.value > 0) isStarted.value = false
 }
 
-onBeforeUnmount(async () => {
-  if (!isStarted.value) return
+function getContext() {
+  if (canvasRef.value) canvasContex.value = canvasRef.value.getContext('2d')
+}
 
-  if (intervalId.value) clearInterval(intervalId.value)
+function resetContext() {
+  canvasContex.value = null
+}
 
-  await addMeasure({
-    id: `${Date.now()}`,
-    userId: userId.value,
-    createdAt: Date.now(),
-    bpm: 0,
-    measure: localMeasureData.value,
-  })
+async function createMeasure() {
+  try {
+    if (!isStarted.value) return
 
-  await getMeasureList()
+    if (intervalId.value) clearInterval(intervalId.value)
 
-  isStarted.value = false
-  measureProgress.value = 0
-  resetContext()
-})
+    await addMeasure({
+      id: `${Date.now()}`,
+      userId: userId.value,
+      createdAt: Date.now(),
+      bpm: 0,
+      measure: localMeasureData.value,
+    })
+
+    await getMeasureList()
+  } finally {
+    isStarted.value = false
+    measureProgress.value = 0
+
+    resetContext()
+  }
+}
+
+onMounted(getContext)
+onBeforeUnmount(createMeasure)
 </script>
 
 <template>
