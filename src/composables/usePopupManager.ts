@@ -32,9 +32,14 @@ export function usePopupManager() {
     unlockScroll()
   }
 
+  function popupKeydownEventListener(event: KeyboardEvent) {
+    if (event.key === 'Escape') closePopup();
+  }
+
   return {
     popupState,
     openPopup,
     closePopup,
+    popupKeydownEventListener,
   }
 }

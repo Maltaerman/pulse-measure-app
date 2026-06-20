@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { useLayout } from '@/layout/useLayout'
+import { useEventListener } from '@vueuse/core'
 // import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
-import { useUser } from '@/composables'
+import { usePopupManager, useUser } from '@/composables'
 
 const { layoutComponent } = useLayout()
+const { popupKeydownEventListener } = usePopupManager()
 const { setUser } = useUser()
 // const { layoutRouteTransition } = useLayoutRouteTransition();
+
+useEventListener('keydown', popupKeydownEventListener)
 
 setUser()
 </script>
