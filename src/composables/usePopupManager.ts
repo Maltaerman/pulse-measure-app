@@ -33,7 +33,7 @@ export function usePopupManager() {
   }
 
   function popupKeydownEventListener(event: KeyboardEvent) {
-    if (event.key === 'Escape') closePopup();
+    if (event.key === 'Escape') closePopup()
   }
 
   return {

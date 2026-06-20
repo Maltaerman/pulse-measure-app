@@ -15,9 +15,7 @@ const route = useRoute()
 const { openPopup } = usePopupManager()
 
 const isMeasureButton = computed(() =>
-  [PAGE_NAME_ENUM.MEASURE_LIST, PAGE_NAME_ENUM.MEASURE_ITEM].includes(
-    route.name as string,
-  ),
+  [PAGE_NAME_ENUM.MEASURE_LIST, PAGE_NAME_ENUM.MEASURE_ITEM].includes(route.name as string),
 )
 
 setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)

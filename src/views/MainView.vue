@@ -121,42 +121,7 @@ onBeforeUnmount(async () => {
 
     <canvas ref="canvasRef" width="100" height="100" class="hidden" />
 
-    <MainMeasureInfo
-      v-bind="{ bpm, isStarted }"
-      @measure-start="start"
-    />
-
-    <!-- <div class="relative flex flisMoex-col items-center justify-center">
-      <div
-        class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
-      />
-      <div
-        class="absolute w-36 h-36 bg-primary/20 rounded-full animate-ping [animation-delay:500ms]"
-      />
-      <div
-        class="absolute w-28 h-28 bg-primary/30 rounded-full animate-ping [animation-delay:900ms]"
-      />
-
-      <button
-        v-if="!isStarted"
-        type="button"
-        class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase cursor-pointer"
-        @click="start"
-      >
-        {{ $t('global_start') }}
-      </button>
-
-      <div
-        v-else
-        class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
-      >
-        <p v-if="isStarted && bpm === 0" v-text="$t('global_measuring')" />
-
-        <template v-else-if="bpm">
-          {{ bpm }}
-        </template>
-      </div>
-    </div> -->
+    <MainMeasureInfo v-bind="{ bpm, isStarted }" @measure-start="start" />
 
     <Transition mode="out-in" name="transition-slide-bottom">
       <MainLastMeasure

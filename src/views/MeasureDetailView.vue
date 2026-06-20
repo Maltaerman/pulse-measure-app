@@ -10,12 +10,7 @@ import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
 import { POPUP_NAME_ENUM } from '@/components/popups/types'
 
-import {
-  usePopupManager,
-  useMeasure,
-  useMeasureDetail,
-  DATE_FNS_LOCALES_LIST,
-} from '@/composables'
+import { usePopupManager, useMeasure, useMeasureDetail, DATE_FNS_LOCALES_LIST } from '@/composables'
 
 const route = useRoute()
 const { locale, t: $t } = useI18n()
