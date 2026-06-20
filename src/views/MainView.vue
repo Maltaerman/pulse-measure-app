@@ -16,7 +16,9 @@ import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
 import 'vue3-toastify/dist/index.css'
 
+import MainMeasureInfo from '@/components/main/MainMeasureInfo.vue'
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
+
 // import BaseCircleProgressBar from '@/components/base/BaseCircleProgressBar.vue'
 // import LastMeasure from '@/components/main/LastMeasure.vue'
 
@@ -117,9 +119,14 @@ onBeforeUnmount(async () => {
 
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
-    <canvas ref="canvasRef" width="320" height="240" class="hidden" />
+    <canvas ref="canvasRef" width="100" height="100" class="hidden" />
 
-    <div class="relative flex flisMoex-col items-center justify-center">
+    <MainMeasureInfo
+      v-bind="{ bpm, isStarted }"
+      @measure-start="start"
+    />
+
+    <!-- <div class="relative flex flisMoex-col items-center justify-center">
       <div
         class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
       />
@@ -149,7 +156,7 @@ onBeforeUnmount(async () => {
           {{ bpm }}
         </template>
       </div>
-    </div>
+    </div> -->
 
     <Transition mode="out-in" name="transition-slide-bottom">
       <MainLastMeasure

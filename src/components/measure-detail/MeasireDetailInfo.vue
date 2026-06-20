@@ -19,7 +19,9 @@ const props = withDefaults(defineProps<IProps>(), {})
 
 const i18n = useI18n()
 
-const locale = computed(() => DATE_FNS_LOCALES_LIST[i18n.locale.value as keyof typeof DATE_FNS_LOCALES_LIST])
+const locale = computed(
+  () => DATE_FNS_LOCALES_LIST[i18n.locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
+)
 </script>
 
 <template>
