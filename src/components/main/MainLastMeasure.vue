@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
       <div class="flex flex-col">
         <p
-          class="ftext-text-secondary text-sm font-bold transition-colors duration-300"
+          class="text-text-secondary text-sm font-bold transition-colors duration-300"
           v-text="format(props.createdAt, 'HH:MM')"
         />
 
