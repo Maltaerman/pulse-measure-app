@@ -2,9 +2,9 @@
 
 @import 'tailwindcss';
 
-@import './fonts.css';
 @import './colors.css';
-@import './layouts.css';
-@import './transitions.css';
+@import './fonts.css';
+@import './layout.css';
 @import './normalize.css';
+@import './transitions.css';
 @import './vue3-toastif.css';
