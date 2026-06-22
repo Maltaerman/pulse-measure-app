@@ -35,8 +35,7 @@ const LEFT_NAVIGATION = {
   <header
     class="relative bg-bg/80 backdrop-blur-md border-b border-border flex flex-row justify-between items-center py-2 px-4 transition-colors duration-300"
   >
-
-   <Transition name="transition-fade" mode="out-in">
+    <Transition name="transition-fade" mode="out-in">
       <button
         v-if="LEFT_NAVIGATION[$route.name as string]"
         :key="LEFT_NAVIGATION[$route.name as string].icon"
