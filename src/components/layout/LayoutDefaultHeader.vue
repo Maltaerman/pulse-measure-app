@@ -18,8 +18,8 @@ const LEFT_NAVIGATION = {
   },
 
   [PAGE_NAME_ENUM.MEASURE_LIST]: {
-    to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'burger-menu',
+    to: { name: PAGE_NAME_ENUM.MAIN },
+    icon: 'heart',
     iconClasses: '',
   },
 
@@ -35,16 +35,19 @@ const LEFT_NAVIGATION = {
   <header
     class="relative bg-bg/80 backdrop-blur-md border-b border-border flex flex-row justify-between items-center py-2 px-4 transition-colors duration-300"
   >
-    <button
-      v-if="LEFT_NAVIGATION[$route.name as string]"
-      :key="LEFT_NAVIGATION[$route.name as string].icon"
-      type="button"
-      class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
-      :class="LEFT_NAVIGATION[$route.name as string].iconClasses"
-      @click="$router.push(LEFT_NAVIGATION[$route.name as string].to)"
-    >
-      <BaseIcon :name="LEFT_NAVIGATION[$route.name as string].icon" class="size-6" />
-    </button>
+
+   <Transition name="transition-fade" mode="out-in">
+      <button
+        v-if="LEFT_NAVIGATION[$route.name as string]"
+        :key="LEFT_NAVIGATION[$route.name as string].icon"
+        type="button"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
+        :class="LEFT_NAVIGATION[$route.name as string].iconClasses"
+        @click="$router.push(LEFT_NAVIGATION[$route.name as string].to)"
+      >
+        <BaseIcon :name="LEFT_NAVIGATION[$route.name as string].icon" class="size-6" />
+      </button>
+    </Transition>
 
     <h1
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-text-primary transition-colors duration-300 cursor-pointer"
