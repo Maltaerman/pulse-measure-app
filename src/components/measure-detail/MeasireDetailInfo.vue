@@ -25,7 +25,7 @@ const locale = computed(
 </script>
 
 <template>
-  <div class="bg-bg-card border border-border rounded-lg shadow-sm px-4 py-3 flex flex-col gap-3">
+  <div class="bg-bg-card border border-border rounded-lg px-4 py-3 flex flex-col gap-3">
     <div class="flex items-center justify-between">
       <div class="flex items-baseline gap-1.5">
         <span class="text-3xl font-bold text-primary leading-none" v-text="props.bpmAvg" />

@@ -15,7 +15,7 @@ const { popupState } = usePopupManager()
     <div class="flex h-dvh overflow-y-auto overscroll-contain sm:py-6 md:py-10">
       <dialog
         :id="popupState.component"
-        class="relative w-full min-h-full m-auto flex bg-bg-card sm:w-100 sm:min-h-0 sm:shadow-lg sm:border sm:border-border sm:rounded-lg"
+        class="relative w-full min-h-full m-auto flex bg-bg-card sm:w-100 sm:min-h-0 sm: sm:border sm:border-border sm:rounded-lg"
       >
         <component
           :is="popupRegistry[popupState.component]"

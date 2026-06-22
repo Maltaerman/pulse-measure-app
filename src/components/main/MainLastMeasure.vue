@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
 <template>
   <div
-    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
+    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
     @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
   >
     <div class="flex items-center gap-3">
