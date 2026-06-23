@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { usePopupManager } from '@/composables'
 
-import BaseButton from '@/components/base/BaseButton.vue'
-import BaseIcon from '@/components/base/BaseIcon.vue'
+import { BaseButton, BaseIcon } from '@/components/base'
 
 const { closePopup } = usePopupManager()
 
