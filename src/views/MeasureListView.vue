@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
-import { format } from 'date-fns'
+import { defineAsyncComponent, computed } from 'vue'
+import { format, isSameDay } from 'date-fns'
 
 import BaseLoader from '@/components/base/BaseLoader.vue'
 
@@ -16,6 +16,14 @@ const MeasureListEmptyState = defineAsyncComponent(
 const { measureList, isLoadingMeasureList, getMeasureList } = useMeasure()
 
 getMeasureList()
+
+const groupedMeasureList = computed(() =>
+  measureList.value.map((item, index) => ({
+    ...item,
+    isTitleShown:
+      index === 0 || !isSameDay(item.createdAt, measureList.value[index - 1].createdAt),
+  })),
+)
 </script>
 
 <template>
@@ -25,11 +33,12 @@ getMeasureList()
 
       <div v-else-if="measureList.length > 0" class="flex flex-col gap-4">
         <div
-          v-for="measureListItem in measureList"
+          v-for="measureListItem in groupedMeasureList"
           :key="measureListItem.id"
           class="flex flex-col gap-2"
         >
           <p
+            v-if="measureListItem.isTitleShown"
             class="text-text-primary font-bold text-lg transition-colors duration-300"
             v-text="
               format(measureListItem.createdAt, 'MMMM d, yyyy', {
