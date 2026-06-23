@@ -4,7 +4,7 @@ import { PAGE_NAME_ENUM } from '@/router'
 
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups'
+import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
 import { usePopupManager } from '@/composables'
 import { useMeasure } from '@/composables'
@@ -36,13 +36,7 @@ function deleteButtonHandler() {
 
   openPopup({
     component: POPUP_NAME_ENUM.CONFIRMATION,
-    data: {
-      title: 'popup_confirmation_title',
-      subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit',
-      cancelButton: 'popup_confirmation_cancel',
-      callback,
-    },
+    data: { ...CONFIRMATION_POPUP_DATA_PRESET, callback },
   })
 }
 </script>

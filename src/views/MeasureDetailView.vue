@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 import { BaseLoader, BaseButton } from '@/components/base'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
 import { usePopupManager, useMeasure, useMeasureDetail, DATE_FNS_LOCALES_LIST } from '@/composables'
 
@@ -81,13 +81,7 @@ function deleteButtonHandler() {
 
   openPopup({
     component: POPUP_NAME_ENUM.CONFIRMATION,
-    data: {
-      title: 'popup_confirmation_title',
-      subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit',
-      cancelButton: 'popup_confirmation_cancel',
-      callback,
-    },
+    data: { ...CONFIRMATION_POPUP_DATA_PRESET, callback },
   })
 }
 </script>

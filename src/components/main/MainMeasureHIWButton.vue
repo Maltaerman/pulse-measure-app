@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BaseIcon from '@/components/base/BaseIcon.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import { POPUP_NAME_ENUM } from '@/components/popups'
 
 import { usePopupManager } from '@/composables'
 

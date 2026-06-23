@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 import { PAGE_NAME_ENUM } from '@/router'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import { POPUP_NAME_ENUM } from '@/components/popups'
 
 import PopupManager from '@/components/popups/PopupManager.vue'
 import { usePopupManager } from '@/composables'
