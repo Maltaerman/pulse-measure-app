@@ -34,7 +34,7 @@ getMeasureList()
 const measureProgress = ref(0)
 const isStarted = ref(false)
 
-const lastMeasureData = computed(() => measureList.value[0])
+const lastMeasureData = computed(() => measureList.value[measureList.value.length - 1])
 
 const intervalId = ref(0)
 

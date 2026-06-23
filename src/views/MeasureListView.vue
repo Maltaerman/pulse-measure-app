@@ -20,8 +20,7 @@ getMeasureList()
 const groupedMeasureList = computed(() =>
   measureList.value.map((item, index) => ({
     ...item,
-    isTitleShown:
-      index === 0 || !isSameDay(item.createdAt, measureList.value[index - 1].createdAt),
+    isTitleShown: index === 0 || !isSameDay(item.createdAt, measureList.value[index - 1].createdAt),
   })),
 )
 </script>

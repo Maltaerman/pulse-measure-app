@@ -23,7 +23,12 @@ const props = withDefaults(defineProps<IProps>(), {
 <template>
   <div
     class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
-    @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
+    @click="
+      $router.push({
+        name: PAGE_NAME_ENUM.MEASURE_ITEM,
+        params: { id: props.id },
+      })
+    "
   >
     <div class="flex items-center gap-3">
       <BaseIcon class="size-6 text-primary" name="heart" />
@@ -45,7 +50,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
     <button
       class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer transition-colors duration-300"
-      @click.prevent
+      @click.stop="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
     >
       {{ $t('global_view-all') }}
 

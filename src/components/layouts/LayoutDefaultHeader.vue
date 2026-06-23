@@ -25,8 +25,8 @@ const LEFT_NAVIGATION = {
 
   [PAGE_NAME_ENUM.MEASURE_ITEM]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
-    icon: 'arrow',
-    iconClasses: 'rotate-90',
+    icon: 'burger-menu',
+    iconClasses: '',
   },
 }
 </script>
