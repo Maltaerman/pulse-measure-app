@@ -90,7 +90,7 @@ function deleteButtonHandler() {
   <Transition mode="out-in" name="transition-fade">
     <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 
-    <section v-else-if="measureData" class="flex flex-col gap-3 flex-1">
+    <section v-else-if="measureData" class="flex flex-col gap-4 flex-1">
       <MeasireDetailInfo
         :bpmAvg="measureData.bpmAvg || 0"
         :created-at="measureData.createdAt"
@@ -101,7 +101,7 @@ function deleteButtonHandler() {
         <div
           v-for="({ title, value, subtitle }, index) in measureStats"
           :key="index"
-          class="rounded-lg p-3 flex flex-col items-start gap-0.5"
+          class="rounded-lg px-4 py-3 flex flex-col items-start gap-0.5"
           :class="index === 1 ? 'bg-primary-active/50' : 'bg-bg-muted'"
         >
           <p

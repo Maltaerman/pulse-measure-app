@@ -118,7 +118,7 @@ onBeforeUnmount(createMeasure)
       <MainLastMeasure
         v-if="lastMeasureData"
         v-bind="{ ...lastMeasureData, id: Number(lastMeasureData.id) }"
-        class="w-[calc(100%-16px)] absolute bottom-2"
+        class="w-full absolute bottom-2"
       />
     </Transition>
   </section>

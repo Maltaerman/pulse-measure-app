@@ -29,10 +29,10 @@ const locale = computed(
     <div class="flex items-center justify-between">
       <div class="flex items-baseline gap-1.5">
         <span class="text-3xl font-bold text-primary leading-none" v-text="props.bpmAvg" />
-        <span class="text-sm font-medium text-text-secondary" v-text="$t('global_bpm')" />
+        <span class="text-md font-medium text-text-secondary" v-text="$t('global_bpm')" />
       </div>
 
-      <div class="flex mb-auto items-center gap-1 text-xs text-text-muted">
+      <div class="flex mb-auto items-center gap-1 text-sm text-text-muted">
         <BaseIcon name="calendar" class="size-4 text-text-muted" />
 
         {{ format(props.createdAt, 'MMMM d, yyyy', { locale }) }}
@@ -42,7 +42,7 @@ const locale = computed(
 
     <div v-if="props.measure?.length" class="relative rounded-lg bg-bg-muted p-2">
       <p
-        class="absolute top-2 left-2 text-sm font-normal uppercase text-text-muted mb-1.5"
+        class="absolute top-2 left-3 text-sm font-normal uppercase text-text-muted mb-1.5"
         v-text="$t('measure_detail_graph_title')"
       />
 
