@@ -8,8 +8,8 @@ import { POPUP_NAME_ENUM } from '@/components/popups/types'
 import PopupManager from '@/components/popups/PopupManager.vue'
 import { usePopupManager } from '@/composables'
 
-import LayoutDefaultHeader from '@/components/layout/LayoutDefaultHeader.vue'
-import LayoutDefaultMeasureButton from '@/components/layout/LayoutDefaultMeasureButton.vue'
+import LayoutDefaultHeader from '@/components/layouts/LayoutDefaultHeader.vue'
+import LayoutDefaultMeasureButton from '@/components/layouts/LayoutDefaultMeasureButton.vue'
 
 const route = useRoute()
 const { openPopup } = usePopupManager()
@@ -30,10 +30,12 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
     >
       <slot />
 
-      <LayoutDefaultMeasureButton
-        v-if="isMeasureButton"
-        class="fixed bottom-8 left-8 md:left-[calc((100%-672px)/2)]"
-      />
+      <Transition name="transition-fade">
+        <LayoutDefaultMeasureButton
+          v-if="isMeasureButton"
+          class="fixed bottom-8 left-8 md:left-[calc((100%-672px)/2)]"
+        />
+      </Transition>
     </main>
 
     <Transition mode="out-in" name="transition-fade">

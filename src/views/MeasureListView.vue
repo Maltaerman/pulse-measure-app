@@ -20,8 +20,6 @@ getMeasureList()
 
 <template>
   <section class="relative flex flex-1 flex-col gap-4">
-    {{}}
-
     <Transition mode="out-in" name="transition-fade">
       <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 

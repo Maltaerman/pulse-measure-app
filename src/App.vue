@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLayout } from '@/layout/useLayout'
+import { useLayout } from '@/layouts/useLayout'
 import { useEventListener } from '@vueuse/core'
 import { usePopupManager, useUser } from '@/composables'
 

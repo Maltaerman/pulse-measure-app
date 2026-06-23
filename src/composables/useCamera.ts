@@ -35,7 +35,7 @@ export function useCamera(
   function processFrame() {
     if (!video.value || !canvas.value || !ctx.value) return
 
-    const CTX_CONFIG = [0, 0, canvas.value.width, canvas.value.height] as const;
+    const CTX_CONFIG = [0, 0, canvas.value.width, canvas.value.height] as const
 
     ctx.value.drawImage(video.value, ...CTX_CONFIG)
     const frame = ctx.value.getImageData(...CTX_CONFIG)
@@ -63,7 +63,7 @@ export function useCamera(
   }
 
   async function init() {
-    try {  
+    try {
       stream = await navigator.mediaDevices.getUserMedia(MEDIA_PRESET)
 
       if (!video.value) return
