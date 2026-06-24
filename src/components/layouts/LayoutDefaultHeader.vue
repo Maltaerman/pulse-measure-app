@@ -18,7 +18,7 @@ const NAV_LIST = {
 
   [PAGE_NAME_ENUM.MEASURE_LIST]: {
     to: { name: PAGE_NAME_ENUM.MAIN },
-    icon: 'heart',
+    icon: 'finger',
   },
 
   [PAGE_NAME_ENUM.MEASURE_ITEM]: {
