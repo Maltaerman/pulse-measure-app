@@ -4,9 +4,9 @@
 }
 
 .--screenHeight {
-  height: calc(100vh - var(--headerHeight));
+  height: calc(100dvh - var(--headerHeight));
 }
 
 .--screenMinHeight {
-  min-height: calc(100vh - var(--headerHeight));
+  min-height: calc(100dvh - var(--headerHeight));
 }

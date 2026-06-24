@@ -22,11 +22,11 @@ setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), 1000)
 </script>
 
 <template>
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-3xl mx-auto scrollbar-none --screenMinHeight">
     <LayoutDefaultHeader class="sticky top-0 z-20 h-(--headerHeight)" />
 
     <main
-      class="relative flex size-full flex-1 flex-col --screenMinHeight transition-colors duration-300 p-4 bg-bg"
+      class="--screenMinHeight relative flex size-full flex-1 flex-col transition-colors duration-300 p-4 bg-bg scrollbar-none"
     >
       <slot />
 
