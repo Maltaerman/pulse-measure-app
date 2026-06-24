@@ -10,25 +10,42 @@ import { usePopupManager } from '@/composables'
 const { toggleTheme } = useTheme()
 const { openPopup } = usePopupManager()
 
-const LEFT_NAVIGATION = {
+const NAV_LIST = {
   [PAGE_NAME_ENUM.MAIN]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
     icon: 'burger-menu',
-    iconClasses: '',
   },
 
   [PAGE_NAME_ENUM.MEASURE_LIST]: {
     to: { name: PAGE_NAME_ENUM.MAIN },
     icon: 'heart',
-    iconClasses: '',
   },
 
   [PAGE_NAME_ENUM.MEASURE_ITEM]: {
     to: { name: PAGE_NAME_ENUM.MEASURE_LIST },
     icon: 'burger-menu',
-    iconClasses: '',
   },
 }
+
+const ACTION_LIST = [
+  {
+    callback: () => openPopup({ component: POPUP_NAME_ENUM.LANG }),
+    icon: 'planet',
+    iconClasses: 'hover:rotate-45',
+  },
+
+  {
+    callback: () => openPopup({ component: POPUP_NAME_ENUM.PWA }),
+    icon: 'pwa',
+    iconClasses: 'hover:scale-130',
+  },
+
+  {
+    callback: toggleTheme,
+    icon: 'light',
+    iconClasses: 'hover:rotate-45',
+  },
+]
 </script>
 
 <template>
@@ -37,14 +54,13 @@ const LEFT_NAVIGATION = {
   >
     <Transition name="transition-fade" mode="out-in">
       <button
-        v-if="LEFT_NAVIGATION[$route.name as string]"
-        :key="LEFT_NAVIGATION[$route.name as string].icon"
+        v-if="NAV_LIST[$route.name as string]"
+        :key="NAV_LIST[$route.name as string].icon"
         type="button"
         class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
-        :class="LEFT_NAVIGATION[$route.name as string].iconClasses"
-        @click="$router.push(LEFT_NAVIGATION[$route.name as string].to)"
+        @click="$router.push(NAV_LIST[$route.name as string].to)"
       >
-        <BaseIcon :name="LEFT_NAVIGATION[$route.name as string].icon" class="size-6" />
+        <BaseIcon :name="NAV_LIST[$route.name as string].icon" class="size-6" />
       </button>
     </Transition>
 
@@ -57,27 +73,14 @@ const LEFT_NAVIGATION = {
 
     <div class="flex flex-row gap-4 ml-auto">
       <button
+        v-for="{ icon, iconClasses, callback } in ACTION_LIST"
+        :key="icon"
         type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:scale-130 transition-all duration-300"
-        @click="openPopup({ component: POPUP_NAME_ENUM.PWA })"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer transition-all duration-300"
+        :class="iconClasses"
+        @click="callback"
       >
-        <BaseIcon name="pwa" class="size-6" />
-      </button>
-
-      <button
-        type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
-        @click="openPopup({ component: POPUP_NAME_ENUM.LANG })"
-      >
-        <BaseIcon name="planet" class="size-6" />
-      </button>
-
-      <button
-        type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
-        @click="toggleTheme"
-      >
-        <BaseIcon name="light" class="size-6" />
+        <BaseIcon :name="icon" class="size-6" />
       </button>
     </div>
   </header>
