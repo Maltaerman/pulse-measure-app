@@ -35,6 +35,12 @@ const SLIDES = [
     subtitle: 'popup_features_slide-item_5_subtitle',
     img: 'colored-features-info-slide-5',
   },
+
+  {
+    title: 'popup_features_slide-item_6_title',
+    subtitle: 'popup_features_slide-item_6_subtitle',
+    img: 'colored-features-info-slide-6',
+  },
 ]
 
 const pagination = {

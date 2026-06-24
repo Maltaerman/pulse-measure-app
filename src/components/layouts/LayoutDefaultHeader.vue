@@ -58,6 +58,14 @@ const LEFT_NAVIGATION = {
     <div class="flex flex-row gap-4 ml-auto">
       <button
         type="button"
+        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:scale-130 transition-all duration-300"
+        @click="openPopup({ component: POPUP_NAME_ENUM.PWA })"
+      >
+        <BaseIcon name="pwa" class="size-6" />
+      </button>
+
+      <button
+        type="button"
         class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer hover:rotate-45 transition-all duration-300"
         @click="openPopup({ component: POPUP_NAME_ENUM.LANG })"
       >
