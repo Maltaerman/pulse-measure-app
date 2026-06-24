@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 import { BaseLoader, BaseButton } from '@/components/base'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
+import MeasureDetailEmptyState from '@/components/measure-detail/MeasureDetailEmptyState.vue'
 import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
 import { usePopupManager, useMeasure, useMeasureDetail, DATE_FNS_LOCALES_LIST } from '@/composables'
@@ -145,11 +146,8 @@ function deleteButtonHandler() {
       </BaseButton>
     </section>
 
-    <section v-else>
-      <p
-        class="size-full m-auto text-center px-4 py-3 text-lg font-medium text-text-primary transition-colors duration-300"
-        v-text="$t('measure_detail_empty')"
-      />
+    <section class="flex flex-1" v-else>
+      <MeasureDetailEmptyState class="m-auto" />
     </section>
   </Transition>
 </template>

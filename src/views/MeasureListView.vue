@@ -50,7 +50,7 @@ const groupedMeasureList = computed(() =>
         </div>
       </div>
 
-      <MeasureListEmptyState v-else />
+      <MeasureListEmptyState class="m-auto" v-else />
     </Transition>
   </section>
 </template>
