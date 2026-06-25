@@ -27,11 +27,11 @@ const STEPS = ['popup_pwa_step-1', 'popup_pwa_step-2', 'popup_pwa_step-3']
       <div
         v-for="browser in BROWSERS"
         :key="browser"
-        class="flex items-center gap-1.5 bg-bg-muted rounded-full px-4 py-3"
+        class="flex items-center gap-1.5 bg-bg-muted rounded-full py-1.5 px-2 text-text-primary"
       >
-        <BaseIcon name="browser" class="size-4 text-text-muted" />
+        <BaseIcon name="browser" class="size-4" />
 
-        <span class="text-sm font-semibold text-text-secondary" v-text="browser" />
+        <span class="text-sm font-medium" v-text="browser" />
       </div>
     </div>
 
@@ -39,7 +39,7 @@ const STEPS = ['popup_pwa_step-1', 'popup_pwa_step-2', 'popup_pwa_step-3']
       <li
         v-for="(step, index) in STEPS"
         :key="step"
-        class="flex items-center gap-2.5 bg-bg-muted rounded-xl px-4 py-3"
+        class="flex items-center gap-2.5 bg-bg-muted rounded-xl px-3 py-2"
       >
         <p
           class="size-6 rounded-full bg-primary-active flex items-center justify-center text-sm font-bold text-primary"

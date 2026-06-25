@@ -43,7 +43,6 @@ const { selectedLocale, changeLocale } = useLocale()
 
     <BaseButton
       class="w-full"
-      size="lg"
       @click="
         () => {
           changeLocale()
