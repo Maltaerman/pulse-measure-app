@@ -1,12 +1,12 @@
 <script setup lang="ts">
 export interface IProps {
   bpm: number
-  isStarted: boolean
+  progress: number
 }
 
 const props = withDefaults(defineProps<IProps>(), {})
 
-const emit = defineEmits(['measure-start'])
+const emit = defineEmits(['start-measure'])
 </script>
 
 <template>
@@ -22,10 +22,10 @@ const emit = defineEmits(['measure-start'])
     />
 
     <button
-      v-if="!props.isStarted"
+      v-if="!props.bpm"
       type="button"
       class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase cursor-pointer"
-      @click="emit('measure-start')"
+      @click="emit('start-measure')"
     >
       {{ $t('global_start') }}
     </button>
@@ -34,11 +34,9 @@ const emit = defineEmits(['measure-start'])
       v-else
       class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
     >
-      <p v-if="props.isStarted && props.bpm === 0" v-text="$t('global_measuring')" />
+      <p v-if="props.bpm === 0">Prepearing...</p>
 
-      <template v-else-if="props.bpm">
-        {{ props.bpm }}
-      </template>
+      <p v-else-if="props.bpm">{{ props.progress }}</p>
     </div>
   </div>
 </template>

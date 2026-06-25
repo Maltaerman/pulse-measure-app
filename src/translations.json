@@ -290,7 +290,7 @@
     "global_date": "日付",
     "global_duration": "測定時間",
     "measure_detail_delete": "削除",
-    "measure-list_empty_title": "まだ測定がありません" ,
+    "measure-list_empty_title": "まだ測定がありません",
     "measure_detail_empty_title": "測定データが見つかりません",
     "measure_detail_graph_title": "心電図波形",
     "measure_detail_zone-bar_title": "心拍数ゾーン",

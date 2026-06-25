@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { toast } from 'vue3-toastify'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -16,6 +17,11 @@ export interface IMeasure {
   bpmMax?: number
   hrv?: number
   zone?: number
+}
+
+interface IMeasureToast {
+  type: 'error'
+  message: string
 }
 
 async function addItem(data: IMeasure) {
@@ -59,6 +65,10 @@ export function useMeasure() {
     }
   }
 
+  function measureToast(type: 'error' | 'success', message: string) {
+    toast(message, { type, autoClose: 3000000 })
+  }
+
   return {
     measureList,
     isLoadingMeasureList,
@@ -66,5 +76,7 @@ export function useMeasure() {
 
     addMeasure: addItem,
     deleteMeasure,
+
+    measureToast,
   }
 }

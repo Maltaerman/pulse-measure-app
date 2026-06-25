@@ -8,7 +8,8 @@ import {
   onBeforeUnmount,
 } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { toast } from 'vue3-toastify'
+import { useRouter } from 'vue-router'
+import { PAGE_NAME_ENUM } from '@/router'
 
 import { useDevice, useCamera, useBPM, useMeasure, useUser } from '@/composables'
 
@@ -20,88 +21,81 @@ const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/Mai
 const videoRef = useTemplateRef('videoRef')
 const canvasRef = useTemplateRef('canvasRef')
 
+const MEASURE_DURATION = 30
+const measureProgress = ref(MEASURE_DURATION);
+
 const canvasContex = ref<CanvasRenderingContext2D | null>(null)
 
-const { t: $t } = useI18n()
 useCamera(videoRef, canvasRef, canvasContex)
-const { bpm } = useBPM()
+
+const router = useRouter()
+const { t: $t } = useI18n()
 const { isDesktop } = useDevice()
-const { addMeasure, measureList, getMeasureList } = useMeasure()
+
 const { userId } = useUser()
 
-getMeasureList()
+const { bpm } = useBPM()
+const { addMeasure, measureList, getMeasureList, measureToast } = useMeasure()
 
-const measureProgress = ref(0)
-const isStarted = ref(false)
+getMeasureList()
 
 const lastMeasureData = computed(() => measureList.value[measureList.value.length - 1])
 
 const intervalId = ref(0)
 
-const localMeasureData = ref([])
+async function onMeasureTick(measureData: number[]) {
+  try {
+    if (bpm.value) {
+      measureProgress.value -= 1
 
-function intervalHandler() {
-  measureProgress.value += 10
+      measureData.push(bpm.value)
+    }
 
-  if (measureProgress.value === 100 && bpm.value === 0) {
-    measureProgress.value = 0
-  }
+    if (measureProgress.value === 0) {
+      clearInterval(intervalId.value)
 
-  if (bpm.value !== 0) {
-    localMeasureData.value.push(bpm.value as never)
+      await addMeasure({
+        id: `${Date.now()}`,
+        userId: userId.value,
+        createdAt: Date.now(),
+        bpm: 0,
+        measure: measureData,
+      })
+
+      router
+        .push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+        .then(() => measureToast('success', $t('measure_success')))
+    }
+  } catch {
+    measureToast('error', $t('measure_error'))
+
+    measureProgress.value = MEASURE_DURATION
   }
 }
 
-function start() {
+function startMeasure() {
   if (isDesktop.value) {
-    toast($t('measure_error_device'), {
-      type: 'error',
-      autoClose: 3000,
-    })
+    measureToast('error', $t('measure_error_device'))
+  } else {
+    const measureData: number[] = []
+    const intervalCb = () => onMeasureTick(measureData)
 
-    return
+    intervalId.value = setInterval(intervalCb, 1000)
   }
-
-  isStarted.value = true
-
-  intervalId.value = setInterval(intervalHandler, 1000)
-
-  if (bpm.value > 0) isStarted.value = false
 }
 
 function getContext() {
-  if (canvasRef.value) canvasContex.value = canvasRef.value.getContext('2d')
+  if (canvasRef.value) {
+    canvasContex.value = canvasRef.value.getContext('2d')
+  }
 }
 
 function resetContext() {
   canvasContex.value = null
 }
 
-async function createMeasure() {
-  try {
-    if (!isStarted.value) return
-
-    if (intervalId.value) clearInterval(intervalId.value)
-
-    await addMeasure({
-      id: `${Date.now()}`,
-      userId: userId.value,
-      createdAt: Date.now(),
-      bpm: 0,
-      measure: localMeasureData.value,
-    })
-
-    await getMeasureList()
-  } finally {
-    isStarted.value = false
-    measureProgress.value = 0
-
-    resetContext()
-  }
-}
-
 onMounted(getContext)
-onBeforeUnmount(createMeasure)
+onBeforeUnmount(resetContext)
 </script>
 
 <template>
@@ -112,7 +106,7 @@ onBeforeUnmount(createMeasure)
 
     <canvas ref="canvasRef" width="100" height="100" class="hidden" />
 
-    <MainMeasureInfo v-bind="{ bpm, isStarted }" @measure-start="start" />
+    <MainMeasureInfo v-bind="{ bpm, progress: measureProgress }" @start-measure="startMeasure" />
 
     <Transition mode="out-in" name="transition-slide-bottom">
       <MainLastMeasure
