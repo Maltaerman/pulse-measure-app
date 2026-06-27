@@ -29,7 +29,6 @@ export function useTheme() {
     setTheme(theme.value)
   }
 
-
   return {
     theme,
     isLight,

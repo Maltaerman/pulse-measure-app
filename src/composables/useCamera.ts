@@ -78,7 +78,9 @@ export function useCamera(
       if ('torch' in capabilities) {
         isTorchAvailable.value = true
 
-        await track.applyConstraints({ advanced: [{ torch: true }] })
+        // cast to any to allow the non-standard 'torch' constraint
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await track.applyConstraints({ advanced: [{ torch: true }] } as any)
       }
 
       intervalId = setInterval(processFrame, 50)

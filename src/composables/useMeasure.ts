@@ -19,11 +19,6 @@ export interface IMeasure {
   zone?: number
 }
 
-interface IMeasureToast {
-  type: 'error'
-  message: string
-}
-
 async function addItem(data: IMeasure) {
   await fetch(`${BASE_URL}/measures`, {
     method: 'POST',
@@ -66,7 +61,7 @@ export function useMeasure() {
   }
 
   function measureToast(type: 'error' | 'success', message: string) {
-    toast(message, { type, autoClose: 3000000 })
+    toast(message, { type, autoClose: 3000 })
   }
 
   return {

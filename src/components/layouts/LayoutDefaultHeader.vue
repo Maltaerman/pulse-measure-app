@@ -52,17 +52,15 @@ const ACTION_LIST = [
   <header
     class="relative bg-bg/80 backdrop-blur-md border-b border-border flex flex-row justify-between items-center py-2 px-4 transition-colors duration-300"
   >
-    <Transition name="transition-fade" mode="out-in">
-      <button
-        v-if="NAV_LIST[$route.name as string]"
-        :key="NAV_LIST[$route.name as string].icon"
-        type="button"
-        class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer"
-        @click="$router.push(NAV_LIST[$route.name as string].to)"
-      >
-        <BaseIcon :name="NAV_LIST[$route.name as string].icon" class="size-6" />
-      </button>
-    </Transition>
+    <button
+      v-if="NAV_LIST[$route.name as string]"
+      :key="NAV_LIST[$route.name as string].icon"
+      type="button"
+      class="text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer transition-all duration-300 hover:scale-130"
+      @click="$router.push(NAV_LIST[$route.name as string].to)"
+    >
+      <BaseIcon :name="NAV_LIST[$route.name as string].icon" class="size-6" />
+    </button>
 
     <h1
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-bold text-text-primary transition-colors duration-300 cursor-pointer"
