@@ -22,7 +22,7 @@ const videoRef = useTemplateRef('videoRef')
 const canvasRef = useTemplateRef('canvasRef')
 
 const MEASURE_DURATION = 30
-const measureProgress = ref(MEASURE_DURATION);
+const measureProgress = ref(MEASURE_DURATION)
 
 const canvasContext = ref<CanvasRenderingContext2D | null>(null)
 
@@ -105,7 +105,6 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="relative flex-1 flex flex-col items-center justify-center">
-    measureProgress {{ measureProgress }}
     <MainMeasureHIWButton class="absolute left-2 top-2 z-10" />
 
     <video ref="videoRef" autoplay playsinline class="hidden" />

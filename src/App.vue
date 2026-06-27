@@ -14,10 +14,10 @@ setUser()
 
 <template>
   <component :is="layoutComponent">
-    <Transition name="transition-fade" mode="out-in">
-      <router-view :key="$route.fullPath" v-slot="{ Component, route }">
+    <router-view :key="$route.fullPath" v-slot="{ Component, route }">
+      <Transition name="transition-fade" mode="out-in">
         <component :is="Component" :key="route.name" />
-      </router-view>
-    </Transition>
+      </Transition>
+    </router-view>
   </component>
 </template>
