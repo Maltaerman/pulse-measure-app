@@ -24,9 +24,9 @@ const canvasRef = useTemplateRef('canvasRef')
 const MEASURE_DURATION = 30
 const measureProgress = ref(MEASURE_DURATION);
 
-const canvasContex = ref<CanvasRenderingContext2D | null>(null)
+const canvasContext = ref<CanvasRenderingContext2D | null>(null)
 
-useCamera(videoRef, canvasRef, canvasContex)
+useCamera(videoRef, canvasRef, canvasContext)
 
 const router = useRouter()
 const { t: $t } = useI18n()
@@ -45,11 +45,9 @@ const intervalId = ref(0)
 
 async function onMeasureTick(measureData: number[]) {
   try {
-    if (bpm.value) {
-      measureProgress.value -= 1
+    measureProgress.value -= 1
 
-      measureData.push(bpm.value)
-    }
+    if (bpm.value) measureData.push(bpm.value)
 
     if (measureProgress.value === 0) {
       clearInterval(intervalId.value)
@@ -61,6 +59,8 @@ async function onMeasureTick(measureData: number[]) {
         bpm: 0,
         measure: measureData,
       })
+
+      measureProgress.value = MEASURE_DURATION
 
       router
         .push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
@@ -84,29 +84,40 @@ function startMeasure() {
   }
 }
 
-function getContext() {
-  if (canvasRef.value) {
-    canvasContex.value = canvasRef.value.getContext('2d')
+function getCanvasContext() {
+  if (canvasRef.value) canvasContext.value = canvasRef.value.getContext('2d')
+}
+function resetCanvasContext() {
+  if (canvasRef.value) canvasContext.value = null
+}
+
+onMounted(getCanvasContext)
+onBeforeUnmount(() => {
+  if (measureProgress.value !== MEASURE_DURATION) {
+    clearInterval(intervalId.value)
+
+    measureToast('error', $t('measure_error'))
   }
-}
 
-function resetContext() {
-  canvasContex.value = null
-}
-
-onMounted(getContext)
-onBeforeUnmount(resetContext)
+  resetCanvasContext()
+})
 </script>
 
 <template>
   <section class="relative flex-1 flex flex-col items-center justify-center">
+    measureProgress {{ measureProgress }}
     <MainMeasureHIWButton class="absolute left-2 top-2 z-10" />
 
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
     <canvas ref="canvasRef" width="100" height="100" class="hidden" />
 
-    <MainMeasureInfo v-bind="{ bpm, progress: measureProgress }" @start-measure="startMeasure" />
+    <MainMeasureInfo
+      :bpm="bpm"
+      :progress="measureProgress"
+      :is-progress-shown="measureProgress < MEASURE_DURATION"
+      @start-measure="startMeasure"
+    />
 
     <Transition mode="out-in" name="transition-slide-bottom">
       <MainLastMeasure

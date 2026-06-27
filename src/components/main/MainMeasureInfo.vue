@@ -2,6 +2,7 @@
 export interface IProps {
   bpm: number
   progress: number
+  isProgressShown: boolean
 }
 
 const props = withDefaults(defineProps<IProps>(), {})
@@ -21,22 +22,19 @@ const emit = defineEmits(['start-measure'])
       class="absolute w-28 h-28 bg-primary/30 rounded-full animate-ping [animation-delay:900ms]"
     />
 
+    <div
+      v-if="props.isProgressShown"
+      class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
+      v-text="props.progress"
+    />
+
     <button
-      v-if="!props.bpm"
+      v-else
       type="button"
       class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase cursor-pointer"
       @click="emit('start-measure')"
     >
       {{ $t('global_start') }}
     </button>
-
-    <div
-      v-else
-      class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
-    >
-      <p v-if="props.bpm === 0">Prepearing...</p>
-
-      <p v-else-if="props.bpm">{{ props.progress }}</p>
-    </div>
   </div>
 </template>
