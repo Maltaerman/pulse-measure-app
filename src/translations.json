@@ -65,7 +65,9 @@
     "popup_pwa_step-2": "Select Add to Home Screen",
     "popup_pwa_step-3": "Tap Add to confirm",
     "main_measure_hiw_title": "How It Works",
-    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets."
+    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets.",
+    "measure_error": "Something went wrong. Please try again.",
+    "measure_success": "Measurement saved successfully."
   },
 
   "en-ca": {
@@ -134,7 +136,9 @@
     "popup_pwa_step-2": "Select Add to Home Screen",
     "popup_pwa_step-3": "Tap Add to confirm",
     "main_measure_hiw_title": "How It Works",
-    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets."
+    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets.",
+    "measure_error": "Something went wrong. Please try again.",
+    "measure_success": "Measurement saved successfully."
   },
 
   "de": {
@@ -203,7 +207,9 @@
     "popup_pwa_step-2": "Wähle „Zum Home-Bildschirm hinzufügen",
     "popup_pwa_step-3": "Tippe auf „Hinzufügen zur Bestätigung",
     "main_measure_hiw_title": "So funktioniert es",
-    "measure_error_device": "Die Herzfrequenzmessung ist nur auf Mobilgeräten und Tablets verfügbar."
+    "measure_error_device": "Die Herzfrequenzmessung ist nur auf Mobilgeräten und Tablets verfügbar.",
+    "measure_error": "Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "measure_success": "Messung erfolgreich gespeichert."
   },
 
   "it": {
@@ -267,7 +273,9 @@
     "popup_pwa_step-2": "Seleziona «Aggiungi alla schermata Home»",
     "popup_pwa_step-3": "Tocca «Aggiungi» per confermare",
     "main_measure_hiw_title": "Come funziona",
-    "measure_error_device": "La misurazione della frequenza cardiaca è disponibile solo su dispositivi mobili e tablet."
+    "measure_error_device": "La misurazione della frequenza cardiaca è disponibile solo su dispositivi mobili e tablet.",
+    "measure_error": "Si è verificato un errore. Riprova.",
+    "measure_success": "Misurazione salvata con successo."
   },
 
   "ja": {
@@ -336,7 +344,9 @@
     "popup_pwa_step-2": "「ホーム画面に追加」を選択",
     "popup_pwa_step-3": "「追加」をタップして確認",
     "main_measure_hiw_title": "使い方",
-    "measure_error_device": "心拍数の測定はスマートフォンとタブレットのみ対応しています。"
+    "measure_error_device": "心拍数の測定はスマートフォンとタブレットのみ対応しています。",
+    "measure_error": "エラーが発生しました。もう一度お試しください。",
+    "measure_success": "測定結果を保存しました。"
   },
 
   "fr": {
@@ -405,6 +415,8 @@
     "popup_pwa_step-2": "Sélectionnez « Sur l'écran d'accueil »",
     "popup_pwa_step-3": "Appuyez sur « Ajouter » pour confirmer",
     "main_measure_hiw_title": "Comment ça fonctionne",
-    "measure_error_device": "La mesure de la fréquence cardiaque est uniquement disponible sur les appareils mobiles et les tablettes."
+    "measure_error_device": "La mesure de la fréquence cardiaque est uniquement disponible sur les appareils mobiles et les tablettes.",
+    "measure_error": "Une erreur est survenue. Veuillez réessayer.",
+    "measure_success": "Mesure enregistrée avec succès."
   }
 }
