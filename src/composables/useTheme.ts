@@ -25,11 +25,17 @@ export function useTheme() {
     setTheme(isDark.value ? THEME_ENUM.LIGHT : THEME_ENUM.DARK)
   }
 
+  function initTheme() {
+    setTheme(theme.value)
+  }
+
+
   return {
     theme,
     isLight,
     isDark,
     setTheme,
     toggleTheme,
+    initTheme,
   }
 }
