@@ -14,7 +14,7 @@ const { openPopup } = usePopupManager()
     @click="openPopup({ component: POPUP_NAME_ENUM.MEASURE_INFO })"
   >
     <p
-      class="text-text-primary text-md font-medium transition-colors duration-300"
+      class="text-text-primary font-bold text-lg transition-colors duration-300"
       v-text="$t('main_measure_hiw_title')"
     />
 
