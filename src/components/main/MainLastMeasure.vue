@@ -1,23 +1,30 @@
 <script setup lang="ts">
-import { format } from 'date-fns'
-
+import { computed } from 'vue'
 import { PAGE_NAME_ENUM } from '@/router'
+import { format } from 'date-fns'
 
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 
+import { useMeasureDetail } from '@/composables'
+
 export interface IProps {
   id: number
   userId: string
-  bpm: number
   createdAt: number
   measure: number[]
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  bpm: 0,
-  createdAt: 0,
-})
+const props = withDefaults(defineProps<IProps>(), {})
+
+const measureData = computed(() => ({
+  id: props.id,
+  userId: props.userId,
+  createdAt: props.createdAt,
+  measure: props.measure,
+}))
+
+const { bpmAvg } = useMeasureDetail(measureData)
 </script>
 
 <template>
@@ -36,12 +43,12 @@ const props = withDefaults(defineProps<IProps>(), {
       <div class="flex flex-col">
         <p
           class="text-text-secondary text-sm font-bold transition-colors duration-300"
-          v-text="format(props.createdAt, 'HH:MM')"
+          v-text="format(props.createdAt, 'HH:m')"
         />
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
-          v-text="`${props.bpm} bpm`"
+          v-text="`${bpmAvg} bpm`"
         />
       </div>
     </div>

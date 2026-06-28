@@ -65,9 +65,13 @@
     "popup_pwa_step-2": "Select Add to Home Screen",
     "popup_pwa_step-3": "Tap Add to confirm",
     "main_measure_hiw_title": "How It Works",
-    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets.",
-    "measure_error": "Something went wrong. Please try again.",
-    "measure_success": "Measurement saved successfully."
+    "error_measure_device": "Heart rate measurement is only available on mobile devices and tablets.",
+    "error_measure_fetch": "Failed to load measurements. Please try again.",
+    "error_measure_create": "Failed to save measurement. Please try again.",
+    "error_measure_delete": "Failed to delete measurement. Please try again.",
+    "error_measure_unknown": "Something went wrong. Please try again.",
+    "error_measure_interrupted": "Measurement interrupted. Please stay on the page until it completes.",
+    "success_measure_create": "Measurement saved successfully."
   },
 
   "en-ca": {
@@ -136,9 +140,13 @@
     "popup_pwa_step-2": "Select Add to Home Screen",
     "popup_pwa_step-3": "Tap Add to confirm",
     "main_measure_hiw_title": "How It Works",
-    "measure_error_device": "Heart rate measurement is only available on mobile devices and tablets.",
-    "measure_error": "Something went wrong. Please try again.",
-    "measure_success": "Measurement saved successfully."
+    "error_measure_device": "Heart rate measurement is only available on mobile devices and tablets.",
+    "error_measure_fetch": "Failed to load measurements. Please try again.",
+    "error_measure_create": "Failed to save measurement. Please try again.",
+    "error_measure_delete": "Failed to delete measurement. Please try again.",
+    "error_measure_unknown": "Something went wrong. Please try again.",
+    "error_measure_interrupted": "Measurement interrupted. Please stay on the page until it completes.",
+    "success_measure_create": "Measurement saved successfully."
   },
 
   "de": {
@@ -207,9 +215,13 @@
     "popup_pwa_step-2": "Wähle „Zum Home-Bildschirm hinzufügen",
     "popup_pwa_step-3": "Tippe auf „Hinzufügen zur Bestätigung",
     "main_measure_hiw_title": "So funktioniert es",
-    "measure_error_device": "Die Herzfrequenzmessung ist nur auf Mobilgeräten und Tablets verfügbar.",
-    "measure_error": "Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
-    "measure_success": "Messung erfolgreich gespeichert."
+    "error_measure_device": "Die Herzfrequenzmessung ist nur auf Mobilgeräten und Tablets verfügbar.",
+    "error_measure_fetch": "Messungen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "error_measure_create": "Messung konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "error_measure_delete": "Messung konnte nicht gelöscht werden. Bitte versuche es erneut.",
+    "error_measure_unknown": "Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "error_measure_interrupted": "Messung unterbrochen. Bitte bleibe auf der Seite, bis die Messung abgeschlossen ist.",
+    "success_measure_create": "Messung erfolgreich gespeichert."
   },
 
   "it": {
@@ -273,9 +285,13 @@
     "popup_pwa_step-2": "Seleziona «Aggiungi alla schermata Home»",
     "popup_pwa_step-3": "Tocca «Aggiungi» per confermare",
     "main_measure_hiw_title": "Come funziona",
-    "measure_error_device": "La misurazione della frequenza cardiaca è disponibile solo su dispositivi mobili e tablet.",
-    "measure_error": "Si è verificato un errore. Riprova.",
-    "measure_success": "Misurazione salvata con successo."
+    "error_measure_device": "La misurazione della frequenza cardiaca è disponibile solo su dispositivi mobili e tablet.",
+    "error_measure_fetch": "Impossibile caricare le misurazioni. Riprova.",
+    "error_measure_create": "Impossibile salvare la misurazione. Riprova.",
+    "error_measure_delete": "Impossibile eliminare la misurazione. Riprova.",
+    "error_measure_unknown": "Si è verificato un errore. Riprova.",
+    "error_measure_interrupted": "Misurazione interrotta. Rimani sulla pagina fino al completamento.",
+    "success_measure_create": "Misurazione salvata con successo."
   },
 
   "ja": {
@@ -343,10 +359,13 @@
     "popup_pwa_step-1": "ブラウザの共有ボタンをタップ",
     "popup_pwa_step-2": "「ホーム画面に追加」を選択",
     "popup_pwa_step-3": "「追加」をタップして確認",
-    "main_measure_hiw_title": "使い方",
-    "measure_error_device": "心拍数の測定はスマートフォンとタブレットのみ対応しています。",
-    "measure_error": "エラーが発生しました。もう一度お試しください。",
-    "measure_success": "測定結果を保存しました。"
+    "error_measure_device": "心拍数の測定はスマートフォンとタブレットのみ対応しています。",
+    "error_measure_fetch": "測定データを読み込めませんでした。もう一度お試しください。",
+    "error_measure_create": "測定結果を保存できませんでした。もう一度お試しください。",
+    "error_measure_delete": "測定結果を削除できませんでした。もう一度お試しください。",
+    "error_measure_unknown": "エラーが発生しました。もう一度お試しください。",
+    "error_measure_interrupted": "測定が中断されました。測定が完了するまでページを離れないでください。",
+    "success_measure_create": "測定結果を保存しました。"
   },
 
   "fr": {
@@ -415,8 +434,12 @@
     "popup_pwa_step-2": "Sélectionnez « Sur l'écran d'accueil »",
     "popup_pwa_step-3": "Appuyez sur « Ajouter » pour confirmer",
     "main_measure_hiw_title": "Comment ça fonctionne",
-    "measure_error_device": "La mesure de la fréquence cardiaque est uniquement disponible sur les appareils mobiles et les tablettes.",
-    "measure_error": "Une erreur est survenue. Veuillez réessayer.",
-    "measure_success": "Mesure enregistrée avec succès."
+    "error_measure_device": "La mesure de la fréquence cardiaque est uniquement disponible sur les appareils mobiles et les tablettes.",
+    "error_measure_fetch": "Impossible de charger les mesures. Veuillez réessayer.",
+    "error_measure_create": "Impossible d'enregistrer la mesure. Veuillez réessayer.",
+    "error_measure_delete": "Impossible de supprimer la mesure. Veuillez réessayer.",
+    "error_measure_unknown": "Une erreur est survenue. Veuillez réessayer.",
+    "error_measure_interrupted": "Mesure interrompue. Veuillez rester sur la page jusqu'à la fin de la mesure.",
+    "success_measure_create": "Mesure enregistrée avec succès."
   }
 }

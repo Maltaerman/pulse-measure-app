@@ -70,11 +70,13 @@ const measureStats2 = computed(() => [
 ])
 
 function deleteButtonHandler() {
-  function callback() {
+  async function callback() {
     try {
       if (!measureData.value?.id) return
 
-      deleteMeasure(measureData.value.id as number)
+      await deleteMeasure(measureData.value.id as number)
+
+      await getMeasureList()
     } finally {
       closePopup()
     }
@@ -93,7 +95,7 @@ function deleteButtonHandler() {
 
     <section v-else-if="measureData" class="flex flex-col gap-4 flex-1">
       <MeasireDetailInfo
-        :bpmAvg="measureData.bpmAvg || 0"
+        :bpmAvg="bpmAvg"
         :created-at="measureData.createdAt"
         :measure="measureData.measure"
       />

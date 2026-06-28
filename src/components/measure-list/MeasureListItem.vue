@@ -1,34 +1,42 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { format } from 'date-fns'
+
 import { PAGE_NAME_ENUM } from '@/router'
 
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
 import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
-import { usePopupManager } from '@/composables'
-import { useMeasure } from '@/composables'
+import { usePopupManager, useMeasure, useMeasureDetail } from '@/composables'
 
 export interface IProps {
   id: number
   userId: string
-  bpm: number
   createdAt: number
   measure: number[]
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  bpm: 0,
-  createdAt: 0,
-})
+const props = withDefaults(defineProps<IProps>(), {})
+
+const measureData = computed(() => ({
+  id: props.id,
+  userId: props.userId,
+  createdAt: props.createdAt,
+  measure: props.measure,
+}))
+
+const { bpmAvg } = useMeasureDetail(measureData)
 
 const { openPopup, closePopup } = usePopupManager()
-const { deleteMeasure } = useMeasure()
+const { deleteMeasure, getMeasureList } = useMeasure()
 
 function deleteButtonHandler() {
-  function callback() {
+  async function callback() {
     try {
-      deleteMeasure(props.id)
+      await deleteMeasure(props.id)
+
+      await getMeasureList()
     } finally {
       closePopup()
     }
@@ -57,12 +65,12 @@ function deleteButtonHandler() {
       <div class="flex flex-col">
         <p
           class="text-text-secondary text-sm font-bold transition-colors duration-300"
-          v-text="format(props.createdAt, 'HH:MM')"
+          v-text="format(props.createdAt, 'HH:m')"
         />
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
-          v-text="`${props.bpm} ${$t('global_bpm')}`"
+          v-text="`${bpmAvg} ${$t('global_bpm')}`"
         />
       </div>
     </div>
@@ -70,8 +78,6 @@ function deleteButtonHandler() {
     <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <div class="flex items-center gap-2">
-      <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
-
       <button type="button" class="cursor-pointer" @click.stop="deleteButtonHandler">
         <BaseIcon class="size-4 text-danger" name="bin" />
       </button>

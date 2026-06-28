@@ -11,7 +11,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { PAGE_NAME_ENUM } from '@/router'
 
-import { useDevice, useCamera, useBPM, useMeasure, useUser } from '@/composables'
+import { useDevice, useCamera, useBPM, useMeasure, useUser, useToast } from '@/composables'
 
 import MainMeasureInfo from '@/components/main/MainMeasureInfo.vue'
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
@@ -35,7 +35,9 @@ const { isDesktop } = useDevice()
 const { userId } = useUser()
 
 const { bpm } = useBPM()
-const { addMeasure, measureList, getMeasureList, measureToast } = useMeasure()
+const { createMeasure, measureList, getMeasureList } = useMeasure()
+
+const { toast } = useToast()
 
 getMeasureList()
 
@@ -52,11 +54,10 @@ async function onMeasureTick(measureData: number[]) {
     if (measureProgress.value === 0) {
       clearInterval(intervalId.value)
 
-      await addMeasure({
+      await createMeasure({
         id: `${Date.now()}`,
         userId: userId.value,
         createdAt: Date.now(),
-        bpm: 0,
         measure: measureData,
       })
 
@@ -64,10 +65,10 @@ async function onMeasureTick(measureData: number[]) {
 
       router
         .push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
-        .then(() => measureToast('success', $t('measure_success')))
+        .then(() => toast('success', $t('success_measure_create')))
     }
   } catch {
-    measureToast('error', $t('measure_error'))
+    toast('error', $t('error_measure_unknown'))
 
     measureProgress.value = MEASURE_DURATION
   }
@@ -75,7 +76,7 @@ async function onMeasureTick(measureData: number[]) {
 
 function startMeasure() {
   if (isDesktop.value) {
-    measureToast('error', $t('measure_error_device'))
+    toast('error', $t('error_measure_device'))
   } else {
     const measureData: number[] = []
     const intervalCb = () => onMeasureTick(measureData)
@@ -96,7 +97,7 @@ onBeforeUnmount(() => {
   if (measureProgress.value !== MEASURE_DURATION) {
     clearInterval(intervalId.value)
 
-    measureToast('error', $t('measure_error'))
+    toast('error', $t('error_measure_interrupted'))
   }
 
   resetCanvasContext()
