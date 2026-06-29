@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { useLayout } from '@/layouts/useLayout'
 import { useEventListener } from '@vueuse/core'
+
 import { useTheme, usePopupManager, useUser } from '@/composables'
+
+import { POPUP_NAME_ENUM } from '@/components/popups'
+
+const FEATURES_INFO_POPUP_DELAY = 1000
 
 const { layoutComponent } = useLayout()
 const { initTheme } = useTheme()
-const { popupKeydownEventListener } = usePopupManager()
+const { openPopup, popupKeydownEventListener } = usePopupManager()
 const { setUser } = useUser()
-
-useEventListener('keydown', popupKeydownEventListener)
 
 initTheme()
 setUser()
+
+useEventListener('keydown', popupKeydownEventListener)
+
+setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), FEATURES_INFO_POPUP_DELAY)
 </script>
 
 <template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { format } from 'date-fns'
+
+import { PAGE_NAME_ENUM } from '@/router'
 
 import { BaseLoader, BaseButton } from '@/components/base'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
@@ -13,6 +15,8 @@ import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/po
 import { usePopupManager, useMeasure, useMeasureDetail, DATE_FNS_LOCALES_LIST } from '@/composables'
 
 const route = useRoute()
+const router = useRouter()
+
 const { locale, t: $t } = useI18n()
 
 const { openPopup, closePopup } = usePopupManager()
@@ -76,7 +80,7 @@ function deleteButtonHandler() {
 
       await deleteMeasure(measureData.value.id as number)
 
-      await getMeasureList()
+      router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
     } finally {
       closePopup()
     }

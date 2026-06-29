@@ -65,7 +65,7 @@
   transform: translateY(-100%);
 }
 
-@keyframes heartbeat {
+@keyframes transition-heartbeat {
   0%,
   100% {
     transform: scale(1);
@@ -82,5 +82,5 @@
 }
 
 .animate-heartbeat {
-  animation: heartbeat 1.2s infinite;
+  animation: transition-heartbeat 1.2s infinite;
 }

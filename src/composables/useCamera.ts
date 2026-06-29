@@ -27,11 +27,6 @@ export function useCamera(
 ) {
   const { setBPM } = useBPM()
 
-  // function enableManualTorch() {
-  //   document.body.style.backgroundColor = '#fff'
-  //   document.body.style.transition = 'background-color 0.3s'
-  // }
-
   function processFrame() {
     if (!video.value || !canvas.value || !ctx.value) return
 
@@ -102,7 +97,6 @@ export function useCamera(
 
   return {
     avgR,
-    // enableManualTorch,
     isTorchAvailable,
   }
 }
