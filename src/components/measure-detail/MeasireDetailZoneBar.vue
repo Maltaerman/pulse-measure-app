@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import { type MeasureZone } from '@/composables/useMeasureDetail'
+import { type MeasureZone } from '@/composables'
 
 const { t: $t } = useI18n()
 
@@ -20,9 +20,9 @@ const props = withDefaults(defineProps<IProps>(), {})
 </script>
 
 <template>
-  <div class="bg-bg-card border border-border shadow-sm rounded-lg px-4 py-3">
+  <div class="bg-bg-card border border-border rounded-lg px-4 py-3">
     <p
-      class="text-xs font-medium uppercase text-text-muted mb-2"
+      class="text-xs font-medium uppercase text-text-secondary mb-2"
       v-text="$t('measure_detail_zone-bar_title')"
     />
 

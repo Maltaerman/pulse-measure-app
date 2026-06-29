@@ -62,6 +62,7 @@ onMounted(() => {
 
     if (!props.data.length) return
     ;(chart.data.labels as number[]).push(i)
+
     chart.data.datasets[0].data.push(props.data[i])
 
     chart.update()

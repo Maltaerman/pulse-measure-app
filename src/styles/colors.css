@@ -25,7 +25,6 @@
   --color-danger: oklch(0.62 0.22 25);
 
   --color-border: oklch(0.9 0.01 260);
-  --color-shadow: 0 10px 30px oklch(0.3 0.02 260 / 0.08);
 }
 
 [data-theme='dark'] {
@@ -51,5 +50,4 @@
   --color-danger: oklch(0.68 0.22 25);
 
   --color-border: oklch(0.32 0.015 260);
-  --color-shadow: 0 12px 40px oklch(0 0 0 / 0.6);
 }

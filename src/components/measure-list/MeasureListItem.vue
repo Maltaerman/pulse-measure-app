@@ -1,34 +1,42 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { format } from 'date-fns'
+
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups'
+import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
-import { usePopupManager } from '@/composables/usePopupManager'
-import { useMeasure } from '@/composables/useMeasure'
+import { usePopupManager, useMeasure, useMeasureDetail } from '@/composables'
 
 export interface IProps {
   id: number
   userId: string
-  bpm: number
   createdAt: number
   measure: number[]
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  bpm: 0,
-  createdAt: 0,
-})
+const props = withDefaults(defineProps<IProps>(), {})
+
+const measureData = computed(() => ({
+  id: props.id,
+  userId: props.userId,
+  createdAt: props.createdAt,
+  measure: props.measure,
+}))
+
+const { bpmAvg } = useMeasureDetail(measureData)
 
 const { openPopup, closePopup } = usePopupManager()
-const { deleteMeasure } = useMeasure()
+const { deleteMeasure, getMeasureList } = useMeasure()
 
 function deleteButtonHandler() {
-  function callback() {
+  async function callback() {
     try {
-      deleteMeasure(props.id)
+      await deleteMeasure(props.id)
+
+      await getMeasureList()
     } finally {
       closePopup()
     }
@@ -36,20 +44,14 @@ function deleteButtonHandler() {
 
   openPopup({
     component: POPUP_NAME_ENUM.CONFIRMATION,
-    data: {
-      title: 'popup_confirmation_title',
-      subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit',
-      cancelButton: 'popup_confirmation_cancel',
-      callback,
-    },
+    data: { ...CONFIRMATION_POPUP_DATA_PRESET, callback },
   })
 }
 </script>
 
 <template>
   <div
-    class="cursor-pointer flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
+    class="cursor-pointer flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300"
     @click="
       $router.push({
         name: PAGE_NAME_ENUM.MEASURE_ITEM,
@@ -61,15 +63,14 @@ function deleteButtonHandler() {
       <BaseIcon class="size-6 text-primary" name="heart" />
 
       <div class="flex flex-col">
-        <div
-          class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
-        >
-          <p>{{ format(props.createdAt, 'HH:MM') }}</p>
-        </div>
+        <p
+          class="text-text-secondary text-sm font-bold transition-colors duration-300"
+          v-text="format(props.createdAt, 'HH:m')"
+        />
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
-          v-text="`${props.bpm} ${$t('global_bpm')}`"
+          v-text="`${bpmAvg} ${$t('global_bpm')}`"
         />
       </div>
     </div>
@@ -77,8 +78,6 @@ function deleteButtonHandler() {
     <MeasureDetailGraph class="max-w-40 w-fit h-9" :data="props.measure" :borderWidth="1" />
 
     <div class="flex items-center gap-2">
-      <span class="text-text-primary font-semibold text-lg" v-text="$attrs.bpm" />
-
       <button type="button" class="cursor-pointer" @click.stop="deleteButtonHandler">
         <BaseIcon class="size-4 text-danger" name="bin" />
       </button>

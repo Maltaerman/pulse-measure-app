@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { format } from 'date-fns'
 
-import { DATE_FNS_LOCALES_LIST } from '@/router'
+import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseLoader from '@/components/bases/BaseLoader.vue'
-import BaseButton from '@/components/bases/BaseButton.vue'
+import { BaseLoader, BaseButton } from '@/components/base'
 import MeasireDetailInfo from '@/components/measure-detail/MeasireDetailInfo.vue'
 import MeasireDetailZoneBar from '@/components/measure-detail/MeasireDetailZoneBar.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import MeasureDetailEmptyState from '@/components/measure-detail/MeasureDetailEmptyState.vue'
+import { POPUP_NAME_ENUM, CONFIRMATION_POPUP_DATA_PRESET } from '@/components/popups'
 
-import { usePopupManager } from '@/composables/usePopupManager'
-import { useMeasure } from '@/composables/useMeasure'
-import { useMeasureDetail } from '@/composables/useMeasureDetail'
+import { usePopupManager, useMeasure, useMeasureDetail, DATE_FNS_LOCALES_LIST } from '@/composables'
 
 const route = useRoute()
+const router = useRouter()
+
 const { locale, t: $t } = useI18n()
 
 const { openPopup, closePopup } = usePopupManager()
@@ -74,11 +74,13 @@ const measureStats2 = computed(() => [
 ])
 
 function deleteButtonHandler() {
-  function callback() {
+  async function callback() {
     try {
       if (!measureData.value?.id) return
 
-      deleteMeasure(measureData.value.id as number)
+      await deleteMeasure(measureData.value.id as number)
+
+      router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
     } finally {
       closePopup()
     }
@@ -86,13 +88,7 @@ function deleteButtonHandler() {
 
   openPopup({
     component: POPUP_NAME_ENUM.CONFIRMATION,
-    data: {
-      title: 'popup_confirmation_title',
-      subtitle: 'popup_confirmation_subtitle',
-      submitButton: 'popup_confirmation_submit',
-      cancelButton: 'popup_confirmation_cancel',
-      callback,
-    },
+    data: { ...CONFIRMATION_POPUP_DATA_PRESET, callback },
   })
 }
 </script>
@@ -101,9 +97,9 @@ function deleteButtonHandler() {
   <Transition mode="out-in" name="transition-fade">
     <BaseLoader v-if="isLoadingMeasureList && measureList.length === 0" class="size-20 m-auto" />
 
-    <section v-else-if="measureData" class="flex flex-col gap-3 flex-1">
+    <section v-else-if="measureData" class="flex flex-col gap-4 flex-1">
       <MeasireDetailInfo
-        :bpmAvg="measureData.bpmAvg || 0"
+        :bpmAvg="bpmAvg"
         :created-at="measureData.createdAt"
         :measure="measureData.measure"
       />
@@ -112,7 +108,7 @@ function deleteButtonHandler() {
         <div
           v-for="({ title, value, subtitle }, index) in measureStats"
           :key="index"
-          class="rounded-lg p-3 flex flex-col items-start gap-0.5"
+          class="rounded-lg px-4 py-3 flex flex-col items-start gap-0.5"
           :class="index === 1 ? 'bg-primary-active/50' : 'bg-bg-muted'"
         >
           <p
@@ -123,13 +119,13 @@ function deleteButtonHandler() {
 
           <div class="flex flex-row items-center justify-center gap-1">
             <p
-              :class="index === 1 ? 'text-primary' : 'text-text-secondary'"
+              :class="index === 1 ? 'text-primary' : 'text-text-primary'"
               class="text-sm font-bold leading-none"
               v-text="value"
             />
 
             <p
-              :class="index === 1 ? 'text-primary' : 'text-text-secondary'"
+              :class="index === 1 ? 'text-primary' : 'text-text-primary'"
               class="text-xs font-medium mt-0.5"
               v-text="subtitle"
             />
@@ -145,8 +141,9 @@ function deleteButtonHandler() {
           :key="title"
           class="flex flex-col items-center gap-0.5"
         >
-          <span class="text-sm font-bold text-text-primary" v-text="value" />
           <span class="text-xs uppercase text-text-muted" v-text="title" />
+
+          <span class="text-sm font-bold text-text-primary" v-text="value" />
         </div>
       </div>
 
@@ -155,11 +152,8 @@ function deleteButtonHandler() {
       </BaseButton>
     </section>
 
-    <section v-else>
-      <p
-        class="size-full m-auto text-center px-4 py-3 text-lg font-medium text-text-primary transition-colors duration-300"
-        v-text="$t('measure_detail_empty')"
-      />
+    <section class="flex flex-1" v-else>
+      <MeasureDetailEmptyState class="m-auto" />
     </section>
   </Transition>
 </template>

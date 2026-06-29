@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import BaseIcon from '@/components/bases/BaseIcon.vue'
-import { POPUP_NAME_ENUM } from '@/components/popups/types'
+import BaseIcon from '@/components/base/BaseIcon.vue'
+import { POPUP_NAME_ENUM } from '@/components/popups'
 
-import { usePopupManager } from '@/composables/usePopupManager'
+import { usePopupManager } from '@/composables'
 
 const { openPopup } = usePopupManager()
 </script>
@@ -14,7 +14,7 @@ const { openPopup } = usePopupManager()
     @click="openPopup({ component: POPUP_NAME_ENUM.MEASURE_INFO })"
   >
     <p
-      class="text-text-primary text-md font-medium transition-colors duration-300"
+      class="text-text-primary font-bold text-lg transition-colors duration-300"
       v-text="$t('main_measure_hiw_title')"
     />
 

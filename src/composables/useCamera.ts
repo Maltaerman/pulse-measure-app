@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, type Ref } from 'vue'
 
 import { useBPM } from './useBPM'
 
@@ -11,8 +10,8 @@ const VIDEO_PRESET = {
 
 const MEDIA_PRESET = { video: VIDEO_PRESET }
 
-let stream: any
-let intervalId: number
+let stream: MediaStream | null = null
+let intervalId: ReturnType<typeof setInterval> | null = null
 
 const isTorchAvailable = ref(false)
 
@@ -21,22 +20,20 @@ const avgR = ref(0)
 const signal: number[] = []
 const timestamps: number[] = []
 
-const isManualTorchOn = ref(true)
-
-export function useCamera(video: any, canvas: any, ctx: any) {
+export function useCamera(
+  video: Ref<HTMLVideoElement | null>,
+  canvas: Ref<HTMLCanvasElement | null>,
+  ctx: Ref<CanvasRenderingContext2D | null>,
+) {
   const { setBPM } = useBPM()
 
-  function enableManualTorch() {
-    isManualTorchOn.value = true
-    document.body.style.backgroundColor = '#fff'
-    document.body.style.transition = 'background-color 0.3s'
-  }
-
   function processFrame() {
-    if (!video.value || !ctx.value) return
+    if (!video.value || !canvas.value || !ctx.value) return
 
-    ctx.value.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height)
-    const frame = ctx.value.getImageData(0, 0, canvas.value.width, canvas.value.height)
+    const CTX_CONFIG = [0, 0, canvas.value.width, canvas.value.height] as const
+
+    ctx.value.drawImage(video.value, ...CTX_CONFIG)
+    const frame = ctx.value.getImageData(...CTX_CONFIG)
 
     let sum = 0
     for (let i = 0; i < frame.data.length; i += 4) {
@@ -57,17 +54,18 @@ export function useCamera(video: any, canvas: any, ctx: any) {
       signal.shift()
     }
 
-    if (signal.length > 20) {
-      setBPM(signal, timestamps)
-    }
+    if (signal.length > 20) setBPM(signal, timestamps)
   }
 
   async function init() {
     try {
       stream = await navigator.mediaDevices.getUserMedia(MEDIA_PRESET)
 
+      if (!video.value) return
+
       video.value.srcObject = stream
-      await new Promise((r) => (video.value.onloadedmetadata = r))
+
+      await new Promise((r) => (video.value!.onloadedmetadata = r))
 
       const track = stream.getVideoTracks()[0]
       const capabilities = track.getCapabilities()
@@ -75,7 +73,9 @@ export function useCamera(video: any, canvas: any, ctx: any) {
       if ('torch' in capabilities) {
         isTorchAvailable.value = true
 
-        await track.applyConstraints({ advanced: [{ torch: true }] })
+        // cast to any to allow the non-standard 'torch' constraint
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        await track.applyConstraints({ advanced: [{ torch: true }] } as any)
       }
 
       intervalId = setInterval(processFrame, 50)
@@ -85,9 +85,11 @@ export function useCamera(video: any, canvas: any, ctx: any) {
   }
 
   function deinit() {
+    if (!intervalId) return
+
     clearInterval(intervalId)
 
-    stream?.getTracks().forEach((t: any) => t.stop())
+    stream?.getTracks().forEach((t) => t.stop())
   }
 
   onMounted(init)
@@ -95,8 +97,6 @@ export function useCamera(video: any, canvas: any, ctx: any) {
 
   return {
     avgR,
-    isManualTorchOn,
-    enableManualTorch,
     isTorchAvailable,
   }
 }

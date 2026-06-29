@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer arch -->
+  <path d="M5 12.5 C5 7.8 8.1 4 12 4 C15.9 4 19 7.8 19 12.5 C19 15 18.2 17.8 17 20"/>
+  <!-- Ridge 2 -->
+  <path d="M7 13 C7 9.1 9.2 6.5 12 6.5 C14.8 6.5 17 9.1 17 13 C17 15.2 16.2 17.8 15 20"/>
+  <!-- Ridge 3 -->
+  <path d="M9 13.5 C9 10.5 10.3 8.5 12 8.5 C13.7 8.5 15 10.5 15 13.5 C15 15.5 14.3 17.8 13.2 20"/>
+  <!-- Ridge 4 — loop starts -->
+  <path d="M11 14 C11 12 11.4 10.5 12 10.5 C12.6 10.5 13 12 13 14 C13 16 12.6 18 12 20"/>
+  <!-- Left side open ends going down -->
+  <path d="M5 12.5 C4.5 15 4.8 17.5 6 20"/>
+  <path d="M7 13 C6.6 15.2 6.8 17.5 7.8 20"/>
+  <path d="M9 13.5 C8.7 15.5 8.8 17.8 9.5 20"/>
+</svg>

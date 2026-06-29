@@ -7,109 +7,100 @@ import {
   onMounted,
   onBeforeUnmount,
 } from 'vue'
-// import { PAGE_NAME_ENUM } from '@/router'
-
-// import { useCamera } from '@/composables/useCamera'
-import { useBPM } from '@/composables/useBPM'
-
-import { toast } from 'vue3-toastify'
 import { useI18n } from 'vue-i18n'
-import 'vue3-toastify/dist/index.css'
+import { useRouter } from 'vue-router'
+import { PAGE_NAME_ENUM } from '@/router'
 
+import { useDevice, useCamera, useBPM, useMeasure, useUser, useToast } from '@/composables'
+
+import MainMeasureInfo from '@/components/main/MainMeasureInfo.vue'
 import MainMeasureHIWButton from '@/components/main/MainMeasureHIWButton.vue'
-// import BaseCircleProgressBar from '@/components/bases/BaseCircleProgressBar.vue'
-// import LastMeasure from '@/components/main/LastMeasure.vue'
-
-import { useDevice } from '@/composables/useDevice'
-
-import { useMeasure } from '@/composables/useMeasure'
-import { useUser } from '@/composables/useUser'
 
 const MainLastMeasure = defineAsyncComponent(() => import('@/components/main/MainLastMeasure.vue'))
-
-const { t: $t } = useI18n()
-const { isDesktop } = useDevice()
-const { addMeasure, measureList, getMeasureList } = useMeasure()
-const { userId } = useUser()
-
-getMeasureList()
 
 const videoRef = useTemplateRef('videoRef')
 const canvasRef = useTemplateRef('canvasRef')
 
-const ctx = ref<CanvasRenderingContext2D | null>(null)
+const MEASURE_DURATION = 30
+const measureProgress = ref(MEASURE_DURATION)
 
-function getContext() {
-  if (canvasRef.value) ctx.value = canvasRef.value.getContext('2d')
-}
+const canvasContext = ref<CanvasRenderingContext2D | null>(null)
 
-function resetContext() {
-  ctx.value = null
-}
+useCamera(videoRef, canvasRef, canvasContext)
 
-onMounted(getContext)
+const router = useRouter()
+const { t: $t } = useI18n()
+const { isDesktop } = useDevice()
 
-// const { avgR } = useCamera(videoRef, canvasRef, ctx)
+const { userId } = useUser()
+
 const { bpm } = useBPM()
+const { createMeasure, measureList, getMeasureList } = useMeasure()
 
-const measureProgress = ref(0)
-const isStarted = ref(false)
+const { toast } = useToast()
 
-const lastMeasureData = computed(() => measureList.value[0])
+getMeasureList()
+
+const lastMeasureData = computed(() => measureList.value[measureList.value.length - 1])
 
 const intervalId = ref(0)
 
-const localMeasureData = ref([])
+async function onMeasureTick(measureData: number[]) {
+  try {
+    measureProgress.value -= 1
 
-function intervalHandler() {
-  console.log('intervalHandler', measureProgress.value)
+    if (bpm.value) measureData.push(bpm.value)
 
-  measureProgress.value += 10
+    if (measureProgress.value === 0) {
+      clearInterval(intervalId.value)
 
-  if (measureProgress.value === 100 && bpm.value === 0) {
-    measureProgress.value = 0
-  }
+      await createMeasure({
+        id: `${Date.now()}`,
+        userId: userId.value,
+        createdAt: Date.now(),
+        measure: measureData,
+      })
 
-  if (bpm.value !== 0) {
-    localMeasureData.value.push(bpm.value as never)
+      measureProgress.value = MEASURE_DURATION
+
+      router
+        .push({ name: PAGE_NAME_ENUM.MEASURE_LIST })
+        .then(() => toast('success', $t('success_measure_create')))
+    }
+  } catch {
+    toast('error', $t('error_measure_unknown'))
+
+    measureProgress.value = MEASURE_DURATION
   }
 }
 
-function start() {
+function startMeasure() {
   if (isDesktop.value) {
-    toast($t('measure_error_device'), {
-      type: 'error',
-      autoClose: 3000,
-    })
+    toast('error', $t('error_measure_device'))
+  } else {
+    const measureData: number[] = []
+    const intervalCb = () => onMeasureTick(measureData)
 
-    return
+    intervalId.value = setInterval(intervalCb, 1000)
   }
-
-  isStarted.value = true
-
-  intervalId.value = setInterval(intervalHandler, 1000)
-
-  if (bpm.value > 0) isStarted.value = false
 }
 
-onBeforeUnmount(async () => {
-  if (!isStarted.value) return
+function getCanvasContext() {
+  if (canvasRef.value) canvasContext.value = canvasRef.value.getContext('2d')
+}
+function resetCanvasContext() {
+  if (canvasRef.value) canvasContext.value = null
+}
 
-  if (intervalId.value) clearInterval(intervalId.value)
+onMounted(getCanvasContext)
+onBeforeUnmount(() => {
+  if (measureProgress.value !== MEASURE_DURATION) {
+    clearInterval(intervalId.value)
 
-  await addMeasure({
-    id: `${Date.now()}`,
-    userId: userId.value,
-    createdAt: Date.now(),
-    bpm: 0,
-    measure: localMeasureData.value,
-  })
+    toast('error', $t('error_measure_interrupted'))
+  }
 
-  await getMeasureList()
-
-  isStarted.value = false
-  measureProgress.value = 0
-  resetContext()
+  resetCanvasContext()
 })
 </script>
 
@@ -119,45 +110,20 @@ onBeforeUnmount(async () => {
 
     <video ref="videoRef" autoplay playsinline class="hidden" />
 
-    <canvas ref="canvasRef" width="320" height="240" class="hidden" />
+    <canvas ref="canvasRef" width="100" height="100" class="hidden" />
 
-    <div class="relative flex flisMoex-col items-center justify-center">
-      <div
-        class="absolute w-48 h-48 bg-primary/10 rounded-full animate-ping [animation-delay:100ms]"
-      />
-      <div
-        class="absolute w-36 h-36 bg-primary/20 rounded-full animate-ping [animation-delay:500ms]"
-      />
-      <div
-        class="absolute w-28 h-28 bg-primary/30 rounded-full animate-ping [animation-delay:900ms]"
-      />
-
-      <button
-        v-if="!isStarted"
-        type="button"
-        class="relative size-40 animate-heartbeat text-2xl font-bold text-primary uppercase cursor-pointer"
-        @click="start"
-      >
-        {{ $t('global_start') }}
-      </button>
-
-      <div
-        v-else
-        class="size-40 flex items-center justify-center animate-heartbeat text-2xl font-bold text-primary uppercase"
-      >
-        <p v-if="isStarted && bpm === 0" v-text="$t('global_measuring')" />
-
-        <template v-else-if="bpm">
-          {{ bpm }}
-        </template>
-      </div>
-    </div>
+    <MainMeasureInfo
+      :bpm="bpm"
+      :progress="measureProgress"
+      :is-progress-shown="measureProgress < MEASURE_DURATION"
+      @start-measure="startMeasure"
+    />
 
     <Transition mode="out-in" name="transition-slide-bottom">
       <MainLastMeasure
         v-if="lastMeasureData"
         v-bind="{ ...lastMeasureData, id: Number(lastMeasureData.id) }"
-        class="w-[calc(100%-16px)] absolute bottom-2"
+        class="w-full absolute bottom-2"
       />
     </Transition>
   </section>

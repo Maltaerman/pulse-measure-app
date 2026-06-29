@@ -1,8 +1,9 @@
 @import 'tailwindcss';
+@import 'vue3-toastify/dist/index.css';
 
-@import './fonts.css';
 @import './colors.css';
+@import './fonts.css';
 @import './layouts.css';
-@import './transitions.css';
 @import './normalize.css';
+@import './transitions.css';
 @import './vue3-toastif.css';

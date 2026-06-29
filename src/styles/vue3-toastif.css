@@ -1,2 +1,14 @@
 :root {
+  font-family: 'Ubuntu';
+
+  --toastify-color-light: var(--color-bg-card);
+  --toastify-color-dark: var(--color-bg-card);
+
+  .Toastify__toast-body {
+    @apply px-2 py-1 flex flex-row gap-1 rounded-lg shadow-none text-text-secondary;
+  }
+
+  .Toastify__close-button {
+    @apply text-text-primary;
+  }
 }

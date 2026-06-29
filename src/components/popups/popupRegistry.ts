@@ -24,6 +24,11 @@ const popupRegistry = {
     loader: () => import('./components/ConfirmationPopup.vue') as Promise<Component>,
     loadingComponent: PopupPreloader,
   }),
+
+  [POPUP_NAME_ENUM.PWA]: defineAsyncComponent({
+    loader: () => import('./components/PWAPopup.vue') as Promise<Component>,
+    loadingComponent: PopupPreloader,
+  }),
 }
 
 export { popupRegistry }

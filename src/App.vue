@@ -1,26 +1,32 @@
 <script setup lang="ts">
-import { useLayout } from '@/layout/useLayout'
-// import { useLayoutRouteTransition } from '@/layout/useLayoutRouteTransition';
-import { useRouteGuard } from '@/composables/useRouteGuard'
-import { useUser } from '@/composables/useUser'
+import { useLayout } from '@/layouts/useLayout'
+import { useEventListener } from '@vueuse/core'
+
+import { useTheme, usePopupManager, useUser } from '@/composables'
+
+import { POPUP_NAME_ENUM } from '@/components/popups'
+
+const FEATURES_INFO_POPUP_DELAY = 1000
 
 const { layoutComponent } = useLayout()
+const { initTheme } = useTheme()
+const { openPopup, popupKeydownEventListener } = usePopupManager()
 const { setUser } = useUser()
-// const { layoutRouteTransition } = useLayoutRouteTransition();
 
-useRouteGuard()
+initTheme()
 setUser()
+
+useEventListener('keydown', popupKeydownEventListener)
+
+setTimeout(() => openPopup({ component: POPUP_NAME_ENUM.FEATURES_INFO }), FEATURES_INFO_POPUP_DELAY)
 </script>
 
 <template>
   <component :is="layoutComponent">
-    <!-- <Transition
-      :name="layoutRouteTransition"
-      mode="out-in"
-    > -->
-    <router-view :key="$route.fullPath" v-slot="{ Component, route }">
-      <component :is="Component" :key="route.name" />
+    <router-view v-slot="{ Component, route }">
+      <Transition name="transition-fade" mode="out-in">
+        <component :is="Component" :key="route.name" />
+      </Transition>
     </router-view>
-    <!-- </Transition> -->
   </component>
 </template>

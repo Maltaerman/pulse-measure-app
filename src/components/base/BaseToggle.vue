@@ -1,41 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
+export interface IProps {
+  modelValue: boolean
+  isDisabled?: boolean
+  id?: string
+  name?: string
+  containerSizeClasses?: string
+  toggleSizeClasses?: string
+  transitionClasses?: string
+}
 
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-
-  name: {
-    type: String,
-    default: null,
-  },
-
-  id: {
-    type: String,
-    default: null,
-  },
-
-  containerSizeClasses: {
-    type: String,
-    default: 'w-10 h-5',
-  },
-
-  toggleSizeClasses: {
-    type: String,
-    default: 'size-5',
-  },
-
-  transitionClasses: {
-    type: String,
-    default: 'transition-all duration-300',
-  },
+const props = withDefaults(defineProps<IProps>(), {
+  modelValue: false,
+  isDisabled: false,
+  id: '',
+  name: '',
+  containerSizeClasses: 'w-10 h-5',
+  toggleSizeClasses: 'size-5',
+  transitionClasses: 'transition-all duration-300',
 })
 
 const emit = defineEmits(['update:modelValue'])

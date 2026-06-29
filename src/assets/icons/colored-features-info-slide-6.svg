@@ -1,0 +1,39 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Phone silhouette -->
+  <rect x="62" y="18" width="76" height="130" rx="16" fill="#F5F2EE" stroke="#D8D4CE" stroke-width="1.5"/>
+  <rect x="72" y="30" width="56" height="88" rx="8" fill="#EAE6E0"/>
+  <rect x="88" y="24" width="24" height="5" rx="2.5" fill="#D8D4CE"/>
+  <rect x="85" y="138" width="30" height="4" rx="2" fill="#D8D4CE"/>
+
+  <!-- Screen content: app icon on homescreen feel -->
+  <rect x="80" y="46" width="40" height="40" rx="10" fill="rgba(224,90,58,0.12)"/>
+  <!-- Heart + ECG mini inside screen icon -->
+  <path d="M93 63c0-2.8 2.4-5 5.3-5 1.5 0 2.7 1.1 3.2 2.2.5-1.1 1.7-2.2 3.2-2.2 2.9 0 5.3 2.2 5.3 5 0 4.4-8.5 9.5-8.5 9.5S93 67.4 93 63z" fill="#E05A3A"/>
+
+  <!-- Download arrow coming from outside into phone -->
+  <!-- Arrow shaft -->
+  <line x1="100" y1="5" x2="100" y2="22" stroke="#E05A3A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <!-- Arrow head -->
+  <path d="M93 17 L100 25 L107 17" stroke="#E05A3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- "Add to Home Screen" share icon bottom of phone -->
+  <rect x="84" y="100" width="32" height="24" rx="6" fill="rgba(224,90,58,0.1)" stroke="#E05A3A" stroke-width="1" stroke-dasharray="3 2"/>
+  <!-- Plus sign -->
+  <line x1="100" y1="106" x2="100" y2="118" stroke="#E05A3A" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="94" y1="112" x2="106" y2="112" stroke="#E05A3A" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- PWA badge — top right -->
+  <rect x="146" y="22" width="40" height="22" rx="11" fill="#E05A3A"/>
+  <text x="166" y="37" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="700" fill="#fff">PWA</text>
+
+  <!-- Homescreen dots (page indicator) -->
+  <circle cx="91"  cy="172" r="3.5" fill="#E05A3A"/>
+  <circle cx="100" cy="172" r="3.5" fill="#D8D4CE"/>
+  <circle cx="109" cy="172" r="3.5" fill="#D8D4CE"/>
+
+  <!-- Install label -->
+  <rect x="56" y="158" width="88" height="20" rx="10" fill="rgba(224,90,58,0.1)"/>
+  <text x="100" y="172" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="10" font-weight="600" fill="#E05A3A">Install as App</text>
+
+</svg>

@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { LOCALES_LIST } from '@/router'
+import { useLocale, usePopupManager, LOCALES_LIST } from '@/composables'
 
-import { usePopupManager } from '@/composables/usePopupManager'
-import { useLocale } from '@/composables/useLocale'
-
-import BaseButton from '@/components/bases/BaseButton.vue'
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import { BaseButton, BaseIcon } from '@/components/base'
 
 const { closePopup } = usePopupManager()
 const { selectedLocale, changeLocale } = useLocale()

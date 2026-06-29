@@ -9,10 +9,7 @@ interface IPopupState {
   data?: unknown
 }
 
-const popupState: Ref<IPopupState> = ref({
-  component: null,
-  data: null,
-})
+const popupState: Ref<IPopupState> = ref({ component: null, data: null })
 
 export function usePopupManager() {
   function setPopupState(state: IPopupState) {
@@ -23,7 +20,7 @@ export function usePopupManager() {
     popupState.value = { component: null, data: null }
   }
 
-  async function openPopup(payload: IPopupState) {
+  function openPopup(payload: IPopupState) {
     setPopupState(payload)
 
     lockScroll()
@@ -35,9 +32,14 @@ export function usePopupManager() {
     unlockScroll()
   }
 
+  function popupKeydownEventListener(event: KeyboardEvent) {
+    if (event.key === 'Escape') closePopup()
+  }
+
   return {
     popupState,
     openPopup,
     closePopup,
+    popupKeydownEventListener,
   }
 }

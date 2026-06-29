@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-import { defineAsyncComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { defineAsyncComponent, computed } from 'vue'
 
-import { DATE_FNS_LOCALES_LIST } from '@/router'
+import { DATE_FNS_LOCALES_LIST } from '@/composables'
 
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 
 const MeasureDetailGraph = defineAsyncComponent(() => import('./MeasureDetailGraph.vue'))
 
@@ -15,35 +16,33 @@ export interface IProps {
 }
 
 const props = withDefaults(defineProps<IProps>(), {})
+
+const i18n = useI18n()
+
+const locale = computed(
+  () => DATE_FNS_LOCALES_LIST[i18n.locale.value as keyof typeof DATE_FNS_LOCALES_LIST],
+)
 </script>
 
 <template>
-  <div class="bg-bg-card border border-border rounded-lg shadow-sm px-4 py-3 flex flex-col gap-3">
+  <div class="bg-bg-card border border-border rounded-lg px-4 py-3 flex flex-col gap-3">
     <div class="flex items-center justify-between">
-      <div class="flex items-baseline gap-1.5">
+      <div class="flex items-baseline gap-1">
         <span class="text-3xl font-bold text-primary leading-none" v-text="props.bpmAvg" />
-        <span class="text-sm font-medium text-text-secondary" v-text="$t('global_bpm')" />
+        <span class="text-md font-medium text-text-primary" v-text="$t('global_bpm')" />
       </div>
 
-      <div class="flex mb-auto items-center gap-1 text-xs text-text-muted">
-        <BaseIcon name="calendar" class="size-4 text-text-muted" />
+      <div class="flex mb-auto items-center gap-1 text-sm text-text-secondary">
+        <BaseIcon name="calendar" class="size-4" />
 
-        {{
-          format(props.createdAt, 'MMMM d, yyyy', {
-            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
-          })
-        }}
-        {{
-          format(props.createdAt, 'h:mm a', {
-            locale: DATE_FNS_LOCALES_LIST[$i18n.locale as keyof typeof DATE_FNS_LOCALES_LIST],
-          })
-        }}
+        {{ format(props.createdAt, 'MMMM d, yyyy', { locale }) }}
+        {{ format(props.createdAt, 'h:mm a', { locale }) }}
       </div>
     </div>
 
     <div v-if="props.measure?.length" class="relative rounded-lg bg-bg-muted p-2">
       <p
-        class="absolute top-2 left-2 text-sm font-normal uppercase text-text-muted mb-1.5"
+        class="absolute top-2 left-3 text-sm font-normal uppercase text-text-muted mb-1.5"
         v-text="$t('measure_detail_graph_title')"
       />
 

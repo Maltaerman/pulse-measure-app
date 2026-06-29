@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PAGE_NAME_ENUM } from '@/router'
 
-import BaseHeart from '@/components/bases/BaseHeart.vue'
+import BaseHeart from '@/components/base/BaseHeart.vue'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import BaseHeart from '@/components/bases/BaseHeart.vue'
     <BaseHeart :size="20" class="animate-heartbeat" />
 
     <BaseHeart
-      :size="20"
+      :size="21"
       class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-ping [animation-delay:100ms]"
     />
 

@@ -1,13 +1,12 @@
 :root {
   --headerHeight: 60px;
   --zIndexPopup: 300;
-  --zIndexDrawer: 500;
 }
 
 .--screenHeight {
-  height: calc(100vh - var(--headerHeight));
+  height: calc(100dvh - var(--headerHeight));
 }
 
 .--screenMinHeight {
-  min-height: calc(100vh - var(--headerHeight));
+  min-height: calc(100dvh - var(--headerHeight));
 }

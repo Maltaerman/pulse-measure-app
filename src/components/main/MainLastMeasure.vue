@@ -1,43 +1,54 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { PAGE_NAME_ENUM } from '@/router'
 import { format } from 'date-fns'
 
-import { PAGE_NAME_ENUM } from '@/router'
-
-import BaseIcon from '@/components/bases/BaseIcon.vue'
+import BaseIcon from '@/components/base/BaseIcon.vue'
 import MeasureDetailGraph from '@/components/measure-detail/MeasureDetailGraph.vue'
+
+import { useMeasureDetail } from '@/composables'
 
 export interface IProps {
   id: number
   userId: string
-  bpm: number
   createdAt: number
   measure: number[]
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  bpm: 0,
-  createdAt: 0,
-})
+const props = withDefaults(defineProps<IProps>(), {})
+
+const measureData = computed(() => ({
+  id: props.id,
+  userId: props.userId,
+  createdAt: props.createdAt,
+  measure: props.measure,
+}))
+
+const { bpmAvg } = useMeasureDetail(measureData)
 </script>
 
 <template>
   <div
-    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg shadow-sm px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
-    @click="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
+    class="flex items-center justify-between gap-4 bg-card border border-border bg-bg-card rounded-lg px-4 py-3 hover:bg-bg-muted transition-colors duration-300 cursor-pointer"
+    @click="
+      $router.push({
+        name: PAGE_NAME_ENUM.MEASURE_ITEM,
+        params: { id: props.id },
+      })
+    "
   >
     <div class="flex items-center gap-3">
       <BaseIcon class="size-6 text-primary" name="heart" />
 
       <div class="flex flex-col">
-        <div
-          class="flex flex-row gap-1 text-text-secondary text-sm font-bold transition-colors duration-300"
-        >
-          <p>{{ format(props.createdAt, 'HH:MM') }}</p>
-        </div>
+        <p
+          class="text-text-secondary text-sm font-bold transition-colors duration-300"
+          v-text="format(props.createdAt, 'HH:m')"
+        />
 
         <p
           class="text-text-muted text-xs transition-colors duration-300"
-          v-text="`${props.bpm} bpm`"
+          v-text="`${bpmAvg} bpm`"
         />
       </div>
     </div>
@@ -46,7 +57,7 @@ const props = withDefaults(defineProps<IProps>(), {
 
     <button
       class="flex flex-row gap-1 items-center justify-center text-text-secondary hover:text-text-primary active:text-text-primary cursor-pointer transition-colors duration-300"
-      @click.prevent
+      @click.stop="$router.push({ name: PAGE_NAME_ENUM.MEASURE_LIST })"
     >
       {{ $t('global_view-all') }}
 
