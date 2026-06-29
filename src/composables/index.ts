@@ -9,7 +9,7 @@ export {
   DATE_FNS_LOCALES_LIST,
   type Locale,
 } from './useLocale'
-export { useMeasure, type IMeasure } from './useMeasure'
+export { useMeasure } from './useMeasure'
 export { useMeasureDetail, type MeasureZone } from './useMeasureDetail'
 export { useToast } from './useToast'
 export { usePopupManager } from './usePopupManager'

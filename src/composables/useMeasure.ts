@@ -1,17 +1,11 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { measureApi } from '@/api'
+import { measureApi, type IMeasure } from '@/api'
 
 import { useToast } from './useToast'
 
 export type MeasureZone = 'rest' | 'fat-burn' | 'cardio' | 'peak'
-export interface IMeasure {
-  id: string | number
-  userId: string
-  createdAt: number
-  measure: number[]
-}
 
 const measureList = ref<IMeasure[]>([])
 

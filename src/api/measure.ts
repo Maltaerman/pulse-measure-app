@@ -1,4 +1,4 @@
-import { type IMeasure } from '@/composables'
+import { type IMeasure } from '@/api'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ENDPOINT = `${BASE_URL}/measures`

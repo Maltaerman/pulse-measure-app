@@ -1,6 +1,7 @@
 import { computed } from 'vue'
 import type { ComputedRef } from 'vue'
-import type { IMeasure } from './useMeasure'
+
+import type { IMeasure } from '@/api'
 
 export type MeasureZone = 'rest' | 'fat-burn' | 'cardio' | 'peak'
 
