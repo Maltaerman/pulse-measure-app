@@ -115,13 +115,13 @@ function deleteButtonHandler() {
 
           <div class="flex flex-row items-center justify-center gap-1">
             <p
-              :class="index === 1 ? 'text-primary' : 'text-text-secondary'"
+              :class="index === 1 ? 'text-primary' : 'text-text-primary'"
               class="text-sm font-bold leading-none"
               v-text="value"
             />
 
             <p
-              :class="index === 1 ? 'text-primary' : 'text-text-secondary'"
+              :class="index === 1 ? 'text-primary' : 'text-text-primary'"
               class="text-xs font-medium mt-0.5"
               v-text="subtitle"
             />

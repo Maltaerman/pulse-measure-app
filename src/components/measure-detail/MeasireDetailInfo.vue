@@ -27,13 +27,13 @@ const locale = computed(
 <template>
   <div class="bg-bg-card border border-border rounded-lg px-4 py-3 flex flex-col gap-3">
     <div class="flex items-center justify-between">
-      <div class="flex items-baseline gap-1.5">
+      <div class="flex items-baseline gap-1">
         <span class="text-3xl font-bold text-primary leading-none" v-text="props.bpmAvg" />
-        <span class="text-md font-medium text-text-secondary" v-text="$t('global_bpm')" />
+        <span class="text-md font-medium text-text-primary" v-text="$t('global_bpm')" />
       </div>
 
-      <div class="flex mb-auto items-center gap-1 text-sm text-text-muted">
-        <BaseIcon name="calendar" class="size-4 text-text-muted" />
+      <div class="flex mb-auto items-center gap-1 text-sm text-text-secondary">
+        <BaseIcon name="calendar" class="size-4" />
 
         {{ format(props.createdAt, 'MMMM d, yyyy', { locale }) }}
         {{ format(props.createdAt, 'h:mm a', { locale }) }}
